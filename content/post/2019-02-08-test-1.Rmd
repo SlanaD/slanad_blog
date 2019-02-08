@@ -1,0 +1,27 @@
+---
+title: Test 1
+author: SlanaD
+date: '2019-02-08'
+slug: test-1
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+# NASLOV 1
+## Naslov 2
+Besedilo, da vidim ali smo uspeli vpisat
+nekaj ŠČŽ-žšč jev
+
+OK
+
+
+```{r}
+x <- c(1,2,3,4,5,6,7)
+y <- x**2
+cat(x, y)
+
+plot(x,y)
+```
+
