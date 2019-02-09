@@ -1,36 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on PRIPOVEDKE O PODATKIH</title>
+    <title>R on p o p - PRIPOVEDKE O PODATKIH</title>
     <link>/categories/r/</link>
-    <description>Recent content in R on PRIPOVEDKE O PODATKIH</description>
+    <description>Recent content in R on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Fri, 08 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Test 1</title>
-      <link>/2019/02/08/test-1/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      <title>PRVA</title>
+      <link>/post/prva/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/02/08/test-1/</guid>
-      <description>NASLOV 1Naslov 2Besedilo, da vidim ali smo uspeli vpisat nekaj ŠČŽ-žšč jev
-OK
-x &amp;lt;- c(1,2,3,4,5,6,7)y &amp;lt;- x**2cat(x, y)## 1 2 3 4 5 6 7 1 4 9 16 25 36 49plot(x,y)</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/2015/07/23/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/2015/07/23/hello-r-markdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>/post/prva/</guid>
+      <description>R Markdown - ČŠŽ čšžThis is an R Markdown document. Test ČŠŽ čžš. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
     </item>
     
   </channel>

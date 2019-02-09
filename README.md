@@ -1,2 +1,0 @@
-# SlanaD.github.io
-Blog
