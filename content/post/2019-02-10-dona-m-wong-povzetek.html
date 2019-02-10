@@ -1,0 +1,127 @@
+---
+title: '[Dona M. Wong] Povzetek'
+author: SlanaD
+date: '2019-02-10'
+slug: dona-m-wong-povzetek
+categories:
+  - Vizualizacija
+tags:
+  - vizualizacija
+  - predstavitev
+  - grafikon
+  - graf
+  - poenostavitev
+  - grafični elementi
+  - informacija
+  - podatki
+lastmod: '2019-02-10T12:34:10+01:00'
+keywords: []
+description: ''
+comment: no
+toc: no
+autoCollapseToc: no
+postMetaInFooter: no
+hiddenFromHomePage: no
+contentCopyright: no
+reward: no
+mathjax: no
+mathjaxEnableSingleDollar: no
+mathjaxEnableAutoNumber: no
+hideHeaderAndFooter: no
+flowchartDiagrams:
+  enable: no
+  options: ''
+sequenceDiagrams:
+  enable: no
+  options: ''
+---
+
+
+
+<p>Povej prepričljivo zgodbo z vsakim grafikonom tako, da narediš zavestno izbor podatkov, slog predstavitve in barvno shemo.</p>
+<ul>
+<li>Postavi številke v kontekst.</li>
+<li>Naredi matematiko za bralce. Odloči se ali odstotne spremembe ali absolutne vrednosti povedo več.</li>
+<li>Uporabi čim manj pisav. Uporabi krepko ali ležečo pisavo samo za razlikovanje, vendar ne oboje hkrati.</li>
+<li>Uporabi barvo za posredovanje informacij in ne za dekoracijo.</li>
+<li>Trudi se, da bo bralcem enostavno razumeti:
+<ul>
+<li>Uporabi naravni prirast za lestvico osi y.</li>
+<li>Vključi ničlo kot izhodiščno vrednost v vseh stolpčnih grafikonih.</li>
+<li>Postavi večje segmente tortni grafikon na vrhu ob 12. uri.</li>
+</ul></li>
+</ul>
+<p>Uporabi čim manj grafičnih elementov da ohraniš vizualizacijo čisto in jasno slike. Kompleksnost vključi le, ko sporočas novo informacijo.</p>
+<p>Preden se odločiš za obliko grafikona, filtriraj informacije da bo vaš povdarek jasen in neposreden. Dodaj toliko plasti informacij kot je potrebnih za posredovanje ključnega sporočila v vsakem grafikonu in ne še nekaj več.</p>
+<p>Poenostavi, poenostavi, poenostavi.</p>
+<p>Prevod in povzetek iz vira:</p>
+<blockquote>
+<p>Wong, Dona M. The Wall Street Journal guide to information graphics: The dos and don’ts of presenting data, facts, and figures. New York, NY: WW Norton, 2013.</p>
+</blockquote>
+<hr />
+<div>
+<details> <summary> <i>KLIKNI ZA PRIMER </i> </summary>
+<p>
+<h2 id="primer-z-r">Primer z R</h2>
+<pre class="r"><code>#
+library(&quot;tidyverse&quot;)
+library(&quot;scales&quot;)
+library(&quot;ggthemes&quot;)
+
+df &lt;- data.frame(
+  &quot;Mesec&quot; = 1: 12,
+  &quot;Promet&quot;  = runif(12)*100 + 1000
+)
+
+ggplot(df, aes(Mesec, Promet, group=1 )) +
+  theme_tufte() + geom_rangeframe() +
+    geom_line(size = 1.5, color = c(&quot;#C75252&quot;)) +
+    scale_y_continuous(
+        limits = c(1000, 1100), breaks = c(1000,1050,1100), 
+        labels = dollar_format(suffix = &quot;€&quot;, prefix = &quot;&quot;) ) +
+    labs(
+          x = NULL, y = NULL,
+          title=&quot;Promet&quot;, 
+          subtitle=&quot;Promet po mesecih v 2019&quot;, 
+          caption=&quot;Source: random numbers&quot;) + 
+    scale_x_discrete(limits = 1:12) +
+    theme(
+        axis.text.x = element_text(angle = 0, vjust=0.5, size = 11),
+        axis.text.y = element_text(angle = 0, vjust=0.5, size = 11),
+        panel.grid.minor = element_blank(), 
+        panel.grid.major.x = element_blank(),
+        panel.grid.major.y = element_line(colour = &quot;gray&quot;, size = 0.1)
+        )</code></pre>
+<div class="figure" style="text-align: center">
+<img src="/post/2019-02-10-dona-m-wong-povzetek_files/figure-html/Graf-1.png" alt="Vzorec časovne vrste" width="288" />
+<p class="caption">
+(#Graf)Vzorec časovne vrste
+</p>
+</div>
+</p>
+</details>
+</div>
+<hr />
+<div>
+<details> <summary> <i>KLIKNI ZA SLAB PRIMER </i> </summary>
+<p>
+<h2 id="slaba-vizualizacija">SLABA VIZUALIZACIJA</h2>
+<pre class="r"><code>#
+df &lt;- data.frame(
+  &quot;Mesec&quot; = 1: 12,
+  &quot;Promet&quot;  = runif(12)*100 + 1000
+)
+
+plot(df, type = &quot;l&quot;, lty = 1)
+lines(df, type = &quot;l&quot;, lty = 1)</code></pre>
+<div class="figure" style="text-align: center">
+<img src="/post/2019-02-10-dona-m-wong-povzetek_files/figure-html/Graf2-1.png" alt="Vzorec časovne vrste" width="288" />
+<p class="caption">
+(#Graf2)Vzorec časovne vrste
+</p>
+</div>
+<p>Grafikon je narisan zelo na hitro in je uporaben samo za lastno uporabo (npr. hiter pregled podatkov). Brez poznavanja podatkov v ozadju, takšnega grafa ne moreš razumeti. Manjka naslov, leto, enote …</p>
+</p>
+</details>
+</div>
+<hr />

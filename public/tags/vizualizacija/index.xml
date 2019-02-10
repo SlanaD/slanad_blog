@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vizualizacija on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/tags/vizualizacija/</link>
+    <description>Recent content in vizualizacija on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Sun, 10 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/vizualizacija/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Dona M. Wong] Povzetek</title>
+      <link>/post/dona-m-wong-povzetek/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dona-m-wong-povzetek/</guid>
+      <description>Povej prepričljivo zgodbo z vsakim grafikonom tako, da narediš zavestno izbor podatkov, slog predstavitve in barvno shemo.
+Postavi številke v kontekst.Naredi matematiko za bralce. Odloči se ali odstotne spremembe ali absolutne vrednosti povedo več.Uporabi čim manj pisav. Uporabi krepko ali ležečo pisavo samo za razlikovanje, vendar ne oboje hkrati.Uporabi barvo za posredovanje informacij in ne za dekoracijo.Trudi se, da bo bralcem enostavno razumeti:Uporabi naravni prirast za lestvico osi y.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>predstavitev on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/tags/predstavitev/</link>
+    <description>Recent content in predstavitev on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Mon, 11 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/predstavitev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Cole Nussbaumer Knaflic] Iz uvoda</title>
+      <link>/post/cole-nussbaumer-knaflic-iz-uvoda/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cole-nussbaumer-knaflic-iz-uvoda/</guid>
+      <description>“Power Corrupts. PowerPoint Corrupts Absolutely.”
+Edward Tufte, Yale Professor Emeritus 
+Vsi smo že bili žrtve slabe programske opreme za pripravo predstavitev. Površne in hitre predstavitve, ki nas udarijo z vrtoglavico pisav, barv, točk in poudarkov. Infografike, ki ne uspejo informirati in so grafično nasilne na enak način, kot je nasilje lahko vizulano. Grafikoni in tabele v medijih, ki zmedejo in zavajajo. Danes je vse preenostavno ustvarjati tabele in grafikone.</description>
+    </item>
+    
+    <item>
+      <title>[Dona M. Wong] Povzetek</title>
+      <link>/post/dona-m-wong-povzetek/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dona-m-wong-povzetek/</guid>
+      <description>Povej prepričljivo zgodbo z vsakim grafikonom tako, da narediš zavestno izbor podatkov, slog predstavitve in barvno shemo.
+Postavi številke v kontekst.Naredi matematiko za bralce. Odloči se ali odstotne spremembe ali absolutne vrednosti povedo več.Uporabi čim manj pisav. Uporabi krepko ali ležečo pisavo samo za razlikovanje, vendar ne oboje hkrati.Uporabi barvo za posredovanje informacij in ne za dekoracijo.Trudi se, da bo bralcem enostavno razumeti:Uporabi naravni prirast za lestvico osi y.</description>
+    </item>
+    
+  </channel>
+</rss>

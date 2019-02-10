@@ -6,8 +6,10 @@ title = "p o p - PRIPOVEDKE O PODATKIH"
 charset = "utf-8"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
-enableEmoji = true
+#enableEmoji = true
 theme = "hugo-theme-even"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", ".R"]
+
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
 pygmentsOptions = "linenos=table"
@@ -51,14 +53,14 @@ copyright = ""            # default: author.name ↓
   url = "/categories/"
 
 [params]
-  version = "4.x"           # Used to give a friendly message when you have an incompatible update
+  version = "4.x"     # Used to give a friendly message when you have an incompatible update
   debug = false             # If true, load `eruda.min.js`. See https://github.com/liriliri/eruda
 
   since = "2019"            # Site creation time
 
   # site info (optional)                  
   logoTitle = "p o p"        # default: the title value
-  keywords = ["Hugo", "theme","even"]
+  keywords = ["vizualizacija", "podatki","R", "Excel", "Python", "Power BI"]
   description = "Kominuciranje podatkov s pomočjo vizualizacije."
 
   # paginate of archives, tags and categories
@@ -157,20 +159,20 @@ copyright = ""            # default: author.name ↓
 
   [params.social] 
     a-email = "mailto:slana.danilo@gmail.com"
-    b-stack-overflow = "http://localhost:1313"
-    c-twitter = "http://localhost:1313"
-    d-facebook = "http://localhost:1313"
-    e-linkedin = "http://localhost:1313"
-    f-google = "http://localhost:1313"
-    g-github = "http://localhost:1313"
-    h-weibo = "http://localhost:1313"
-    i-zhihu = "http://localhost:1313"
-    j-douban = "http://localhost:1313"
-    k-pocket = "http://localhost:1313"
-    l-tumblr = "http://localhost:1313"
-    m-instagram = "http://localhost:1313"
-    n-gitlab = "http://localhost:1313"
-    o-bilibili = "http://localhost:1313"
+#    b-stack-overflow = "http://localhost:1313"
+#    c-twitter = "http://localhost:1313"
+#    d-facebook = "http://localhost:1313"
+    e-linkedin = "https://www.linkedin.com/in/danilo-slana-820703ab/"
+#    f-google = "http://localhost:1313"
+#    g-github = "http://localhost:1313"
+#    h-weibo = "http://localhost:1313"
+#    i-zhihu = "http://localhost:1313"
+#    j-douban = "http://localhost:1313"
+#    k-pocket = "http://localhost:1313"
+#    l-tumblr = "http://localhost:1313"
+#    m-instagram = "http://localhost:1313"
+#    n-gitlab = "http://localhost:1313"
+#    o-bilibili = "http://localhost:1313"
 
 # See https://gohugo.io/about/hugo-and-gdpr/
 [privacy]
