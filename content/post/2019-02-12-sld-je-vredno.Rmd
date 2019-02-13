@@ -1,0 +1,190 @@
+---
+title: '[SLD] Je vredno ?'
+author: SlanaD
+date: '2019-02-12'
+slug: sld-je-vredno
+categories:
+  - Python
+  - Vizualizacija
+tags:
+  - python
+  - pandas
+  - numpy
+  - seaborn
+  - vizualizacija
+  - poenostavitev
+  - graf
+lastmod: '2019-02-12T23:23:54+01:00'
+keywords: []
+description: ''
+
+---
+
+<center>
+_“Svašta”_
+
+_Ibro Hadžipuzić_
+
+</center>
+
+
+Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.
+
+Sedaj pa imaš sledeče možnosti:
+
+1.	Uporabiš že pripravljeno podlogo ( _theme_, _style_ ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf.
+2.	Se igraš do onemoglosti s parametri in nastavitvami, da dobiš grafikon, ki prinaša zadetek na lotu.
+3.	Uporabiš enostavno podlogo, preneseš grafiko v program za oblikovanje in tam dodelaš do konca.
+4.	… in še neskončno drugih …
+
+Prva rešitev je vsekakor najhitrejša. Edina hitrejša je samo še print(…). 
+
+In če ti kaj v prvi rešitvi ni všeč, si takoj v drugi rešitvi. Ne pravim, da se da vse, skoraj vse pa se da. In tako se igraš in igraš in igraš in imaš kmalu 20 vrstic kode, ki jo še 40 krat obrneš, da je res tako kot mora biti. Tipka F9 ostaja zataknjena. Glej npr. primere v tej povezavi [Nikki Marinsek](https://nikkimarinsek.com/blog "Nikki's blog")
+
+Rešitev tri je nek kompromis. Iz pythona dobiš osnovno sliko na hitro, potem pa je omejitev samo domišljija (in seveda čas). 
+
+
+Kdaj kaj:
+
+-	Če rabiš samo zase ali ožjo skupino strokovnjakov, ki vedo za kaj se gre -> uporabi ena.
+
+-	Če si razvijalec in delaš appe ali če boš to potreboval vsak teden vedno znova -> seveda dva.
+
+-	Če pripravljaš enkratno poročilo ali nalogo in boš tako ali tako zadevo natisnil ali prenesel v pdf, jpg, ppt ali kaj podobnega. Tri.
+
+-	Če si car. -> štej dalje
+
+```{r, setup, include=FALSE}
+library(reticulate)
+use_python("/usr/bin/python3")
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+```
+
+
+## Python, primer za 1
+
+```{python, Graf1, message=FALSE, warning=FALSE, paged.print=TRUE, fig.cap="Vzorec 1", fig.align="center", fig.lp='' }
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({'x': range(1,101), 'y': np.random.uniform(low=1, high=3, size=100)})                 
+
+import matplotlib.pyplot as plt
+import matplotlib.style as style
+import seaborn as sns
+
+sns.set()
+
+ax = sns.lineplot(data = df, 
+                  x = "x", y = "y",
+                  lw=1, 
+                  color = 'red',
+                  alpha=0.7)
+ax.set(xlabel='time [s]', ylabel='U [V]')
+ax.set_title('Naključni signal', loc='left')
+plt.show()
+plt.close()         # da v Markdown ne piše grafa preko grafa
+
+```
+
+
+
+## Python, primer k 2
+
+Nisem ravno pretiraval, ampak ideja je vidna.
+
+
+```{python, Graf2, message=FALSE, warning=FALSE, paged.print=TRUE, fig.cap="Vzorec 2", fig.align="center", fig.lp='' }
+# Data
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({'x': range(1,101), 
+                 'y': np.random.uniform(low=1, high=3, size=100)})                 
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.set(rc={'figure.figsize':(6.00, 4.50),
+            "font.size":14,"axes.titlesize":12,
+            "axes.labelsize":12,
+            'axes.linewidth': 1,
+            'axes.edgecolor':'black'},
+            style="white")
+
+ax = sns.lineplot(data = df, 
+                  x = "x", y = "y",
+                  lw=1, 
+                  color = 'red',
+                  alpha=0.7)
+ax.set(xlabel='time [s]', ylabel='U [V]')
+#ax.set_title('Naključni signal', loc='left')
+ax.text(x=-0.1, y=1.10, s='SAMO VZOREC', fontsize=16, color = 'gray', 
+        weight='bold', ha='left', va='bottom', transform=ax.transAxes)
+ax.text(x=-0.1, y=1.05, s='Naključni podatki', fontsize=12, alpha=0.75, 
+        ha='left', va='bottom', transform=ax.transAxes)
+
+#ax.set(ylim=(0, None), xlim=(0, None))
+ax.set_xticks(np.linspace(0, 100, 5), minor=False)
+ax.set_yticks(np.linspace(1, 3, 5), minor=False)
+ax.spines['bottom'].set_color('gray')
+ax.spines['left'].set_color('gray')
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+
+ax.xaxis.label.set_color('gray')
+ax.yaxis.label.set_color('gray')
+
+ax.tick_params(axis='x', colors='gray')
+ax.tick_params(axis='y', colors='gray')
+
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+
+plt.show()
+
+
+```
+
+
+
+## Python, primer k 3
+Graf v treh vrsticah in potem še pet minut igranja z _Inkscape_.
+
+```{python, Graf3 }
+# Data
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({'x': range(1,101), 'y': np.random.uniform(low=1, high=3, size=100)})                 
+
+
+import seaborn as sns
+
+sns.set()
+sns.set_style("white")
+
+ax = sns.lineplot(data = df)
+#fig = ax.get_figure()
+#fig.savefig("c:/temp/test.svg", format="svg")  #TO SHRANIŠ IN POTEM OBDELAŠ
+#plt.show()
+
+
+```
+
+
+
+### Pred obdelavo
+
+<img src = "/images/2019-02-12_Img3-1.svg"> </img>
+
+
+### Po obdelavi
+
+<img src = "/images/2019-02-12_Img3-2.svg"> </img>
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/tags/python/</link>
+    <description>Recent content in python on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Tue, 12 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] Je vredno ?</title>
+      <link>/post/sld-je-vredno/</link>
+      <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-je-vredno/</guid>
+      <description>“Svašta”
+Ibro Hadžipuzić
+Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.
+Sedaj pa imaš sledeče možnosti:
+Uporabiš že pripravljeno podlogo ( theme, style ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf.</description>
+    </item>
+    
+  </channel>
+</rss>

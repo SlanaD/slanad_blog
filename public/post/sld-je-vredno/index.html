@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] Je vredno ? - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="“Svašta”
+Ibro Hadžipuzić
+Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.
+Sedaj pa imaš sledeče možnosti:
+Uporabiš že pripravljeno podlogo ( theme, style ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-je-vredno/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] Je vredno ?" />
+<meta property="og:description" content="“Svašta”
+Ibro Hadžipuzić
+Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.
+Sedaj pa imaš sledeče možnosti:
+Uporabiš že pripravljeno podlogo ( theme, style ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-je-vredno/" />
+<meta property="article:published_time" content="2019-02-12T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-02-12T23:23:54&#43;01:00"/>
+
+<meta itemprop="name" content="[SLD] Je vredno ?">
+<meta itemprop="description" content="“Svašta”
+Ibro Hadžipuzić
+Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.
+Sedaj pa imaš sledeče možnosti:
+Uporabiš že pripravljeno podlogo ( theme, style ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf.">
+
+
+<meta itemprop="datePublished" content="2019-02-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-02-12T23:23:54&#43;01:00" />
+<meta itemprop="wordCount" content="512">
+
+
+
+<meta itemprop="keywords" content="python,pandas,numpy,seaborn,vizualizacija,poenostavitev,graf," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] Je vredno ?"/>
+<meta name="twitter:description" content="“Svašta”
+Ibro Hadžipuzić
+Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.
+Sedaj pa imaš sledeče možnosti:
+Uporabiš že pripravljeno podlogo ( theme, style ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] Je vredno ?</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-12 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            <a href="/categories/vizualizacija/"> Vizualizacija </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>“Svašta”</em></p>
+<p><em>Ibro Hadžipuzić</em></p>
+</center>
+<p>Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.</p>
+<p>Sedaj pa imaš sledeče možnosti:</p>
+<ol style="list-style-type: decimal">
+<li>Uporabiš že pripravljeno podlogo ( <em>theme</em>, <em>style</em> ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf.</li>
+<li>Se igraš do onemoglosti s parametri in nastavitvami, da dobiš grafikon, ki prinaša zadetek na lotu.</li>
+<li>Uporabiš enostavno podlogo, preneseš grafiko v program za oblikovanje in tam dodelaš do konca.</li>
+<li>… in še neskončno drugih …</li>
+</ol>
+<p>Prva rešitev je vsekakor najhitrejša. Edina hitrejša je samo še print(…).</p>
+<p>In če ti kaj v prvi rešitvi ni všeč, si takoj v drugi rešitvi. Ne pravim, da se da vse, skoraj vse pa se da. In tako se igraš in igraš in igraš in imaš kmalu 20 vrstic kode, ki jo še 40 krat obrneš, da je res tako kot mora biti. Tipka F9 ostaja zataknjena. Glej npr. primere v tej povezavi <a href="https://nikkimarinsek.com/blog" title="Nikki&#39;s blog">Nikki Marinsek</a></p>
+<p>Rešitev tri je nek kompromis. Iz pythona dobiš osnovno sliko na hitro, potem pa je omejitev samo domišljija (in seveda čas).</p>
+<p>Kdaj kaj:</p>
+<ul>
+<li><p>Če rabiš samo zase ali ožjo skupino strokovnjakov, ki vedo za kaj se gre -&gt; uporabi ena.</p></li>
+<li><p>Če si razvijalec in delaš appe ali če boš to potreboval vsak teden vedno znova -&gt; seveda dva.</p></li>
+<li><p>Če pripravljaš enkratno poročilo ali nalogo in boš tako ali tako zadevo natisnil ali prenesel v pdf, jpg, ppt ali kaj podobnega. Tri.</p></li>
+<li><p>Če si car. -&gt; štej dalje</p></li>
+</ul>
+<div id="python-primer-za-1" class="section level2">
+<h2>Python, primer za 1</h2>
+<pre class="python"><code>import pandas as pd
+import numpy as np
+df=pd.DataFrame({&#39;x&#39;: range(1,101), &#39;y&#39;: np.random.uniform(low=1, high=3, size=100)})                 
+import matplotlib.pyplot as plt
+import matplotlib.style as style
+import seaborn as sns
+sns.set()
+ax = sns.lineplot(data = df, 
+                  x = &quot;x&quot;, y = &quot;y&quot;,
+                  lw=1, 
+                  color = &#39;red&#39;,
+                  alpha=0.7)
+ax.set(xlabel=&#39;time [s]&#39;, ylabel=&#39;U [V]&#39;)
+ax.set_title(&#39;Naključni signal&#39;, loc=&#39;left&#39;)
+plt.show()</code></pre>
+<div class="figure" style="text-align: center">
+<img src="/post/2019-02-12-sld-je-vredno_files/figure-html/Graf1-1.png" alt="Vzorec 1"  />
+<p class="caption">
+(#Graf1)Vzorec 1
+</p>
+</div>
+<pre class="python"><code>plt.close()         # da v Markdown ne piše grafa preko grafa</code></pre>
+</div>
+<div id="python-primer-k-2" class="section level2">
+<h2>Python, primer k 2</h2>
+<p>Nisem ravno pretiraval, ampak ideja je vidna.</p>
+<pre class="python"><code># Data
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({&#39;x&#39;: range(1,101), 
+                 &#39;y&#39;: np.random.uniform(low=1, high=3, size=100)})                 
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set(rc={&#39;figure.figsize&#39;:(6.00, 4.50),
+            &quot;font.size&quot;:14,&quot;axes.titlesize&quot;:12,
+            &quot;axes.labelsize&quot;:12,
+            &#39;axes.linewidth&#39;: 1,
+            &#39;axes.edgecolor&#39;:&#39;black&#39;},
+            style=&quot;white&quot;)
+ax = sns.lineplot(data = df, 
+                  x = &quot;x&quot;, y = &quot;y&quot;,
+                  lw=1, 
+                  color = &#39;red&#39;,
+                  alpha=0.7)
+ax.set(xlabel=&#39;time [s]&#39;, ylabel=&#39;U [V]&#39;)
+#ax.set_title(&#39;Naključni signal&#39;, loc=&#39;left&#39;)
+ax.text(x=-0.1, y=1.10, s=&#39;SAMO VZOREC&#39;, fontsize=16, color = &#39;gray&#39;, 
+        weight=&#39;bold&#39;, ha=&#39;left&#39;, va=&#39;bottom&#39;, transform=ax.transAxes)
+ax.text(x=-0.1, y=1.05, s=&#39;Naključni podatki&#39;, fontsize=12, alpha=0.75, 
+        ha=&#39;left&#39;, va=&#39;bottom&#39;, transform=ax.transAxes)
+#ax.set(ylim=(0, None), xlim=(0, None))
+ax.set_xticks(np.linspace(0, 100, 5), minor=False)
+ax.set_yticks(np.linspace(1, 3, 5), minor=False)
+ax.spines[&#39;bottom&#39;].set_color(&#39;gray&#39;)
+ax.spines[&#39;left&#39;].set_color(&#39;gray&#39;)
+ax.spines[&#39;right&#39;].set_visible(False)
+ax.spines[&#39;top&#39;].set_visible(False)
+ax.xaxis.label.set_color(&#39;gray&#39;)
+ax.yaxis.label.set_color(&#39;gray&#39;)
+ax.tick_params(axis=&#39;x&#39;, colors=&#39;gray&#39;)
+ax.tick_params(axis=&#39;y&#39;, colors=&#39;gray&#39;)
+ax.yaxis.set_ticks_position(&#39;left&#39;)
+ax.xaxis.set_ticks_position(&#39;bottom&#39;)
+plt.show()</code></pre>
+<div class="figure" style="text-align: center">
+<img src="/post/2019-02-12-sld-je-vredno_files/figure-html/Graf2-1.png" alt="Vzorec 2"  />
+<p class="caption">
+(#Graf2)Vzorec 2
+</p>
+</div>
+</div>
+<div id="python-primer-k-3" class="section level2">
+<h2>Python, primer k 3</h2>
+<p>Graf v treh vrsticah in potem še pet minut igranja z <em>Inkscape</em>.</p>
+<pre class="python"><code># Data
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({&#39;x&#39;: range(1,101), &#39;y&#39;: np.random.uniform(low=1, high=3, size=100)})                 
+import seaborn as sns
+sns.set()
+sns.set_style(&quot;white&quot;)
+ax = sns.lineplot(data = df)
+#fig = ax.get_figure()
+#fig.savefig(&quot;c:/temp/test.svg&quot;, format=&quot;svg&quot;)  #TO SHRANIŠ IN POTEM OBDELAŠ
+#plt.show()</code></pre>
+<div id="pred-obdelavo" class="section level3">
+<h3>Pred obdelavo</h3>
+<p><img src = "/images/2019-02-12_Img3-1.svg"> </img></p>
+</div>
+<div id="po-obdelavi" class="section level3">
+<h3>Po obdelavi</h3>
+<p><img src = "/images/2019-02-12_Img3-2.svg"> </img></p>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-02-12</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          <a href="/tags/pandas/">pandas</a>
+          <a href="/tags/numpy/">numpy</a>
+          <a href="/tags/seaborn/">seaborn</a>
+          <a href="/tags/vizualizacija/">vizualizacija</a>
+          <a href="/tags/poenostavitev/">poenostavitev</a>
+          <a href="/tags/graf/">graf</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/cole-nussbaumer-knaflic-iz-uvoda/">
+            <span class="next-text nav-default">[Cole Nussbaumer Knaflic] Iz uvoda</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

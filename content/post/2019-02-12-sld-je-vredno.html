@@ -1,0 +1,142 @@
+---
+title: '[SLD] Je vredno ?'
+author: SlanaD
+date: '2019-02-12'
+slug: sld-je-vredno
+categories:
+  - Python
+  - Vizualizacija
+tags:
+  - python
+  - pandas
+  - numpy
+  - seaborn
+  - vizualizacija
+  - poenostavitev
+  - graf
+lastmod: '2019-02-12T23:23:54+01:00'
+keywords: []
+description: ''
+
+---
+
+
+
+<center>
+<p><em>“Svašta”</em></p>
+<p><em>Ibro Hadžipuzić</em></p>
+</center>
+<p>Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.</p>
+<p>Sedaj pa imaš sledeče možnosti:</p>
+<ol style="list-style-type: decimal">
+<li>Uporabiš že pripravljeno podlogo ( <em>theme</em>, <em>style</em> ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf.</li>
+<li>Se igraš do onemoglosti s parametri in nastavitvami, da dobiš grafikon, ki prinaša zadetek na lotu.</li>
+<li>Uporabiš enostavno podlogo, preneseš grafiko v program za oblikovanje in tam dodelaš do konca.</li>
+<li>… in še neskončno drugih …</li>
+</ol>
+<p>Prva rešitev je vsekakor najhitrejša. Edina hitrejša je samo še print(…).</p>
+<p>In če ti kaj v prvi rešitvi ni všeč, si takoj v drugi rešitvi. Ne pravim, da se da vse, skoraj vse pa se da. In tako se igraš in igraš in igraš in imaš kmalu 20 vrstic kode, ki jo še 40 krat obrneš, da je res tako kot mora biti. Tipka F9 ostaja zataknjena. Glej npr. primere v tej povezavi <a href="https://nikkimarinsek.com/blog" title="Nikki&#39;s blog">Nikki Marinsek</a></p>
+<p>Rešitev tri je nek kompromis. Iz pythona dobiš osnovno sliko na hitro, potem pa je omejitev samo domišljija (in seveda čas).</p>
+<p>Kdaj kaj:</p>
+<ul>
+<li><p>Če rabiš samo zase ali ožjo skupino strokovnjakov, ki vedo za kaj se gre -&gt; uporabi ena.</p></li>
+<li><p>Če si razvijalec in delaš appe ali če boš to potreboval vsak teden vedno znova -&gt; seveda dva.</p></li>
+<li><p>Če pripravljaš enkratno poročilo ali nalogo in boš tako ali tako zadevo natisnil ali prenesel v pdf, jpg, ppt ali kaj podobnega. Tri.</p></li>
+<li><p>Če si car. -&gt; štej dalje</p></li>
+</ul>
+<div id="python-primer-za-1" class="section level2">
+<h2>Python, primer za 1</h2>
+<pre class="python"><code>import pandas as pd
+import numpy as np
+df=pd.DataFrame({&#39;x&#39;: range(1,101), &#39;y&#39;: np.random.uniform(low=1, high=3, size=100)})                 
+import matplotlib.pyplot as plt
+import matplotlib.style as style
+import seaborn as sns
+sns.set()
+ax = sns.lineplot(data = df, 
+                  x = &quot;x&quot;, y = &quot;y&quot;,
+                  lw=1, 
+                  color = &#39;red&#39;,
+                  alpha=0.7)
+ax.set(xlabel=&#39;time [s]&#39;, ylabel=&#39;U [V]&#39;)
+ax.set_title(&#39;Naključni signal&#39;, loc=&#39;left&#39;)
+plt.show()</code></pre>
+<div class="figure" style="text-align: center">
+<img src="/post/2019-02-12-sld-je-vredno_files/figure-html/Graf1-1.png" alt="Vzorec 1"  />
+<p class="caption">
+(#Graf1)Vzorec 1
+</p>
+</div>
+<pre class="python"><code>plt.close()         # da v Markdown ne piše grafa preko grafa</code></pre>
+</div>
+<div id="python-primer-k-2" class="section level2">
+<h2>Python, primer k 2</h2>
+<p>Nisem ravno pretiraval, ampak ideja je vidna.</p>
+<pre class="python"><code># Data
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({&#39;x&#39;: range(1,101), 
+                 &#39;y&#39;: np.random.uniform(low=1, high=3, size=100)})                 
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set(rc={&#39;figure.figsize&#39;:(6.00, 4.50),
+            &quot;font.size&quot;:14,&quot;axes.titlesize&quot;:12,
+            &quot;axes.labelsize&quot;:12,
+            &#39;axes.linewidth&#39;: 1,
+            &#39;axes.edgecolor&#39;:&#39;black&#39;},
+            style=&quot;white&quot;)
+ax = sns.lineplot(data = df, 
+                  x = &quot;x&quot;, y = &quot;y&quot;,
+                  lw=1, 
+                  color = &#39;red&#39;,
+                  alpha=0.7)
+ax.set(xlabel=&#39;time [s]&#39;, ylabel=&#39;U [V]&#39;)
+#ax.set_title(&#39;Naključni signal&#39;, loc=&#39;left&#39;)
+ax.text(x=-0.1, y=1.10, s=&#39;SAMO VZOREC&#39;, fontsize=16, color = &#39;gray&#39;, 
+        weight=&#39;bold&#39;, ha=&#39;left&#39;, va=&#39;bottom&#39;, transform=ax.transAxes)
+ax.text(x=-0.1, y=1.05, s=&#39;Naključni podatki&#39;, fontsize=12, alpha=0.75, 
+        ha=&#39;left&#39;, va=&#39;bottom&#39;, transform=ax.transAxes)
+#ax.set(ylim=(0, None), xlim=(0, None))
+ax.set_xticks(np.linspace(0, 100, 5), minor=False)
+ax.set_yticks(np.linspace(1, 3, 5), minor=False)
+ax.spines[&#39;bottom&#39;].set_color(&#39;gray&#39;)
+ax.spines[&#39;left&#39;].set_color(&#39;gray&#39;)
+ax.spines[&#39;right&#39;].set_visible(False)
+ax.spines[&#39;top&#39;].set_visible(False)
+ax.xaxis.label.set_color(&#39;gray&#39;)
+ax.yaxis.label.set_color(&#39;gray&#39;)
+ax.tick_params(axis=&#39;x&#39;, colors=&#39;gray&#39;)
+ax.tick_params(axis=&#39;y&#39;, colors=&#39;gray&#39;)
+ax.yaxis.set_ticks_position(&#39;left&#39;)
+ax.xaxis.set_ticks_position(&#39;bottom&#39;)
+plt.show()</code></pre>
+<div class="figure" style="text-align: center">
+<img src="/post/2019-02-12-sld-je-vredno_files/figure-html/Graf2-1.png" alt="Vzorec 2"  />
+<p class="caption">
+(#Graf2)Vzorec 2
+</p>
+</div>
+</div>
+<div id="python-primer-k-3" class="section level2">
+<h2>Python, primer k 3</h2>
+<p>Graf v treh vrsticah in potem še pet minut igranja z <em>Inkscape</em>.</p>
+<pre class="python"><code># Data
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({&#39;x&#39;: range(1,101), &#39;y&#39;: np.random.uniform(low=1, high=3, size=100)})                 
+import seaborn as sns
+sns.set()
+sns.set_style(&quot;white&quot;)
+ax = sns.lineplot(data = df)
+#fig = ax.get_figure()
+#fig.savefig(&quot;c:/temp/test.svg&quot;, format=&quot;svg&quot;)  #TO SHRANIŠ IN POTEM OBDELAŠ
+#plt.show()</code></pre>
+<div id="pred-obdelavo" class="section level3">
+<h3>Pred obdelavo</h3>
+<p><img src = "/images/2019-02-12_Img3-1.svg"> </img></p>
+</div>
+<div id="po-obdelavi" class="section level3">
+<h3>Po obdelavi</h3>
+<p><img src = "/images/2019-02-12_Img3-2.svg"> </img></p>
+</div>
+</div>

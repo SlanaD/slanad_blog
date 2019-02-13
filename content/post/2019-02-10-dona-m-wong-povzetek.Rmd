@@ -5,6 +5,7 @@ date: '2019-02-10'
 slug: dona-m-wong-povzetek
 categories:
   - Vizualizacija
+  - R
 tags:
   - vizualizacija
   - predstavitev
@@ -14,6 +15,7 @@ tags:
   - grafični elementi
   - informacija
   - podatki
+  - R
 lastmod: '2019-02-10T12:34:10+01:00'
 keywords: []
 description: ''

@@ -6,10 +6,23 @@
     <description>Recent content in Posts on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Mon, 11 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] Je vredno ?</title>
+      <link>/post/sld-je-vredno/</link>
+      <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-je-vredno/</guid>
+      <description>“Svašta”
+Ibro Hadžipuzić
+Da predelaš malo večjo količino podatkov uporabiš npr. Python. Enostaven za naučit in z odličnimi knjižnicami za obdelavo podatkov (npr. Pandas). Računalnik je zmlel, kar je moral zmleti, ti si naredil osnovno EDA, imaš lepo urejene podatke, veš kaj bi rad in si pripravljen za vizualizacijo le teh.
+Sedaj pa imaš sledeče možnosti:
+Uporabiš že pripravljeno podlogo ( theme, style ), ki najbolj ustreza, vpišeš nekaj korekcij in glej ti ga graf.</description>
+    </item>
     
     <item>
       <title>[Cole Nussbaumer Knaflic] Iz uvoda</title>
@@ -20,6 +33,19 @@
       <description>“Power Corrupts. PowerPoint Corrupts Absolutely.”
 Edward Tufte, Yale Professor Emeritus 
 Vsi smo že bili žrtve slabe programske opreme za pripravo predstavitev. Površne in hitre predstavitve, ki nas udarijo z vrtoglavico pisav, barv, točk in poudarkov. Infografike, ki ne uspejo informirati in so grafično nasilne na enak način, kot je nasilje lahko vizulano. Grafikoni in tabele v medijih, ki zmedejo in zavajajo. Danes je vse preenostavno ustvarjati tabele in grafikone.</description>
+    </item>
+    
+    <item>
+      <title>[Cole Nussbaumer Knaflic] Presenečenje - Excel</title>
+      <link>/post/cole-nussbaumer-knaflic-presenecenje-excel/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cole-nussbaumer-knaflic-presenecenje-excel/</guid>
+      <description>“Simplify, simplify, simplify.”
+Henry David Thorea
+
+Ste usposobljeni za MS Office? Tudi vsi ostali so! Biti vešč z aplikacijami za urejanje besedila, razpredelnic in predstavitev – to so stvari, ki jih delodajalci razumejo kot samoumevne. Danes »znanje Microsofta« na napredni ravni ni dovolj in vas ne bo ločilo od ostalih kandidatov.
+Biti sposoben učinkovito pripovedovati zgodbo skozi podatke je področje, ki vas postavi na rob uspeha skoraj v vsaki vlogi.</description>
     </item>
     
     <item>
