@@ -6,15 +6,14 @@ title: About
 weight: 50
 ---
 
-Hugo is a static site engine written in Go.
+This is not Hugo. [Hugo](https://github.com/gohugoio) is a static site engine written in Go.
 
+I'm a user of [RStudio](https://www.rstudio.com) and [Spyder](https://www.spyder-ide.org/) making notes for myself.
 
-It makes use of a variety of open source projects including:
+p o p = pripovedke o podatkih
 
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
+# ABOUT ME
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+Nothing to tell - go back and read posts. 
 
+<img src = "/images/LogoDS.svg" alt = "logo" width="150" height="100" align = "center" > </img>

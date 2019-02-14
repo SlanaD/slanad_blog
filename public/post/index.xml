@@ -58,15 +58,5 @@ Biti sposoben učinkovito pripovedovati zgodbo skozi podatke je področje, ki va
 Postavi številke v kontekst.Naredi matematiko za bralce. Odloči se ali odstotne spremembe ali absolutne vrednosti povedo več.Uporabi čim manj pisav. Uporabi krepko ali ležečo pisavo samo za razlikovanje, vendar ne oboje hkrati.Uporabi barvo za posredovanje informacij in ne za dekoracijo.Trudi se, da bo bralcem enostavno razumeti:Uporabi naravni prirast za lestvico osi y.</description>
     </item>
     
-    <item>
-      <title>PRVA</title>
-      <link>/post/prva/</link>
-      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/prva/</guid>
-      <description>R Markdown - ČŠŽ čšžThis is an R Markdown document. Test ČŠŽ čžš. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
-    </item>
-    
   </channel>
 </rss>
