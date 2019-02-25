@@ -6,10 +6,23 @@
     <description>Recent content in python on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Tue, 12 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] Oblak besed</title>
+      <link>/post/sld-oblak-besed/</link>
+      <pubDate>Sun, 17 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-oblak-besed/</guid>
+      <description>getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico
+Ovid / Ribičev France iz Vrbe
+Oblak besed bolj običajno WORDCLOUD je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.
+Primer na Krstu pri Savici:
+Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren.</description>
+    </item>
     
     <item>
       <title>[SLD] Je vredno ?</title>

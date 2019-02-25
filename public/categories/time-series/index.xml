@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Time-series on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/categories/time-series/</link>
+    <description>Recent content in Time-series on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Sat, 23 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/time-series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] Glajenje časovnih vrst</title>
+      <link>/post/sld-glajenje-%C4%8Dasovnih-vrst/</link>
+      <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-glajenje-%C4%8Dasovnih-vrst/</guid>
+      <description>“Bob Rock je simbol proletariata.
+Je nekdo, ki bi bil rad milijonar, a se ga milijoni na daleč izogibajo.
+Narod je Bob Rock”.
+Lazar Džamić, avtor študije Cvetličarna v Hiši cvetja, vzeto iz konteksta
+Časovne vrste uporabljaš za opazovanje podatkov skozi časovna obdobja. Najobičajnejša načina zapisa časovnih vrst sta sledeča:
+MOMENTNE VRSTE - časovni interval med podatki je vedno enak: start, konec in seznam vrednosti (od julija do septembra, enkrat na mesec, vrednosti: 4, 3, 2).</description>
+    </item>
+    
+  </channel>
+</rss>

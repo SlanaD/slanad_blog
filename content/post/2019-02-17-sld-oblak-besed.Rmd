@@ -1,0 +1,143 @@
+---
+title: '[SLD] Oblak besed'
+author: SlanaD
+date: '2019-02-17'
+slug: sld-oblak-besed
+image: /images/2019-02-17-WorlCloudSample.png
+categories:
+  - Python
+  - R
+  - Vizualizacija
+tags:
+  - wordcloud
+  - r
+  - python
+lastmod: '2019-02-17T15:34:39+01:00'
+keywords: []
+description: ''
+---
+
+<center>
+_getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico_
+
+
+_Ovid / Ribičev France iz Vrbe_
+
+
+</center>
+
+
+Oblak besed bolj običajno _WORDCLOUD_ je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.
+
+Primer na Krstu pri Savici:
+
+> Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren. Pesem obravnavajo tudi kot slovenski nacionalni ep. Prešeren je pesem končal januarja leta 1836 in jo aprila izdal v samozaložbi v 600 izvodih. [Wikipedija](https://sl.wikipedia.org/wiki/Krst_pri_Savici)
+
+[Vsebina epa](/data/2019-02-17_Krst_pri_Savici.txt) s strani [pesnik.net](http://www.pesnik.net/index.php?option=com_content&task=view&id=18)
+
+
+
+## Primer z R
+
+```{r wordcloud, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+#http://www.sthda.com/english/wiki/text-mining-and-word-cloud-fundamentals-in-r-5-simple-steps-you-should-know
+
+library(tm)
+library(wordcloud)
+
+text <- readLines("./../../static/data/2019-02-17_Krst_pri_Savici.txt", encoding = "UTF-8")
+#text <- iconv(text, from ="UTF-8", to = "Windows-1250") #da ohranis sumnike, to je iz R4.3, v R5.2 deluje ok brez tega.
+#text <- iconv(text, from ="Windows-1250", to = "latin1") #da ohranis sumnike
+
+docs <- Corpus(VectorSource(text))
+#docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeWords, 
+               c("bi", "je", "že", "se", "z", "s", "za", "in", "še", "ki",
+                 "v", "si", "so", "je", "ko", "ga", "ti", "ni", "ne", "jih",
+                 "de", "da", "njih", "kdo", "jim", "po", "na", "le", "ji", "bila",
+                 "bil", "po", "bi", "kak", "kar", "sem", "vse", "tam", "zdaj",
+                 "kjer", "med", "pri")
+               )
+docs <- tm_map(docs, removePunctuation)
+docs <- tm_map(docs, stripWhitespace)
+
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+head(d, 20)
+
+set.seed(1234)
+wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+          max.words=50, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(7, "Blues"))
+
+
+```
+
+## Primer z python
+
+```{r, setup, include=FALSE}
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3")
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+
+```
+
+
+```{python PythonWordCloud}
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+import numpy as np
+import random
+
+text = open("./../../static/data/2019-02-17_Krst_pri_Savici.txt", "r",  encoding='utf-8').read()
+
+
+def blue_color_func(word, font_size, position, orientation, random_state=None,
+                    **kwargs):
+    #nekaj okrog modrega je 230
+    return "hsl(230, 65%%, %d%%)" % random.randint(10, 100)
+
+def generate_wordcloud(text): 
+    wordcloud = WordCloud(background_color = "white", 
+          max_words = 50, contour_color = "blue",
+          relative_scaling = 0.9, max_font_size = 50,
+          mode="RGB",
+          stopwords = {
+                  "bi", "je", "že", "se", "z", "s", 
+                  "za", "in", "še", "ki",
+                  "v", "si", "so", "je", "ko", 
+                  "ga", "ti", "ni", "ne", "jih",
+                  "de", "da", "njih", "kdo", "jim", 
+                  "po", "na", "le", "ji", "bila",
+                  "bil", "po", "bi", "kak", "kar", 
+                  "sem", "vse", "tam", "zdaj",
+                  "kjer", "med", "pri", "mu", "bo", 
+                  "mi", "te", "al", "me", "jo", 
+                   "ker", "od"
+                    } # set or space-separated string
+          ).generate(text)
+    plt.imshow(wordcloud.recolor(color_func=blue_color_func,
+              random_state=5),interpolation="bilinear")
+    plt.axis("off")
+    plt.show()
+
+generate_wordcloud(text)
+
+
+```
+
+
+## Primer z i-neta
+
+Najenostavneje in najhitreje je uporabiti že kak program z medmrežja.
+
+Uporabljen program: [https://tagcrowd.com/](https://tagcrowd.com/)
+
+
+![](/images/2019-02-17-WorlCloudSample.png) 
+
+
+OK, šumnikov pač ni :)

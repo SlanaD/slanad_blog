@@ -34,8 +34,9 @@ sequenceDiagrams:
 <center>
 _“Power Corrupts. PowerPoint Corrupts Absolutely.”_
 
-_Edward Tufte, Yale Professor Emeritus_
+_Edward Tufte, Yale Professor Emeritus_  
 </center>
+
 
 
 Vsi smo že bili žrtve slabe programske opreme za pripravo predstavitev. Površne in hitre predstavitve, ki nas udarijo z vrtoglavico pisav, barv, točk in poudarkov. Infografike, ki ne uspejo informirati in so grafično nasilne na enak način, kot je nasilje lahko vizulano. Grafikoni in tabele v medijih, ki zmedejo in zavajajo. Danes je vse preenostavno ustvarjati tabele in grafikone. Včasih si moral premisliti, preden si vzel pero v roke, ustvaril ilustracijo in prelil informacijo na papir. Ob vseh informacijah, ki so na voljo na spletu, je komuniciranje vse težje. Z več informacijami se ukvarjamo, težje izluščimo srž.

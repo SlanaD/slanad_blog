@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] Oblak besed - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico
+Ovid / Ribičev France iz Vrbe
+Oblak besed bolj običajno WORDCLOUD je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.
+Primer na Krstu pri Savici:
+Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-oblak-besed/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] Oblak besed" />
+<meta property="og:description" content="getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico
+Ovid / Ribičev France iz Vrbe
+Oblak besed bolj običajno WORDCLOUD je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.
+Primer na Krstu pri Savici:
+Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-oblak-besed/" />
+<meta property="article:published_time" content="2019-02-17T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-02-17T15:34:39&#43;01:00"/>
+
+<meta itemprop="name" content="[SLD] Oblak besed">
+<meta itemprop="description" content="getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico
+Ovid / Ribičev France iz Vrbe
+Oblak besed bolj običajno WORDCLOUD je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.
+Primer na Krstu pri Savici:
+Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren.">
+
+
+<meta itemprop="datePublished" content="2019-02-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-02-17T15:34:39&#43;01:00" />
+<meta itemprop="wordCount" content="470">
+
+
+
+<meta itemprop="keywords" content="wordcloud,r,python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] Oblak besed"/>
+<meta name="twitter:description" content="getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico
+Ovid / Ribičev France iz Vrbe
+Oblak besed bolj običajno WORDCLOUD je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.
+Primer na Krstu pri Savici:
+Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] Oblak besed</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-17 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            <a href="/categories/r/"> R </a>
+            <a href="/categories/vizualizacija/"> Vizualizacija </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico</em></p>
+<p><em>Ovid / Ribičev France iz Vrbe</em></p>
+</center>
+<p>Oblak besed bolj običajno <em>WORDCLOUD</em> je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.</p>
+<p>Primer na Krstu pri Savici:</p>
+<blockquote>
+<p>Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren. Pesem obravnavajo tudi kot slovenski nacionalni ep. Prešeren je pesem končal januarja leta 1836 in jo aprila izdal v samozaložbi v 600 izvodih. <a href="https://sl.wikipedia.org/wiki/Krst_pri_Savici">Wikipedija</a></p>
+</blockquote>
+<p><a href="/data/2019-02-17_Krst_pri_Savici.txt">Vsebina epa</a> s strani <a href="http://www.pesnik.net/index.php?option=com_content&amp;task=view&amp;id=18">pesnik.net</a></p>
+<div id="primer-z-r" class="section level2">
+<h2>Primer z R</h2>
+<pre class="r"><code>#http://www.sthda.com/english/wiki/text-mining-and-word-cloud-fundamentals-in-r-5-simple-steps-you-should-know
+
+library(tm)
+library(wordcloud)
+
+text &lt;- readLines(&quot;./../../static/data/2019-02-17_Krst_pri_Savici.txt&quot;, encoding = &quot;UTF-8&quot;)
+#text &lt;- iconv(text, from =&quot;UTF-8&quot;, to = &quot;Windows-1250&quot;) #da ohranis sumnike, to je iz R4.3, v R5.2 deluje ok brez tega.
+#text &lt;- iconv(text, from =&quot;Windows-1250&quot;, to = &quot;latin1&quot;) #da ohranis sumnike
+
+docs &lt;- Corpus(VectorSource(text))
+#docs &lt;- tm_map(docs, content_transformer(tolower))
+docs &lt;- tm_map(docs, removeWords, 
+               c(&quot;bi&quot;, &quot;je&quot;, &quot;že&quot;, &quot;se&quot;, &quot;z&quot;, &quot;s&quot;, &quot;za&quot;, &quot;in&quot;, &quot;še&quot;, &quot;ki&quot;,
+                 &quot;v&quot;, &quot;si&quot;, &quot;so&quot;, &quot;je&quot;, &quot;ko&quot;, &quot;ga&quot;, &quot;ti&quot;, &quot;ni&quot;, &quot;ne&quot;, &quot;jih&quot;,
+                 &quot;de&quot;, &quot;da&quot;, &quot;njih&quot;, &quot;kdo&quot;, &quot;jim&quot;, &quot;po&quot;, &quot;na&quot;, &quot;le&quot;, &quot;ji&quot;, &quot;bila&quot;,
+                 &quot;bil&quot;, &quot;po&quot;, &quot;bi&quot;, &quot;kak&quot;, &quot;kar&quot;, &quot;sem&quot;, &quot;vse&quot;, &quot;tam&quot;, &quot;zdaj&quot;,
+                 &quot;kjer&quot;, &quot;med&quot;, &quot;pri&quot;)
+               )
+docs &lt;- tm_map(docs, removePunctuation)
+docs &lt;- tm_map(docs, stripWhitespace)
+
+dtm &lt;- TermDocumentMatrix(docs)
+m &lt;- as.matrix(dtm)
+v &lt;- sort(rowSums(m),decreasing=TRUE)
+d &lt;- data.frame(word = names(v),freq=v)
+head(d, 20)</code></pre>
+<pre><code>##                word freq
+## črtomír     črtomír   15
+## bogomila   bogomila   10
+## mož             mož    9
+## valjhun     valjhun    8
+## meč             meč    8
+## noč             noč    8
+## vero           vero    7
+## življenje življenje    7
+## tje             tje    7
+## svoje         svoje    7
+## srce           srce    7
+## ljubezen   ljubezen    7
+## ker             ker    7
+## bog             bog    7
+## préd           préd    6
+## čez             čez    6
+## tvoja         tvoja    6
+## ljubezni   ljubezni    6
+## vere           vere    6
+## pravi         pravi    6</code></pre>
+<pre class="r"><code>set.seed(1234)
+wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+          max.words=50, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(7, &quot;Blues&quot;))</code></pre>
+<p><img src="/post/2019-02-17-sld-oblak-besed_files/figure-html/wordcloud-1.png" width="672" /></p>
+</div>
+<div id="primer-z-python" class="section level2">
+<h2>Primer z python</h2>
+<pre class="python"><code>import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+import numpy as np
+import random
+text = open(&quot;./../../static/data/2019-02-17_Krst_pri_Savici.txt&quot;, &quot;r&quot;,  encoding=&#39;utf-8&#39;).read()
+def blue_color_func(word, font_size, position, orientation, random_state=None,
+                    **kwargs):
+    #nekaj okrog modrega je 230
+    return &quot;hsl(230, 65%%, %d%%)&quot; % random.randint(10, 100)
+def generate_wordcloud(text): 
+    wordcloud = WordCloud(background_color = &quot;white&quot;, 
+          max_words = 50, contour_color = &quot;blue&quot;,
+          relative_scaling = 0.9, max_font_size = 50,
+          mode=&quot;RGB&quot;,
+          stopwords = {
+                  &quot;bi&quot;, &quot;je&quot;, &quot;že&quot;, &quot;se&quot;, &quot;z&quot;, &quot;s&quot;, 
+                  &quot;za&quot;, &quot;in&quot;, &quot;še&quot;, &quot;ki&quot;,
+                  &quot;v&quot;, &quot;si&quot;, &quot;so&quot;, &quot;je&quot;, &quot;ko&quot;, 
+                  &quot;ga&quot;, &quot;ti&quot;, &quot;ni&quot;, &quot;ne&quot;, &quot;jih&quot;,
+                  &quot;de&quot;, &quot;da&quot;, &quot;njih&quot;, &quot;kdo&quot;, &quot;jim&quot;, 
+                  &quot;po&quot;, &quot;na&quot;, &quot;le&quot;, &quot;ji&quot;, &quot;bila&quot;,
+                  &quot;bil&quot;, &quot;po&quot;, &quot;bi&quot;, &quot;kak&quot;, &quot;kar&quot;, 
+                  &quot;sem&quot;, &quot;vse&quot;, &quot;tam&quot;, &quot;zdaj&quot;,
+                  &quot;kjer&quot;, &quot;med&quot;, &quot;pri&quot;, &quot;mu&quot;, &quot;bo&quot;, 
+                  &quot;mi&quot;, &quot;te&quot;, &quot;al&quot;, &quot;me&quot;, &quot;jo&quot;, 
+                   &quot;ker&quot;, &quot;od&quot;
+                    } # set or space-separated string
+          ).generate(text)
+    plt.imshow(wordcloud.recolor(color_func=blue_color_func,
+              random_state=5),interpolation=&quot;bilinear&quot;)
+    plt.axis(&quot;off&quot;)
+    plt.show()
+generate_wordcloud(text)</code></pre>
+<p><img src="/post/2019-02-17-sld-oblak-besed_files/figure-html/PythonWordCloud-1.png" /><!-- --></p>
+</div>
+<div id="primer-z-i-neta" class="section level2">
+<h2>Primer z i-neta</h2>
+<p>Najenostavneje in najhitreje je uporabiti že kak program z medmrežja.</p>
+<p>Uporabljen program: <a href="https://tagcrowd.com/" class="uri">https://tagcrowd.com/</a></p>
+<div class="figure">
+<img src="/images/2019-02-17-WorlCloudSample.png" />
+
+</div>
+<p>OK, šumnikov pač ni :)</p>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-02-17</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/wordcloud/">wordcloud</a>
+          <a href="/tags/r/">r</a>
+          <a href="/tags/python/">python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/sld-glajenje-%C4%8Dasovnih-vrst/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">[SLD] Glajenje časovnih vrst</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/sld-je-vredno/">
+            <span class="next-text nav-default">[SLD] Je vredno ?</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

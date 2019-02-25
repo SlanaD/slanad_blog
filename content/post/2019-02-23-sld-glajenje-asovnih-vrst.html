@@ -1,0 +1,125 @@
+---
+title: '[SLD] Glajenje časovnih vrst'
+author: SlanaD
+date: '2019-02-23'
+slug: sld-glajenje-časovnih-vrst
+categories:
+  - R
+  - Time-series
+tags:
+  - excel
+  - R
+  - time-series
+  - ggplot
+  - ma
+  - forecast
+  - ts
+lastmod: '2019-02-23T15:48:10+01:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-02-23_BobRock.jpg
+
+---
+
+
+
+<center>
+<p><em>“Bob Rock je simbol proletariata.<br />
+Je nekdo, ki bi bil rad milijonar, a se ga milijoni na daleč izogibajo.<br />
+Narod je Bob Rock”.</em></p>
+<p><em>Lazar Džamić, avtor študije Cvetličarna v Hiši cvetja, vzeto iz konteksta</em></p>
+<div class="figure">
+<img src="/images/2019-02-23_BobRock.jpg" />
+
+</div>
+</center>
+<p>Časovne vrste uporabljaš za opazovanje podatkov skozi časovna obdobja. Najobičajnejša načina zapisa časovnih vrst sta sledeča:</p>
+<ol style="list-style-type: decimal">
+<li><p><em>MOMENTNE VRSTE</em> - časovni interval med podatki je vedno enak: start, konec in seznam vrednosti (od julija do septembra, enkrat na mesec, vrednosti: 4, 3, 2).</p></li>
+<li><p><em>INTERVALNE VRSTE</em> - časovni interval med podatki je lahko tudi enak: par (časovni žig, podatek) ( enak primer kot prej [jul., 4], [avg., 3], [sep, 2]).</p></li>
+</ol>
+<blockquote>
+<p>Nekaj bližnjic:<br />
+- <a href="https://studentski.net/gradivo/upr_fhs_ge1_kmg_sno_casovne_vrste_01">Nekaj znanja zapisanega s slovenskimi izrazi</a><br />
+- <a href="https://a-little-book-of-r-for-time-series.readthedocs.io/en/latest/src/timeseries.html">Pa nekaj za R v angleščini</a><br />
+- <a href="https://otexts.com/fpp2/tspatterns.html">Pa še nekaj za R v angleščini</a><br />
+- <a href="http://www.sthda.com/english/articles/32-r-graphics-essentials/128-plot-time-series-data-using-ggplot/">In nekaj v GGPLOT</a></p>
+</blockquote>
+<p>Časovno vrsto predstaviš z linijskim ali raztresenim točkovnim grafom. Zanimivo postane, ko je število podatkov tako veliko ali pa je tako dinamično, da te v črtnem grafu začnejo zanimati povprečja in trendi.</p>
+<p>Način glajenja je lahko:</p>
+<ol style="list-style-type: decimal">
+<li>globalno glajenje skozi čas
+<ol style="list-style-type: lower-alpha">
+<li>linearno<br />
+</li>
+<li>kvadratno<br />
+</li>
+<li>polinomsko</li>
+</ol></li>
+</ol>
+<pre class="r"><code>library(tidyverse)
+library(gridExtra)  
+
+
+#vzorčni testni podatki
+df &lt;- data.frame(datum = economics$date,
+                 populacija = economics$pop, 
+                 nezaposleni = economics$unemploy,
+                 stringsAsFactors=FALSE) 
+df &lt;- subset(df, datum &gt; &quot;2014-07-01&quot;)  
+
+
+#grafi
+
+
+p1 &lt;- ggplot(data=df, aes(x=datum, y=nezaposleni )) +
+  geom_point() +
+  geom_smooth(method = lm, formula = y ~ poly(x, 2), se = T) +
+  geom_smooth(method = lm, formula = y ~ poly(x, 3), size=0.5, se = F) +
+  geom_smooth(method = lm, se = F, color = &quot;#CD3333&quot;, size = 1) +
+  xlab(&quot;LIN., KVAD., KUB.&quot;)  
+
+p2 &lt;- ggplot(data=df, aes(x=datum, y=nezaposleni) ) +
+  geom_point() + 
+  geom_smooth(method = lm, formula = y ~ splines::bs(x, 3), se = TRUE) +
+  xlab(&quot;SPLINE&quot;) + ylab(&quot;&quot;)  
+
+gridExtra::grid.arrange(p1, p2, nrow=1)  </code></pre>
+<p><img src="/post/2019-02-23-sld-glajenje-asovnih-vrst_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>lokalno glajenje v času
+<ol style="list-style-type: lower-alpha">
+<li>drseča povprečja (MA)<br />
+</li>
+<li>tekoče linije (Friedman super-smoother) <a href="https://rdrr.io/r/stats/supsmu.html">link</a>, <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/supsmu.html">link</a></li>
+<li>jedrne gladitve (kernel smoothers) <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/ksmooth.html">link</a></li>
+<li>krivulje (splines)<br />
+</li>
+<li>LOESS (locally estimated scatterplot smoother)</li>
+</ol></li>
+</ol>
+<blockquote>
+<p>LOESS (locally estimated scatterplot smoother) combines local regression with kernels by using locally weighted polynomial regression (by default, quadratic regression with tri-cubic weights). It is one of the most frequently used smoothers because of its flexibility. However, unlike Friedman’s super smoother or the smoothing spline, LOESS does not use cross-validation to select a span.</p>
+</blockquote>
+<pre class="r"><code>library(forecast)
+library(tseries)  
+
+nz &lt;- ts(df$nezaposleni)
+df$nz &lt;- tsclean(nz)
+df$ma &lt;- ma(df$nz, order = 3) #moving average 3monts  
+
+p1 &lt;- ggplot() +
+  geom_point(data=df, aes(x=datum, y=nz)) +
+  geom_line(data=df, aes(x=datum, y=ma), color=&quot;#1C86EE&quot;, size = 2) +
+  ylab(&quot;nezaposleni&quot;) +
+  xlab(&quot;MA&quot;)  
+
+p2 &lt;- ggplot() +
+  geom_point(data=df, aes(x=datum, y=nz)) +
+  geom_smooth(data=df, aes(x=datum, y=nz), method = &quot;loess&quot;, color=&quot;#1C86EE&quot;, size = 2, se=F) +
+  ylab(&quot;&quot;) +
+  xlab(&quot;LOESS&quot;)  
+
+gridExtra::grid.arrange(p1, p2, nrow=1)  </code></pre>
+<p><img src="/post/2019-02-23-sld-glajenje-asovnih-vrst_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>

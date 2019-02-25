@@ -56,7 +56,7 @@ Kdaj kaj:
 
 ```{r, setup, include=FALSE}
 library(reticulate)
-use_python("/usr/bin/python3")
+use_python("C:/Users/Slana/Anaconda3")
 matplotlib <- import("matplotlib")
 matplotlib$use("Agg", force = TRUE)
 ```

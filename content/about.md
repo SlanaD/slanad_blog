@@ -10,7 +10,7 @@ This is not Hugo. [Hugo](https://github.com/gohugoio) is a static site engine wr
 
 I'm a user of [RStudio](https://www.rstudio.com) and [Spyder](https://www.spyder-ide.org/) making notes for myself.
 
-p o p = pripovedke o podatkih
+p o p = pripovedke o podatkih (Tales about Data)
 
 # ABOUT ME
 

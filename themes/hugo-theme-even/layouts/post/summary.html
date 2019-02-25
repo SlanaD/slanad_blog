@@ -19,7 +19,18 @@
   <!-- Content -->
   <div class="post-content">
     <div class="post-summary">
-      {{ .Summary }}
+	  
+	  <!-- {{ .Summary }} -->
+	  <!-- SLD 2019-02-23 -->
+      {{ if .Description }}
+        {{ .Description | markdownify }}
+      {{ else }}
+        {{ .Summary | markdownify }}
+      {{ end }}
+
+		<p> </p>
+		<img src="{{ with .Params.image }}{{ . }}{{ end }}"  width="360"/>		
+
     </div>
     <div class="read-more">
       <a href="{{ .URL }}" class="read-more-link">{{ T "readMore" }}</a>

@@ -19,8 +19,46 @@
       <guid>/about/</guid>
       <description>This is not Hugo. Hugo is a static site engine written in Go.
 I&amp;rsquo;m a user of RStudio and Spyder making notes for myself.
-p o p = pripovedke o podatkih
+p o p = pripovedke o podatkih (Tales about Data)
 ABOUT ME Nothing to tell - go back and read posts.</description>
+    </item>
+    
+    <item>
+      <title>[SLD] SURS - SI-Stat, prenos podatkov</title>
+      <link>/post/sld-surs-si-stat/</link>
+      <pubDate>Sun, 24 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-surs-si-stat/</guid>
+      <description>“Ampak vendar je vsak delavec vreden svojega plačila, to sem v cerkvi slišal.”
+Martin K., slovenski legendarni trgovec z orožjem
+Na spletni strani statističnega urada RS je veliko podatkov v neobičajnem formatu PC-Axis. Program za ogled in kreiranje podatkov se nahaja na http://www.eustat.eus/prodserv/downl_i.html. Namesto namestitve programa se lahko podatki enostavno pretvorijo v R data.frame s knjižnico pxR. Po potrebi je naslednji korak pretvorba v excel ali kaj podobnega.</description>
+    </item>
+    
+    <item>
+      <title>[SLD] Glajenje časovnih vrst</title>
+      <link>/post/sld-glajenje-%C4%8Dasovnih-vrst/</link>
+      <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-glajenje-%C4%8Dasovnih-vrst/</guid>
+      <description>“Bob Rock je simbol proletariata.
+Je nekdo, ki bi bil rad milijonar, a se ga milijoni na daleč izogibajo.
+Narod je Bob Rock”.
+Lazar Džamić, avtor študije Cvetličarna v Hiši cvetja, vzeto iz konteksta
+Časovne vrste uporabljaš za opazovanje podatkov skozi časovna obdobja. Najobičajnejša načina zapisa časovnih vrst sta sledeča:
+MOMENTNE VRSTE - časovni interval med podatki je vedno enak: start, konec in seznam vrednosti (od julija do septembra, enkrat na mesec, vrednosti: 4, 3, 2).</description>
+    </item>
+    
+    <item>
+      <title>[SLD] Oblak besed</title>
+      <link>/post/sld-oblak-besed/</link>
+      <pubDate>Sun, 17 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-oblak-besed/</guid>
+      <description>getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico
+Ovid / Ribičev France iz Vrbe
+Oblak besed bolj običajno WORDCLOUD je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.
+Primer na Krstu pri Savici:
+Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren.</description>
     </item>
     
     <item>
@@ -43,7 +81,8 @@ Uporabiš že pripravljeno podlogo ( theme, style ), ki najbolj ustreza, vpiše�
       
       <guid>/post/cole-nussbaumer-knaflic-iz-uvoda/</guid>
       <description>“Power Corrupts. PowerPoint Corrupts Absolutely.”
-Edward Tufte, Yale Professor Emeritus 
+Edward Tufte, Yale Professor Emeritus
+
 Vsi smo že bili žrtve slabe programske opreme za pripravo predstavitev. Površne in hitre predstavitve, ki nas udarijo z vrtoglavico pisav, barv, točk in poudarkov. Infografike, ki ne uspejo informirati in so grafično nasilne na enak način, kot je nasilje lahko vizulano. Grafikoni in tabele v medijih, ki zmedejo in zavajajo. Danes je vse preenostavno ustvarjati tabele in grafikone.</description>
     </item>
     

@@ -1,0 +1,133 @@
+---
+title: '[SLD] Oblak besed'
+author: SlanaD
+date: '2019-02-17'
+slug: sld-oblak-besed
+image: /images/2019-02-17-WorlCloudSample.png
+categories:
+  - Python
+  - R
+  - Vizualizacija
+tags:
+  - wordcloud
+  - r
+  - python
+lastmod: '2019-02-17T15:34:39+01:00'
+keywords: []
+description: ''
+---
+
+
+
+<center>
+<p><em>getico scripsi sermone libellum / v barbarskem jeziku sem napisal pričujočo knjižico</em></p>
+<p><em>Ovid / Ribičev France iz Vrbe</em></p>
+</center>
+<p>Oblak besed bolj običajno <em>WORDCLOUD</em> je uporabna zadeva za hiter ogled vsebine dokumenta. Večkrat in pomembneje se pojavi beseda v tekstu bolj naj bi bila vidna v oblaku besed.</p>
+<p>Primer na Krstu pri Savici:</p>
+<blockquote>
+<p>Krst pri Savici je obsežna epsko-lirska pesnitev, ki jo je v drugi polovici leta 1835 napisal slovenski romantični pesnik France Prešeren. Pesem obravnavajo tudi kot slovenski nacionalni ep. Prešeren je pesem končal januarja leta 1836 in jo aprila izdal v samozaložbi v 600 izvodih. <a href="https://sl.wikipedia.org/wiki/Krst_pri_Savici">Wikipedija</a></p>
+</blockquote>
+<p><a href="/data/2019-02-17_Krst_pri_Savici.txt">Vsebina epa</a> s strani <a href="http://www.pesnik.net/index.php?option=com_content&amp;task=view&amp;id=18">pesnik.net</a></p>
+<div id="primer-z-r" class="section level2">
+<h2>Primer z R</h2>
+<pre class="r"><code>#http://www.sthda.com/english/wiki/text-mining-and-word-cloud-fundamentals-in-r-5-simple-steps-you-should-know
+
+library(tm)
+library(wordcloud)
+
+text &lt;- readLines(&quot;./../../static/data/2019-02-17_Krst_pri_Savici.txt&quot;, encoding = &quot;UTF-8&quot;)
+#text &lt;- iconv(text, from =&quot;UTF-8&quot;, to = &quot;Windows-1250&quot;) #da ohranis sumnike, to je iz R4.3, v R5.2 deluje ok brez tega.
+#text &lt;- iconv(text, from =&quot;Windows-1250&quot;, to = &quot;latin1&quot;) #da ohranis sumnike
+
+docs &lt;- Corpus(VectorSource(text))
+#docs &lt;- tm_map(docs, content_transformer(tolower))
+docs &lt;- tm_map(docs, removeWords, 
+               c(&quot;bi&quot;, &quot;je&quot;, &quot;že&quot;, &quot;se&quot;, &quot;z&quot;, &quot;s&quot;, &quot;za&quot;, &quot;in&quot;, &quot;še&quot;, &quot;ki&quot;,
+                 &quot;v&quot;, &quot;si&quot;, &quot;so&quot;, &quot;je&quot;, &quot;ko&quot;, &quot;ga&quot;, &quot;ti&quot;, &quot;ni&quot;, &quot;ne&quot;, &quot;jih&quot;,
+                 &quot;de&quot;, &quot;da&quot;, &quot;njih&quot;, &quot;kdo&quot;, &quot;jim&quot;, &quot;po&quot;, &quot;na&quot;, &quot;le&quot;, &quot;ji&quot;, &quot;bila&quot;,
+                 &quot;bil&quot;, &quot;po&quot;, &quot;bi&quot;, &quot;kak&quot;, &quot;kar&quot;, &quot;sem&quot;, &quot;vse&quot;, &quot;tam&quot;, &quot;zdaj&quot;,
+                 &quot;kjer&quot;, &quot;med&quot;, &quot;pri&quot;)
+               )
+docs &lt;- tm_map(docs, removePunctuation)
+docs &lt;- tm_map(docs, stripWhitespace)
+
+dtm &lt;- TermDocumentMatrix(docs)
+m &lt;- as.matrix(dtm)
+v &lt;- sort(rowSums(m),decreasing=TRUE)
+d &lt;- data.frame(word = names(v),freq=v)
+head(d, 20)</code></pre>
+<pre><code>##                word freq
+## črtomír     črtomír   15
+## bogomila   bogomila   10
+## mož             mož    9
+## valjhun     valjhun    8
+## meč             meč    8
+## noč             noč    8
+## vero           vero    7
+## življenje življenje    7
+## tje             tje    7
+## svoje         svoje    7
+## srce           srce    7
+## ljubezen   ljubezen    7
+## ker             ker    7
+## bog             bog    7
+## préd           préd    6
+## čez             čez    6
+## tvoja         tvoja    6
+## ljubezni   ljubezni    6
+## vere           vere    6
+## pravi         pravi    6</code></pre>
+<pre class="r"><code>set.seed(1234)
+wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+          max.words=50, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(7, &quot;Blues&quot;))</code></pre>
+<p><img src="/post/2019-02-17-sld-oblak-besed_files/figure-html/wordcloud-1.png" width="672" /></p>
+</div>
+<div id="primer-z-python" class="section level2">
+<h2>Primer z python</h2>
+<pre class="python"><code>import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+import numpy as np
+import random
+text = open(&quot;./../../static/data/2019-02-17_Krst_pri_Savici.txt&quot;, &quot;r&quot;,  encoding=&#39;utf-8&#39;).read()
+def blue_color_func(word, font_size, position, orientation, random_state=None,
+                    **kwargs):
+    #nekaj okrog modrega je 230
+    return &quot;hsl(230, 65%%, %d%%)&quot; % random.randint(10, 100)
+def generate_wordcloud(text): 
+    wordcloud = WordCloud(background_color = &quot;white&quot;, 
+          max_words = 50, contour_color = &quot;blue&quot;,
+          relative_scaling = 0.9, max_font_size = 50,
+          mode=&quot;RGB&quot;,
+          stopwords = {
+                  &quot;bi&quot;, &quot;je&quot;, &quot;že&quot;, &quot;se&quot;, &quot;z&quot;, &quot;s&quot;, 
+                  &quot;za&quot;, &quot;in&quot;, &quot;še&quot;, &quot;ki&quot;,
+                  &quot;v&quot;, &quot;si&quot;, &quot;so&quot;, &quot;je&quot;, &quot;ko&quot;, 
+                  &quot;ga&quot;, &quot;ti&quot;, &quot;ni&quot;, &quot;ne&quot;, &quot;jih&quot;,
+                  &quot;de&quot;, &quot;da&quot;, &quot;njih&quot;, &quot;kdo&quot;, &quot;jim&quot;, 
+                  &quot;po&quot;, &quot;na&quot;, &quot;le&quot;, &quot;ji&quot;, &quot;bila&quot;,
+                  &quot;bil&quot;, &quot;po&quot;, &quot;bi&quot;, &quot;kak&quot;, &quot;kar&quot;, 
+                  &quot;sem&quot;, &quot;vse&quot;, &quot;tam&quot;, &quot;zdaj&quot;,
+                  &quot;kjer&quot;, &quot;med&quot;, &quot;pri&quot;, &quot;mu&quot;, &quot;bo&quot;, 
+                  &quot;mi&quot;, &quot;te&quot;, &quot;al&quot;, &quot;me&quot;, &quot;jo&quot;, 
+                   &quot;ker&quot;, &quot;od&quot;
+                    } # set or space-separated string
+          ).generate(text)
+    plt.imshow(wordcloud.recolor(color_func=blue_color_func,
+              random_state=5),interpolation=&quot;bilinear&quot;)
+    plt.axis(&quot;off&quot;)
+    plt.show()
+generate_wordcloud(text)</code></pre>
+<p><img src="/post/2019-02-17-sld-oblak-besed_files/figure-html/PythonWordCloud-1.png" /><!-- --></p>
+</div>
+<div id="primer-z-i-neta" class="section level2">
+<h2>Primer z i-neta</h2>
+<p>Najenostavneje in najhitreje je uporabiti že kak program z medmrežja.</p>
+<p>Uporabljen program: <a href="https://tagcrowd.com/" class="uri">https://tagcrowd.com/</a></p>
+<div class="figure">
+<img src="/images/2019-02-17-WorlCloudSample.png" />
+
+</div>
+<p>OK, šumnikov pač ni :)</p>
+</div>

@@ -1,0 +1,135 @@
+---
+title: '[SLD] Glajenje časovnih vrst'
+author: SlanaD
+date: '2019-02-23'
+slug: sld-glajenje-časovnih-vrst
+categories:
+  - R
+  - Time-series
+tags:
+  - excel
+  - R
+  - time-series
+  - ggplot
+  - ma
+  - forecast
+  - ts
+lastmod: '2019-02-23T15:48:10+01:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-02-23_BobRock.jpg
+
+---
+
+<center>
+
+_"Bob Rock je simbol proletariata.   
+Je nekdo, ki bi bil rad milijonar, a se ga milijoni na daleč izogibajo.  
+Narod je Bob Rock"._   
+
+_Lazar Džamić, avtor študije Cvetličarna v Hiši cvetja, vzeto iz konteksta_  
+
+![](/images/2019-02-23_BobRock.jpg)
+
+</center>  
+
+
+
+Časovne vrste uporabljaš za opazovanje podatkov skozi časovna obdobja. Najobičajnejša načina zapisa časovnih vrst sta sledeča:
+
+  1. *MOMENTNE VRSTE* - časovni interval med podatki je vedno enak: start, konec in seznam vrednosti (od julija do septembra, enkrat na mesec, vrednosti: 4, 3, 2). 
+  
+  2. *INTERVALNE VRSTE* - časovni interval med podatki je lahko tudi enak: par (časovni žig, podatek) ( enak primer kot prej [jul., 4], [avg., 3], [sep, 2]). 
+  
+
+
+
+> Nekaj bližnjic:  
+- [Nekaj znanja zapisanega s slovenskimi izrazi](https://studentski.net/gradivo/upr_fhs_ge1_kmg_sno_casovne_vrste_01)  
+- [Pa nekaj za R v angleščini](https://a-little-book-of-r-for-time-series.readthedocs.io/en/latest/src/timeseries.html)  
+- [Pa še nekaj za R v angleščini](https://otexts.com/fpp2/tspatterns.html)  
+- [In nekaj v GGPLOT](http://www.sthda.com/english/articles/32-r-graphics-essentials/128-plot-time-series-data-using-ggplot/)  
+
+
+
+Časovno vrsto predstaviš z linijskim ali raztresenim točkovnim grafom. Zanimivo postane, ko je število podatkov tako veliko ali pa je tako dinamično, da te v črtnem grafu začnejo zanimati povprečja in trendi.
+
+Način glajenja je lahko:  
+
+1. globalno glajenje skozi čas   
+    a) linearno  
+    b) kvadratno  
+    c) polinomsko  
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(gridExtra)  
+
+
+#vzorčni testni podatki
+df <- data.frame(datum = economics$date,
+                 populacija = economics$pop, 
+                 nezaposleni = economics$unemploy,
+                 stringsAsFactors=FALSE) 
+df <- subset(df, datum > "2014-07-01")  
+
+
+#grafi
+
+
+p1 <- ggplot(data=df, aes(x=datum, y=nezaposleni )) +
+  geom_point() +
+  geom_smooth(method = lm, formula = y ~ poly(x, 2), se = T) +
+  geom_smooth(method = lm, formula = y ~ poly(x, 3), size=0.5, se = F) +
+  geom_smooth(method = lm, se = F, color = "#CD3333", size = 1) +
+  xlab("LIN., KVAD., KUB.")  
+
+p2 <- ggplot(data=df, aes(x=datum, y=nezaposleni) ) +
+  geom_point() + 
+  geom_smooth(method = lm, formula = y ~ splines::bs(x, 3), se = TRUE) +
+  xlab("SPLINE") + ylab("")  
+
+gridExtra::grid.arrange(p1, p2, nrow=1)  
+
+```
+
+  
+2. lokalno glajenje v času  
+    a) drseča povprečja (MA)  
+    b) tekoče linije (Friedman super-smoother) [link](https://rdrr.io/r/stats/supsmu.html), [link](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/supsmu.html)
+    c) jedrne gladitve (kernel smoothers) [link](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/ksmooth.html)
+    d) krivulje (splines)  
+    e) LOESS (locally estimated scatterplot smoother)  
+
+  
+> LOESS (locally estimated scatterplot smoother) combines local regression with kernels by using locally weighted polynomial regression (by default, quadratic regression with tri-cubic weights). It is one of the most frequently used smoothers because of its flexibility. However, unlike Friedman’s super smoother or the smoothing spline, LOESS does not use cross-validation to select a span.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+library(forecast)
+library(tseries)  
+
+nz <- ts(df$nezaposleni)
+df$nz <- tsclean(nz)
+df$ma <- ma(df$nz, order = 3) #moving average 3monts  
+
+p1 <- ggplot() +
+  geom_point(data=df, aes(x=datum, y=nz)) +
+  geom_line(data=df, aes(x=datum, y=ma), color="#1C86EE", size = 2) +
+  ylab("nezaposleni") +
+  xlab("MA")  
+
+p2 <- ggplot() +
+  geom_point(data=df, aes(x=datum, y=nz)) +
+  geom_smooth(data=df, aes(x=datum, y=nz), method = "loess", color="#1C86EE", size = 2, se=F) +
+  ylab("") +
+  xlab("LOESS")  
+
+gridExtra::grid.arrange(p1, p2, nrow=1)  
+
+```
+
+
+
+

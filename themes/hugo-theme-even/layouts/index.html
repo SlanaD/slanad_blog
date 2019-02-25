@@ -3,7 +3,7 @@
     {{/* (index .Site.Paginate) */}}
     {{- $paginator := .Paginate (where (where .Data.Pages "Type" "post") ".Params.hiddenfromhomepage" "!=" true) }}
     {{- range $paginator.Pages -}}
-      {{ .Render "summary" }}
+	  {{ .Render "summary" }}
     {{ end -}}
   </section>
   <!-- pagination -->
