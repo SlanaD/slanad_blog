@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>POSIXct on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/tags/posixct/</link>
+    <description>Recent content in POSIXct on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Sat, 23 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/posixct/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] Nekaj elektrike</title>
+      <link>/post/sld-nekaj-elektrike/</link>
+      <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-nekaj-elektrike/</guid>
+      <description>“Let the future tell the truth, and evaluate each one according to his work and accomplishments. The present is theirs; the future, for which I really worked, is mine.”
+Nikola Tesla
+Dve stvari za ta zapis:
+1. POSIXct
+2. ThemeSLD - Graf za porabo elektrike
+Datum-časObstaja več definicij časovnih spremenljivk in datumi ter datum-časi običajno predstavljajo kakšno težavo pri uvažanju ali pretvorbah.
+POSIXct je število sekund šteto od 1.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,25 @@
     <description>Recent content in Posts on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] Nekaj elektrike</title>
+      <link>/post/sld-nekaj-elektrike/</link>
+      <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-nekaj-elektrike/</guid>
+      <description>“Let the future tell the truth, and evaluate each one according to his work and accomplishments. The present is theirs; the future, for which I really worked, is mine.”
+Nikola Tesla
+Dve stvari za ta zapis:
+1. POSIXct
+2. ThemeSLD - Graf za porabo elektrike
+Datum-časObstaja več definicij časovnih spremenljivk in datumi ter datum-časi običajno predstavljajo kakšno težavo pri uvažanju ali pretvorbah.
+POSIXct je število sekund šteto od 1.</description>
+    </item>
     
     <item>
       <title>[SLD] SURS - SI-Stat, prenos podatkov</title>

@@ -1,0 +1,172 @@
+---
+title: '[SLD] Nekaj elektrike'
+author: SlanaD
+date: '2019-03-23'
+slug: sld-nekaj-elektrike
+categories:
+  - R
+  - Time-series
+  - Vizualizacija
+tags:
+  - ggplot
+  - graf
+  - predstavitev
+  - vizualizacija
+  - R
+  - time-series
+  - POSIXct
+  - theme
+lastmod: '2019-03-23T08:28:33+01:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-03-23_Elektr_1.jpg
+
+---
+
+
+
+<center>
+<p><em>“Let the future tell the truth, and evaluate each one according to his work and accomplishments. The present is theirs; the future, for which I really worked, is mine.”</em></p>
+<p><em>Nikola Tesla</em></p>
+<div class="figure">
+<img src="/images/2019-03-23_Tesla100din.jpg" style="width:30.0%" />
+
+</div>
+</center>
+<p>Dve stvari za ta zapis:<br />
+1. POSIXct<br />
+2. ThemeSLD - Graf za porabo elektrike</p>
+<div id="datum-cas" class="section level2">
+<h2>Datum-čas</h2>
+<p>Obstaja več definicij časovnih spremenljivk in datumi ter datum-časi običajno predstavljajo kakšno težavo pri uvažanju ali pretvorbah.</p>
+<p><strong>POSIXct</strong> je število sekund šteto od 1.1.1970. Excel tudi prikazuje datum skozi štetje sekund, le da ima izhodišče v 1899-12-30.</p>
+<p><strong>POSIXit</strong> je vektorska oblika s sledečimi vrednostmi spremeljivk:<br />
+1. seconds<br />
+2. minutes<br />
+3. hours<br />
+4. day of month (1-31)<br />
+5. month of the year (0-11)<br />
+6. years since 1900<br />
+7. day of the week (0-6 where 0 represents Sunday)<br />
+8. day of the year (0-365)<br />
+9. Daylight savings indicator (positive if it is daylight savings)</p>
+<p><strong>Daylight Savings and Time Zones [also hate you]</strong><br />
+We can use universal time (UTC) for that. Actually, like specifying the format, it’s a good idea to always specify your time zone even if you don’t use UTC.</p>
+<p>R ne prikazuje v zapisu (npr. <em>print</em>) spremeljivk za čas tako, kot jih ima shranjene, zato bodi previden pri kopiranju posameznih elementov zapisa!</p>
+<pre class="r"><code>excel_datum &lt;-  43547 # 2019-03-23
+r_datum     &lt;-  as.Date(excel_datum, origin=&quot;1899-12-30&quot;)
+
+cat(&quot; excel_datum: &quot;, excel_datum, &quot;\n&quot;,
+    &quot;r_datum:     &quot;, r_datum, &quot;\n&quot;, &quot;\n&quot; )</code></pre>
+<pre><code>##  excel_datum:  43547 
+##  r_datum:      17978 
+## </code></pre>
+<pre class="r"><code>print(&quot;r_datum s funkcijo print:&quot;)</code></pre>
+<pre><code>## [1] &quot;r_datum s funkcijo print:&quot;</code></pre>
+<pre class="r"><code>print(r_datum)</code></pre>
+<pre><code>## [1] &quot;2019-03-23&quot;</code></pre>
+<p>Nekaj uporabnih paketov za delo s časom:</p>
+<ul>
+<li><p>library(lubridate)</p></li>
+<li><p>library(chron)</p></li>
+</ul>
+<p>in nekaj uporabnih funkcij:</p>
+<ul>
+<li><p>as.Date(“08/30/2012”, format = “%m/%d/%Y”)</p></li>
+<li><p>Sys.Date()</p></li>
+<li><p>difftime(Sys.Date(), as.Date(“1970-01-01”), units = “days”)</p></li>
+<li><p>unclass(as.POSIXlt(Sys.time()))</p></li>
+<li><p>as.POSIXct(“2008-04-06 10:11:01 PM”, format = “%Y-%m-%d %I:%M:%S %p”)</p></li>
+<li><p>as.POSIXlt(“2008-11-01 01:00:00”)</p></li>
+<li><p>round(as.POSIXlt(dts1, format = “%Y%m%d %H:%M:%S”, tz = “UTC”)</p></li>
+<li><p>now()</p></li>
+<li><p>zadnji dan v mesecu: ceiling_date(now(), unit = “month”) - days(1)</p></li>
+<li><p>force_tz(ymd_hms(as.character(now())), “Europe/London”) + dhours(6)</p></li>
+</ul>
+<blockquote>
+<p>Bližnjica do uporabe datumov v R:<br />
+- <a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf">Cole Beck, 2012: Handling date-times in R</a></p>
+</blockquote>
+</div>
+<div id="themesld" class="section level2">
+<h2>ThemeSLD</h2>
+<p>Ne vem od kod sem kopiral original te teme, vendar je rezultat te predelave sedaj sledeč:</p>
+<p>Vzorec 1:<br />
+<img src="/images/2019-03-23_Elektr_2.jpg" style="width:70.0%" /></p>
+<p>Vzorec 2:<br />
+<img src="/images/2019-03-23_Elektr_1.jpg" style="width:70.0%" /></p>
+<p>Vzorec 3:<br />
+<img src="/images/2019-03-23_PlanABC.jpg" style="width:70.0%" /></p>
+<p>Tema je tukaj:</p>
+<pre class="r"><code>#Original glej v Elektrika2019.R
+library(tidyverse)
+library(readxl)
+library(scales)
+library(gridExtra)
+
+themeSLD01 &lt;- function() 
+{
+  #names(pdfFonts()) #prikaze seznam fontov na razpolago.
+  font &lt;- &quot;Courier&quot;
+  ggplot2::theme(
+    plot.margin = ggplot2::margin(0.5, 0.5, 0.5, 0.5, &quot;cm&quot;),
+    plot.title = ggplot2::element_text(family = font, size = 24, face = &quot;bold&quot;, color = &quot;#595959&quot;), 
+    plot.subtitle = ggplot2::element_text(family = font, size = 16, color = &quot;#7A7A7A&quot;, margin = ggplot2::margin(9, 0, 9, 0)), 
+    plot.caption = ggplot2::element_text(family = font, size = 8, color = &quot;#7A7A7A&quot;),
+    legend.position = &quot;top&quot;, legend.text.align = 0, 
+    legend.background = ggplot2::element_blank(),
+    legend.title = ggplot2::element_blank(), 
+    legend.key = ggplot2::element_blank(),
+    legend.text = ggplot2::element_text(family = font, size = 12, color = &quot;#7A7A7A&quot;), 
+    axis.title.y = ggplot2::element_text(family = font, size = 12, color = &quot;#7A7A7A&quot;),
+    #axis.title.y = ggplot2::element_blank(),
+    axis.title.x = ggplot2::element_blank(),
+    axis.text = ggplot2::element_text(family = font, size = 12, color = &quot;#7A7A7A&quot;), 
+    axis.text.x = ggplot2::element_text(margin = ggplot2::margin(5, b = 10)), 
+    axis.ticks = ggplot2::element_blank(),
+    axis.line = ggplot2::element_blank(), 
+    panel.grid.minor = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_line(color = &quot;#cbcbcb&quot;),
+    panel.grid.major.x = ggplot2::element_line(color = &quot;#cbcbcb&quot;),
+    #panel.grid.major.x = ggplot2::element_blank(), 
+    panel.background = ggplot2::element_blank(),
+    strip.background = ggplot2::element_rect(fill = &quot;white&quot;),
+    strip.text = ggplot2::element_text(size = 14, hjust = 0)) }
+
+#orange0, modra, temno siva, siva, 
+barva = c(&quot;orange&quot;, &quot;#1874CD&quot;, &quot;#595959&quot;, &quot;#7A7A7A&quot;)
+
+vsebina &lt;- list(
+  title = paste(&quot;NASLOV&quot;),
+  subtitle = paste(&quot;Podnaslov&quot;),
+  caption = paste(&quot;Vir: navedi vir, datum nastanka grafa &quot;, Sys.Date()),
+  x = &quot;oznaka x osi&quot;
+  y = &quot;oznaka y osi&quot;
+)
+
+
+#Uporaba - samo za prikaz (ne deluje):
+
+ggplot(data=poraba, aes(x=datum, y=P_sum)) +
+  themeSLD01() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 12)) +
+  labs(
+    x = vsebina$x,
+    y = vsebina$y,
+    title = vsebina$title,
+    subtitle = vsebina$subtitle,
+    caption = vsebina$caption) +
+  geom_line(aes(y=P_sum), color=barva[1], size = 2) +
+  geom_line(aes(y=P_o1), color=barva[3], size = 2) +
+  geom_line(aes(y=P_lak), color=barva[3], size = 2) +
+  geom_hline(yintercept = 1540, linetype = &quot;dashed&quot;, color=barva[3]) +
+  scale_x_datetime( breaks=(&quot;2 hour&quot;), 
+                    minor_breaks=(&quot;1 hour&quot;),
+                    labels = date_format(&quot;%m-%d %H:%M&quot;),
+                    limits = c(as.POSIXct(&quot;2019-02-22&quot;), as.POSIXct(&quot;2019-02-23&quot;))) +
+  annotate(&quot;text&quot;, x=as.POSIXct(&quot;2019-02-22 8:00&quot;), y=400, label=&quot;LAK&quot;, col=barva[3], hjust = -0.1) +
+  annotate(&quot;text&quot;, x=as.POSIXct(&quot;2019-02-22 7:00&quot;), y=800, label=&quot;W1&quot;, col=barva[3], hjust = -0.1) +
+  annotate(&quot;text&quot;, x=as.POSIXct(&quot;2019-02-22 8:00&quot;), y=1850, label=&quot;SUM&quot;, col=barva[1], hjust = -0.1) +
+  annotate(&quot;text&quot;, x=as.POSIXct(&quot;2019-02-22 19:00&quot;), y=1540, label=&quot;Limit&quot;, col=barva[3], vjust = -0.5)</code></pre>
+</div>
