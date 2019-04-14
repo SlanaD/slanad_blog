@@ -1,0 +1,163 @@
+---
+title: '[SLD] ETL - Extract, Transfer, Load'
+author: SlanaD
+date: '2019-03-24'
+slug: sld-etl-extract-transfer-load
+categories:
+  - PowerBI
+  - Python
+  - Excel
+  - Pandas
+  - ETL
+tags:
+  - excel
+  - python
+  - pandas
+  - powerbi
+  - tkinter
+  - ETL
+lastmod: '2019-03-24T11:26:14+01:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-03-24_PacMAN.png
+
+---
+
+
+<center>
+
+_"Data that is loved tends to survive."_     
+
+_[Kurt Bollacker](https://dblp.org/pers/hd/b/Bollacker:Kurt_D=)_  
+
+![](/images/2019-03-24_PacMAN.png){width=50%}  
+
+
+
+</center>  
+
+To ni tisti ETL za profesional IT z vso infrastrukturo. To je za uporabnika, ki drugače uporablja excel in word, pa bi rad potegnil skupaj podatke za kakšno leto nazaj.
+
+
+90% __Extract__: zanimivo bi bilo vedeti, koliko služb obstaja, zato ker ne znamo (nočemo, ne želimo) shranjevati podatkov v pravilni oblki in jih prepisujemo iz elektronske oblike v elektronsko obliko. Elektronsko tok podatkov, ha-ha.ha ... Excel, Word, PowerPoint: oblika je vsebina. Pa Power Query je šala. Saj dela, BUT (zelo dolg ampaaaaaak). 
+
+2% __Transfer__: če že uspeš izvleči, še kar gre. Pač nekam shraniš. 
+
+8% __Load__: tudi to gre, če si uspel izvleči. Z orodji kot so Power Bi in podobno, bi moralo biti enostavno. No ja, včasih. Če ni vmes datumov, posebnih znakov in šumnikov, decimalnih števil s pikami in vejicami, mešano lokalizacijo ...
+
+
+
+
+__Extract__:
+Ko obupaš nad power query, poskusiš s pandas, drugače pa zlog po zlog kot v txt3/transoform.py. Tokrat je bilo enostavneje:
+
+
+```{r, setup, include=FALSE}
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3")
+
+
+```
+
+
+```{python, eval=FALSE, echo=TRUE}
+#
+sDatoteka = fIzberiDatoteko()
+df = pd.read_excel(sDatoteka, sheetname=0, header=0, skiprows=1)
+
+sDatoteka = fIzberiDatoteko()
+df2 = pd.read_excel(sDatoteka, sheetname=0, header=0, skiprows=1)
+
+df = df.append(df2) #Appends the new data, to the end of dataframe
+df.to_excel("rezultat.xlsx", index = False)
+
+
+```
+
+
+Malo prilagojeno uporabniku je bil dodan tkinterjev dialog za izbiranje datoteke.
+
+```{python, eval=FALSE, echo=TRUE}
+#
+def fIzberiDatoteko():
+#File Select Dialog
+    from tkinter import filedialog
+    from tkinter import Tk
+    
+    try:
+        root = Tk()
+        root.withdraw()
+        root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("xls","*.xls"),("xlsx","*.xlsx"),("all files","*.*")))
+        sFileName = root.filename
+        root.quit()
+        return sFileName
+    except:
+        return ''
+
+```
+
+
+
+
+Pa še prototip za tkinter z oknom in gumbom in vnosnim poljem.  
+
+
+
+```{r, eval=FALSE, echo=TRUE}
+#
+import tkinter as tk
+from tkinter import filedialog
+from tkinter import messagebox
+
+
+class MainApplication(tk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        self.parent = parent
+                
+        self.mesec  = tk.Label(parent, text = "Mesec: ").pack(side="top")
+        self.vnos_text = tk.StringVar() 
+        self.sDatoteka = tk.StringVar()
+         
+        self.vnos_text.set(datumF)
+        self.vnos = tk.Entry(parent, textvariable = self.vnos_text).pack(side="top")
+       
+        self.btn1 = tk.Button(parent, height = 2, width = 12,
+                         text="  Tabela 1   ",
+                         command=self.fDodajT1).pack(side="bottom")
+      
+          
+    def fDodaj1(self):
+        self.sDatoteka = tk.filedialog.askopenfilename
+              (initialdir = "/",title = "Select file",
+              filetypes = (("xls","*.xls"),("all files","*.*")))     
+        try:
+            df = pd.read_excel("./DATA/T1.xlsx", sheetname=0, header=0, skiprows=0)
+            df2 = pd.read_excel(self.sDatoteka, sheetname=0, header=1, skiprows=0)   
+            df2['Datum_create'] = "{:%d.%m.%Y %H:%M:%S}"
+                                      .format(datetime.datetime.now())
+            df2['DatumF'] = str(self.vnos_text.get())
+            #Appends the new data, to the end of dataframe and keep column order
+            df = df.append(df2)[df.columns.tolist()] 
+            df.to_excel("./DATA/T1.xlsx", index = False)
+            tk.messagebox.showinfo("Information",self.sDatoteka + " dodana! ")
+        except:
+            tk.messagebox.showwarning("Information",self.sDatoteka 
+                          + " NI BILA DODANA! NAPAKA ")
+
+
+if __name__ == "__main__":  
+    #delovna mapa
+    #os.chdir(r"\")
+    root = tk.Tk()
+    root.title("Dodajanje datotek")
+    MainApplication(root).pack(side="top", fill="both", expand=True)
+    root.mainloop()
+
+
+
+```
+
+
+

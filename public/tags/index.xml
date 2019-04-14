@@ -6,10 +6,19 @@
     <description>Recent content in Tags on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Mon, 11 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ETL</title>
+      <link>/tags/etl/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/etl/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>MS Office</title>
@@ -32,7 +41,7 @@
     <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
@@ -59,7 +68,7 @@
     <item>
       <title>excel</title>
       <link>/tags/excel/</link>
-      <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/excel/</guid>
       <description></description>
@@ -86,7 +95,7 @@
     <item>
       <title>graf</title>
       <link>/tags/graf/</link>
-      <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/graf/</guid>
       <description></description>
@@ -113,7 +122,7 @@
     <item>
       <title>informacija</title>
       <link>/tags/informacija/</link>
-      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/informacija/</guid>
       <description></description>
@@ -140,7 +149,7 @@
     <item>
       <title>pandas</title>
       <link>/tags/pandas/</link>
-      <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/pandas/</guid>
       <description></description>
@@ -165,6 +174,15 @@
     </item>
     
     <item>
+      <title>powerbi</title>
+      <link>/tags/powerbi/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/powerbi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>predstavitev</title>
       <link>/tags/predstavitev/</link>
       <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
@@ -185,7 +203,7 @@
     <item>
       <title>python</title>
       <link>/tags/python/</link>
-      <pubDate>Sun, 17 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/python/</guid>
       <description></description>
@@ -194,7 +212,7 @@
     <item>
       <title>r</title>
       <link>/tags/r/</link>
-      <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
@@ -206,6 +224,15 @@
       <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/seaborn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>statistika</title>
+      <link>/tags/statistika/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/statistika/</guid>
       <description></description>
     </item>
     
@@ -224,6 +251,15 @@
       <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/time-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tkinter</title>
+      <link>/tags/tkinter/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tkinter/</guid>
       <description></description>
     </item>
     

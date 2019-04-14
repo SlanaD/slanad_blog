@@ -1,0 +1,155 @@
+---
+title: '[SLD] Pareto'
+author: SlanaD
+date: '2019-04-14'
+slug: sld-pareto
+categories:
+  - Python
+  - R Statistics
+tags:
+  - R
+  - python
+  - graf
+  - statistika
+  - informacija
+lastmod: '2019-04-14T19:54:51+02:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-14-04_VilfredoPareto.jpg
+
+---
+
+
+
+<center>
+<p><em>“Increase in the wealth per capita fosters democracy; but the latter, at least according to what we have been able to observe up to now, entails great destruction of wealth and even eventually dries up the sources of it. Hence it is its own grave-digger, it destroys what gave it birth.”</em></p>
+<p><em>“For many events, roughly 80% of the effects come from 20% of the causes”</em></p>
+<p><em><a href="https://www.performanceleadershipinstitute.com/blog/vilfredo-pareto-his-ratio-continuous-improvement1972517">Vilfredo Pareto</a></em></p>
+<div class="figure">
+<img src="/images/2019-14-04_VilfredoPareto.jpg" style="width:50.0%" />
+
+</div>
+</center>
+<p>Čeprav bi moral biti Pareto bolj poznan po svojih knjigag o ekonomiji (npr. <em>The Rise and Fall of Elites</em>), pa ga večina pozna po pravilu <em>80 - 20</em>, ki ga je po Paretu poimenoval <em>J.M. Juran</em>.</p>
+<p>Zanimivosti:</p>
+<ul>
+<li><p>Revolucije se zgodijo od spodaj navzgor ampak ob menjavi elit. Običajni ljudje zgolj podpirajo ene ali druge.</p></li>
+<li><p>Socialistične voditelje je poimenoval “aristokracija razbojnikov” in Marxa ni maral.</p></li>
+<li><p>Demokracija je iluzija, vladajoči razred se vedno pojavi in se obogati. Ključno vprašanje je kako aktivno vladajoči vladajo.</p></li>
+<li><p><em>Paretov optimum:</em> sistem se nahaja v ekonomskem maksimumu, ko nihče ne more izboljšati svojega položaja, brez da ga komu poslabša.</p></li>
+</ul>
+<p><strong>Paretov diagram</strong>: To je histogram, ki je urejen glede na frekvenco pojavov, ki prikazujejo, koliko rezultatov je povzročil posamezni prepoznani vzrok. Uporablja se med drugim v procesih zagotavljanja kakovosti.</p>
+<p>V R ga najlažje narišeš s paketom <em>qcc</em>:</p>
+<pre class="r"><code>library(qcc)
+
+napake        &lt;- c( 73,  25,  12,  14,  8)
+names(napake) &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;)
+
+pareto.chart(napake, 
+             ylab = &quot;Frekvenca napak&quot;,
+             ylab2 = &quot;Komulativa v %&quot;,
+             main=&quot;Vzorec pareto diagrama&quot;)</code></pre>
+<p><img src="/post/2019-04-14-sld-pareto_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre><code>##    
+## Pareto chart analysis for napake
+##      Frequency  Cum.Freq. Percentage Cum.Percent.
+##   A  73.000000  73.000000  55.303030    55.303030
+##   B  25.000000  98.000000  18.939394    74.242424
+##   D  14.000000 112.000000  10.606061    84.848485
+##   C  12.000000 124.000000   9.090909    93.939394
+##   E   8.000000 132.000000   6.060606   100.000000</code></pre>
+<p>Več o paketu <em>qcc</em>:</p>
+<ul>
+<li><p><a href="http://blog.yhat.com/posts/quality-control-in-r.html" class="uri">http://blog.yhat.com/posts/quality-control-in-r.html</a></p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/qcc/vignettes/qcc_a_quick_tour.html" class="uri">https://cran.r-project.org/web/packages/qcc/vignettes/qcc_a_quick_tour.html</a></p></li>
+</ul>
+<p>Če primerjamo podoben vzorec s običajnim <em>ggplot2</em> načinom, je <em>qcc</em> mnogo enostavnejši, samo oblikovanje po meri, pa je možno v obeh primerih.</p>
+<pre class="r"><code>library(knitr)
+library(ggplot2)
+
+imena    &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;)
+napake   &lt;- c( 73,  25,  12,  14,  8)
+
+df &lt;- data.frame(ime = imena, napake = napake, stringsAsFactors = FALSE)
+
+#razporedim padajoče brez tidyversa
+df &lt;- df[order(df$napake, decreasing = TRUE), ]
+
+#kategorične spremenljivke v faktorje in levelse določim enako razporejene, 
+#drugače ggplot razporedi sam razporedi po abecedi
+df$ime &lt;- factor(df$ime, 
+                    levels = df$ime[order(df$napake, decreasing = TRUE)])
+
+#komulativa
+df$komulativa &lt;- cumsum(df$napake)
+
+knitr::kable(df) #samo prikaz df v tabeli</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">ime</th>
+<th align="right">napake</th>
+<th align="right">komulativa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="left">A</td>
+<td align="right">73</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="left">B</td>
+<td align="right">25</td>
+<td align="right">98</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td align="left">D</td>
+<td align="right">14</td>
+<td align="right">112</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td align="left">C</td>
+<td align="right">12</td>
+<td align="right">124</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td align="left">E</td>
+<td align="right">8</td>
+<td align="right">132</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>ggplot(df, aes(x= df$ime, y=df$napake)) +
+  geom_bar(fill = &quot;#EE7600&quot;, stat=&quot;identity&quot;) + 
+  geom_point(aes(x= df$ime, y=df$komulativa), color = &quot;#1874CD&quot;, pch=16, size=2)  +
+  geom_path(aes(x= df$ime, y=df$komulativa, group=1), color = &quot;#1874CD&quot;, lty=2, size=0.9) + 
+  theme(axis.text.x = element_text(angle=90, vjust=0.6)) +
+  labs(title = &quot;Pareto diagram&quot;, subtitle = &quot;vzorec&quot;, x = &quot;vzorci&quot;, y =&quot;napake&quot;)</code></pre>
+<p><img src="/post/2019-04-14-sld-pareto_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>V Pythonu je zadeva podobna. Obstajajo paketi za izdelavo in obstaja “ročni” načih. V nadaljevanje izdelano z <em>matplotlib</em> brez kakšnih “import pareto”.</p>
+<pre class="python"><code>import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.ticker import PercentFormatter
+imena    = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;]
+napake   = [73,  25,  12,  14,  8]
+df = pd.DataFrame({&#39;napake&#39;: napake})
+df.index = imena
+df = df.sort_values(by=&quot;napake&quot;, ascending=False)
+df[&quot;cumpercentage&quot;] = df[&quot;napake&quot;].cumsum()/df[&quot;napake&quot;].sum()*100
+fig, ax = plt.subplots()
+ax.bar(df.index, df[&quot;napake&quot;], color=&quot;C0&quot;)
+ax2 = ax.twinx()
+ax2.plot(df.index, df[&quot;cumpercentage&quot;], color=&quot;C1&quot;, marker=&quot;D&quot;, ms=7)
+ax2.yaxis.set_major_formatter(PercentFormatter())
+ax.tick_params(axis=&quot;y&quot;, colors=&quot;C0&quot;)
+ax2.tick_params(axis=&quot;y&quot;, colors=&quot;C1&quot;)
+plt.show()</code></pre>
+<p><img src="/post/2019-04-14-sld-pareto_files/figure-html/Pareto-1.png" /><!-- --></p>

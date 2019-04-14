@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PowerBI on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/categories/powerbi/</link>
+    <description>Recent content in PowerBI on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/powerbi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] ETL - Extract, Transfer, Load</title>
+      <link>/post/sld-etl-extract-transfer-load/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-etl-extract-transfer-load/</guid>
+      <description>“Data that is loved tends to survive.”
+Kurt Bollacker
+To ni tisti ETL za profesional IT z vso infrastrukturo. To je za uporabnika, ki drugače uporablja excel in word, pa bi rad potegnil skupaj podatke za kakšno leto nazaj.
+90% Extract: zanimivo bi bilo vedeti, koliko služb obstaja, zato ker ne znamo (nočemo, ne želimo) shranjevati podatkov v pravilni oblki in jih prepisujemo iz elektronske oblike v elektronsko obliko.</description>
+    </item>
+    
+  </channel>
+</rss>

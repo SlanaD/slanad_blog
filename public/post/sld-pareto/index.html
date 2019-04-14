@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] Pareto - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="“Increase in the wealth per capita fosters democracy; but the latter, at least according to what we have been able to observe up to now, entails great destruction of wealth and even eventually dries up the sources of it. Hence it is its own grave-digger, it destroys what gave it birth.”
+“For many events, roughly 80% of the effects come from 20% of the causes”
+Vilfredo Pareto
+Čeprav bi moral biti Pareto bolj poznan po svojih knjigag o ekonomiji (npr." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-pareto/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] Pareto" />
+<meta property="og:description" content="“Increase in the wealth per capita fosters democracy; but the latter, at least according to what we have been able to observe up to now, entails great destruction of wealth and even eventually dries up the sources of it. Hence it is its own grave-digger, it destroys what gave it birth.”
+“For many events, roughly 80% of the effects come from 20% of the causes”
+Vilfredo Pareto
+Čeprav bi moral biti Pareto bolj poznan po svojih knjigag o ekonomiji (npr." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-pareto/" />
+<meta property="article:published_time" content="2019-04-14T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-04-14T19:54:51&#43;02:00"/>
+
+<meta itemprop="name" content="[SLD] Pareto">
+<meta itemprop="description" content="“Increase in the wealth per capita fosters democracy; but the latter, at least according to what we have been able to observe up to now, entails great destruction of wealth and even eventually dries up the sources of it. Hence it is its own grave-digger, it destroys what gave it birth.”
+“For many events, roughly 80% of the effects come from 20% of the causes”
+Vilfredo Pareto
+Čeprav bi moral biti Pareto bolj poznan po svojih knjigag o ekonomiji (npr.">
+
+
+<meta itemprop="datePublished" content="2019-04-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-04-14T19:54:51&#43;02:00" />
+<meta itemprop="wordCount" content="531">
+
+
+
+<meta itemprop="keywords" content="R,python,graf,statistika,informacija," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] Pareto"/>
+<meta name="twitter:description" content="“Increase in the wealth per capita fosters democracy; but the latter, at least according to what we have been able to observe up to now, entails great destruction of wealth and even eventually dries up the sources of it. Hence it is its own grave-digger, it destroys what gave it birth.”
+“For many events, roughly 80% of the effects come from 20% of the causes”
+Vilfredo Pareto
+Čeprav bi moral biti Pareto bolj poznan po svojih knjigag o ekonomiji (npr."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] Pareto</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-14 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            <a href="/categories/r-statistics/"> R Statistics </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>“Increase in the wealth per capita fosters democracy; but the latter, at least according to what we have been able to observe up to now, entails great destruction of wealth and even eventually dries up the sources of it. Hence it is its own grave-digger, it destroys what gave it birth.”</em></p>
+<p><em>“For many events, roughly 80% of the effects come from 20% of the causes”</em></p>
+<p><em><a href="https://www.performanceleadershipinstitute.com/blog/vilfredo-pareto-his-ratio-continuous-improvement1972517">Vilfredo Pareto</a></em></p>
+<div class="figure">
+<img src="/images/2019-14-04_VilfredoPareto.jpg" style="width:50.0%" />
+
+</div>
+</center>
+<p>Čeprav bi moral biti Pareto bolj poznan po svojih knjigag o ekonomiji (npr. <em>The Rise and Fall of Elites</em>), pa ga večina pozna po pravilu <em>80 - 20</em>, ki ga je po Paretu poimenoval <em>J.M. Juran</em>.</p>
+<p>Zanimivosti:</p>
+<ul>
+<li><p>Revolucije se zgodijo od spodaj navzgor ampak ob menjavi elit. Običajni ljudje zgolj podpirajo ene ali druge.</p></li>
+<li><p>Socialistične voditelje je poimenoval “aristokracija razbojnikov” in Marxa ni maral.</p></li>
+<li><p>Demokracija je iluzija, vladajoči razred se vedno pojavi in se obogati. Ključno vprašanje je kako aktivno vladajoči vladajo.</p></li>
+<li><p><em>Paretov optimum:</em> sistem se nahaja v ekonomskem maksimumu, ko nihče ne more izboljšati svojega položaja, brez da ga komu poslabša.</p></li>
+</ul>
+<p><strong>Paretov diagram</strong>: To je histogram, ki je urejen glede na frekvenco pojavov, ki prikazujejo, koliko rezultatov je povzročil posamezni prepoznani vzrok. Uporablja se med drugim v procesih zagotavljanja kakovosti.</p>
+<p>V R ga najlažje narišeš s paketom <em>qcc</em>:</p>
+<pre class="r"><code>library(qcc)
+
+napake        &lt;- c( 73,  25,  12,  14,  8)
+names(napake) &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;)
+
+pareto.chart(napake, 
+             ylab = &quot;Frekvenca napak&quot;,
+             ylab2 = &quot;Komulativa v %&quot;,
+             main=&quot;Vzorec pareto diagrama&quot;)</code></pre>
+<p><img src="/post/2019-04-14-sld-pareto_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre><code>##    
+## Pareto chart analysis for napake
+##      Frequency  Cum.Freq. Percentage Cum.Percent.
+##   A  73.000000  73.000000  55.303030    55.303030
+##   B  25.000000  98.000000  18.939394    74.242424
+##   D  14.000000 112.000000  10.606061    84.848485
+##   C  12.000000 124.000000   9.090909    93.939394
+##   E   8.000000 132.000000   6.060606   100.000000</code></pre>
+<p>Več o paketu <em>qcc</em>:</p>
+<ul>
+<li><p><a href="http://blog.yhat.com/posts/quality-control-in-r.html" class="uri">http://blog.yhat.com/posts/quality-control-in-r.html</a></p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/qcc/vignettes/qcc_a_quick_tour.html" class="uri">https://cran.r-project.org/web/packages/qcc/vignettes/qcc_a_quick_tour.html</a></p></li>
+</ul>
+<p>Če primerjamo podoben vzorec s običajnim <em>ggplot2</em> načinom, je <em>qcc</em> mnogo enostavnejši, samo oblikovanje po meri, pa je možno v obeh primerih.</p>
+<pre class="r"><code>library(knitr)
+library(ggplot2)
+
+imena    &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;)
+napake   &lt;- c( 73,  25,  12,  14,  8)
+
+df &lt;- data.frame(ime = imena, napake = napake, stringsAsFactors = FALSE)
+
+#razporedim padajoče brez tidyversa
+df &lt;- df[order(df$napake, decreasing = TRUE), ]
+
+#kategorične spremenljivke v faktorje in levelse določim enako razporejene, 
+#drugače ggplot razporedi sam razporedi po abecedi
+df$ime &lt;- factor(df$ime, 
+                    levels = df$ime[order(df$napake, decreasing = TRUE)])
+
+#komulativa
+df$komulativa &lt;- cumsum(df$napake)
+
+knitr::kable(df) #samo prikaz df v tabeli</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">ime</th>
+<th align="right">napake</th>
+<th align="right">komulativa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="left">A</td>
+<td align="right">73</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="left">B</td>
+<td align="right">25</td>
+<td align="right">98</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td align="left">D</td>
+<td align="right">14</td>
+<td align="right">112</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td align="left">C</td>
+<td align="right">12</td>
+<td align="right">124</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td align="left">E</td>
+<td align="right">8</td>
+<td align="right">132</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>ggplot(df, aes(x= df$ime, y=df$napake)) +
+  geom_bar(fill = &quot;#EE7600&quot;, stat=&quot;identity&quot;) + 
+  geom_point(aes(x= df$ime, y=df$komulativa), color = &quot;#1874CD&quot;, pch=16, size=2)  +
+  geom_path(aes(x= df$ime, y=df$komulativa, group=1), color = &quot;#1874CD&quot;, lty=2, size=0.9) + 
+  theme(axis.text.x = element_text(angle=90, vjust=0.6)) +
+  labs(title = &quot;Pareto diagram&quot;, subtitle = &quot;vzorec&quot;, x = &quot;vzorci&quot;, y =&quot;napake&quot;)</code></pre>
+<p><img src="/post/2019-04-14-sld-pareto_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>V Pythonu je zadeva podobna. Obstajajo paketi za izdelavo in obstaja “ročni” načih. V nadaljevanje izdelano z <em>matplotlib</em> brez kakšnih “import pareto”.</p>
+<pre class="python"><code>import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.ticker import PercentFormatter
+imena    = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;]
+napake   = [73,  25,  12,  14,  8]
+df = pd.DataFrame({&#39;napake&#39;: napake})
+df.index = imena
+df = df.sort_values(by=&quot;napake&quot;, ascending=False)
+df[&quot;cumpercentage&quot;] = df[&quot;napake&quot;].cumsum()/df[&quot;napake&quot;].sum()*100
+fig, ax = plt.subplots()
+ax.bar(df.index, df[&quot;napake&quot;], color=&quot;C0&quot;)
+ax2 = ax.twinx()
+ax2.plot(df.index, df[&quot;cumpercentage&quot;], color=&quot;C1&quot;, marker=&quot;D&quot;, ms=7)
+ax2.yaxis.set_major_formatter(PercentFormatter())
+ax.tick_params(axis=&quot;y&quot;, colors=&quot;C0&quot;)
+ax2.tick_params(axis=&quot;y&quot;, colors=&quot;C1&quot;)
+plt.show()</code></pre>
+<p><img src="/post/2019-04-14-sld-pareto_files/figure-html/Pareto-1.png" /><!-- --></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-04-14</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/r/">R</a>
+          <a href="/tags/python/">python</a>
+          <a href="/tags/graf/">graf</a>
+          <a href="/tags/statistika/">statistika</a>
+          <a href="/tags/informacija/">informacija</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/sld-etl-extract-transfer-load/">
+            <span class="next-text nav-default">[SLD] ETL - Extract, Transfer, Load</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] ETL - Extract, Transfer, Load - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="“Data that is loved tends to survive.”
+Kurt Bollacker
+To ni tisti ETL za profesional IT z vso infrastrukturo. To je za uporabnika, ki drugače uporablja excel in word, pa bi rad potegnil skupaj podatke za kakšno leto nazaj.
+90% Extract: zanimivo bi bilo vedeti, koliko služb obstaja, zato ker ne znamo (nočemo, ne želimo) shranjevati podatkov v pravilni oblki in jih prepisujemo iz elektronske oblike v elektronsko obliko." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-etl-extract-transfer-load/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] ETL - Extract, Transfer, Load" />
+<meta property="og:description" content="“Data that is loved tends to survive.”
+Kurt Bollacker
+To ni tisti ETL za profesional IT z vso infrastrukturo. To je za uporabnika, ki drugače uporablja excel in word, pa bi rad potegnil skupaj podatke za kakšno leto nazaj.
+90% Extract: zanimivo bi bilo vedeti, koliko služb obstaja, zato ker ne znamo (nočemo, ne želimo) shranjevati podatkov v pravilni oblki in jih prepisujemo iz elektronske oblike v elektronsko obliko." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-etl-extract-transfer-load/" />
+<meta property="article:published_time" content="2019-03-24T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-03-24T11:26:14&#43;01:00"/>
+
+<meta itemprop="name" content="[SLD] ETL - Extract, Transfer, Load">
+<meta itemprop="description" content="“Data that is loved tends to survive.”
+Kurt Bollacker
+To ni tisti ETL za profesional IT z vso infrastrukturo. To je za uporabnika, ki drugače uporablja excel in word, pa bi rad potegnil skupaj podatke za kakšno leto nazaj.
+90% Extract: zanimivo bi bilo vedeti, koliko služb obstaja, zato ker ne znamo (nočemo, ne želimo) shranjevati podatkov v pravilni oblki in jih prepisujemo iz elektronske oblike v elektronsko obliko.">
+
+
+<meta itemprop="datePublished" content="2019-03-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-03-24T11:26:14&#43;01:00" />
+<meta itemprop="wordCount" content="409">
+
+
+
+<meta itemprop="keywords" content="excel,python,pandas,powerbi,tkinter,ETL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] ETL - Extract, Transfer, Load"/>
+<meta name="twitter:description" content="“Data that is loved tends to survive.”
+Kurt Bollacker
+To ni tisti ETL za profesional IT z vso infrastrukturo. To je za uporabnika, ki drugače uporablja excel in word, pa bi rad potegnil skupaj podatke za kakšno leto nazaj.
+90% Extract: zanimivo bi bilo vedeti, koliko služb obstaja, zato ker ne znamo (nočemo, ne želimo) shranjevati podatkov v pravilni oblki in jih prepisujemo iz elektronske oblike v elektronsko obliko."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] ETL - Extract, Transfer, Load</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-24 </span>
+        <div class="post-category">
+            <a href="/categories/powerbi/"> PowerBI </a>
+            <a href="/categories/python/"> Python </a>
+            <a href="/categories/excel/"> Excel </a>
+            <a href="/categories/pandas/"> Pandas </a>
+            <a href="/categories/etl/"> ETL </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>“Data that is loved tends to survive.”</em></p>
+<p><em><a href="https://dblp.org/pers/hd/b/Bollacker:Kurt_D=">Kurt Bollacker</a></em></p>
+<div class="figure">
+<img src="/images/2019-03-24_PacMAN.png" style="width:50.0%" />
+
+</div>
+</center>
+<p>To ni tisti ETL za profesional IT z vso infrastrukturo. To je za uporabnika, ki drugače uporablja excel in word, pa bi rad potegnil skupaj podatke za kakšno leto nazaj.</p>
+<p>90% <strong>Extract</strong>: zanimivo bi bilo vedeti, koliko služb obstaja, zato ker ne znamo (nočemo, ne želimo) shranjevati podatkov v pravilni oblki in jih prepisujemo iz elektronske oblike v elektronsko obliko. Elektronsko tok podatkov, ha-ha.ha … Excel, Word, PowerPoint: oblika je vsebina. Pa Power Query je šala. Saj dela, BUT (zelo dolg ampaaaaaak).</p>
+<p>2% <strong>Transfer</strong>: če že uspeš izvleči, še kar gre. Pač nekam shraniš.</p>
+<p>8% <strong>Load</strong>: tudi to gre, če si uspel izvleči. Z orodji kot so Power Bi in podobno, bi moralo biti enostavno. No ja, včasih. Če ni vmes datumov, posebnih znakov in šumnikov, decimalnih števil s pikami in vejicami, mešano lokalizacijo …</p>
+<p><strong>Extract</strong>: Ko obupaš nad power query, poskusiš s pandas, drugače pa zlog po zlog kot v txt3/transoform.py. Tokrat je bilo enostavneje:</p>
+<pre class="python"><code>#
+sDatoteka = fIzberiDatoteko()
+df = pd.read_excel(sDatoteka, sheetname=0, header=0, skiprows=1)
+sDatoteka = fIzberiDatoteko()
+df2 = pd.read_excel(sDatoteka, sheetname=0, header=0, skiprows=1)
+df = df.append(df2) #Appends the new data, to the end of dataframe
+df.to_excel(&quot;rezultat.xlsx&quot;, index = False)</code></pre>
+<p>Malo prilagojeno uporabniku je bil dodan tkinterjev dialog za izbiranje datoteke.</p>
+<pre class="python"><code>#
+def fIzberiDatoteko():
+#File Select Dialog
+    from tkinter import filedialog
+    from tkinter import Tk
+    
+    try:
+        root = Tk()
+        root.withdraw()
+        root.filename =  filedialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;xls&quot;,&quot;*.xls&quot;),(&quot;xlsx&quot;,&quot;*.xlsx&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+        sFileName = root.filename
+        root.quit()
+        return sFileName
+    except:
+        return &#39;&#39;</code></pre>
+<p>Pa še prototip za tkinter z oknom in gumbom in vnosnim poljem.</p>
+<pre class="r"><code>#
+import tkinter as tk
+from tkinter import filedialog
+from tkinter import messagebox
+
+
+class MainApplication(tk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        self.parent = parent
+                
+        self.mesec  = tk.Label(parent, text = &quot;Mesec: &quot;).pack(side=&quot;top&quot;)
+        self.vnos_text = tk.StringVar() 
+        self.sDatoteka = tk.StringVar()
+         
+        self.vnos_text.set(datumF)
+        self.vnos = tk.Entry(parent, textvariable = self.vnos_text).pack(side=&quot;top&quot;)
+       
+        self.btn1 = tk.Button(parent, height = 2, width = 12,
+                         text=&quot;  Tabela 1   &quot;,
+                         command=self.fDodajT1).pack(side=&quot;bottom&quot;)
+      
+          
+    def fDodaj1(self):
+        self.sDatoteka = tk.filedialog.askopenfilename
+              (initialdir = &quot;/&quot;,title = &quot;Select file&quot;,
+              filetypes = ((&quot;xls&quot;,&quot;*.xls&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))     
+        try:
+            df = pd.read_excel(&quot;./DATA/T1.xlsx&quot;, sheetname=0, header=0, skiprows=0)
+            df2 = pd.read_excel(self.sDatoteka, sheetname=0, header=1, skiprows=0)   
+            df2[&#39;Datum_create&#39;] = &quot;{:%d.%m.%Y %H:%M:%S}&quot;
+                                      .format(datetime.datetime.now())
+            df2[&#39;DatumF&#39;] = str(self.vnos_text.get())
+            #Appends the new data, to the end of dataframe and keep column order
+            df = df.append(df2)[df.columns.tolist()] 
+            df.to_excel(&quot;./DATA/T1.xlsx&quot;, index = False)
+            tk.messagebox.showinfo(&quot;Information&quot;,self.sDatoteka + &quot; dodana! &quot;)
+        except:
+            tk.messagebox.showwarning(&quot;Information&quot;,self.sDatoteka 
+                          + &quot; NI BILA DODANA! NAPAKA &quot;)
+
+
+if __name__ == &quot;__main__&quot;:  
+    #delovna mapa
+    #os.chdir(r&quot;\&quot;)
+    root = tk.Tk()
+    root.title(&quot;Dodajanje datotek&quot;)
+    MainApplication(root).pack(side=&quot;top&quot;, fill=&quot;both&quot;, expand=True)
+    root.mainloop()</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-03-24</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/excel/">excel</a>
+          <a href="/tags/python/">python</a>
+          <a href="/tags/pandas/">pandas</a>
+          <a href="/tags/powerbi/">powerbi</a>
+          <a href="/tags/tkinter/">tkinter</a>
+          <a href="/tags/etl/">ETL</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/sld-pareto/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">[SLD] Pareto</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/sld-nekaj-elektrike/">
+            <span class="next-text nav-default">[SLD] Nekaj elektrike</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

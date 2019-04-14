@@ -1,0 +1,155 @@
+---
+title: '[SLD] Pareto'
+author: SlanaD
+date: '2019-04-14'
+slug: sld-pareto
+categories:
+  - Python
+  - R Statistics
+tags:
+  - R
+  - python
+  - graf
+  - statistika
+  - informacija
+lastmod: '2019-04-14T19:54:51+02:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-14-04_VilfredoPareto.jpg
+
+---
+
+<center>
+
+_"Increase in the wealth per capita fosters democracy; but the latter, at least according to what we have been able to observe up to now, entails great destruction of wealth and even eventually dries up the sources of it. Hence it is its own grave-digger, it destroys what gave it birth."_  
+
+_"For many events, roughly 80% of the effects come from 20% of the causes"_  
+
+_[Vilfredo Pareto](https://www.performanceleadershipinstitute.com/blog/vilfredo-pareto-his-ratio-continuous-improvement1972517)_  
+
+![](/images/2019-14-04_VilfredoPareto.jpg){width=50%}  
+
+
+
+</center>  
+
+
+Čeprav bi moral biti Pareto bolj poznan po svojih knjigag o ekonomiji (npr. _The Rise and Fall of Elites_), pa ga večina pozna po pravilu _80 - 20_, ki ga je po Paretu poimenoval _J.M. Juran_.  
+
+Zanimivosti: 
+
+  - Revolucije se zgodijo od spodaj navzgor ampak ob menjavi elit. Običajni ljudje zgolj podpirajo ene ali druge.
+
+  - Socialistične voditelje je poimenoval "aristokracija razbojnikov" in Marxa ni maral.
+
+  - Demokracija je iluzija, vladajoči razred se vedno pojavi in se obogati. Ključno vprašanje je kako aktivno vladajoči vladajo.
+
+  - _Paretov optimum:_  sistem se nahaja v ekonomskem maksimumu, ko nihče ne more izboljšati svojega položaja, brez da ga komu poslabša.
+
+
+__Paretov diagram__: To je histogram, ki je urejen glede na frekvenco pojavov, ki prikazujejo, koliko rezultatov je povzročil posamezni prepoznani vzrok. Uporablja se med drugim v procesih zagotavljanja kakovosti.
+
+
+V R ga najlažje narišeš s paketom _qcc_:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE }
+
+library(qcc)
+
+napake        <- c( 73,  25,  12,  14,  8)
+names(napake) <- c("A", "B", "C", "D", "E")
+
+pareto.chart(napake, 
+             ylab = "Frekvenca napak",
+             ylab2 = "Komulativa v %",
+             main="Vzorec pareto diagrama")
+
+
+```
+
+Več o paketu _qcc_:
+
+  - http://blog.yhat.com/posts/quality-control-in-r.html
+  
+  - https://cran.r-project.org/web/packages/qcc/vignettes/qcc_a_quick_tour.html
+  
+  
+
+Če primerjamo podoben vzorec s običajnim _ggplot2_ načinom, je _qcc_ mnogo enostavnejši, samo oblikovanje po meri, pa je možno v obeh primerih.
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE }
+library(knitr)
+library(ggplot2)
+
+imena    <- c("A", "B", "C", "D", "E")
+napake   <- c( 73,  25,  12,  14,  8)
+
+df <- data.frame(ime = imena, napake = napake, stringsAsFactors = FALSE)
+
+#razporedim padajoče brez tidyversa
+df <- df[order(df$napake, decreasing = TRUE), ]
+
+#kategorične spremenljivke v faktorje in levelse določim enako razporejene, 
+#drugače ggplot razporedi sam razporedi po abecedi
+df$ime <- factor(df$ime, 
+                    levels = df$ime[order(df$napake, decreasing = TRUE)])
+
+#komulativa
+df$komulativa <- cumsum(df$napake)
+
+knitr::kable(df) #samo prikaz df v tabeli
+
+ggplot(df, aes(x= df$ime, y=df$napake)) +
+  geom_bar(fill = "#EE7600", stat="identity") + 
+  geom_point(aes(x= df$ime, y=df$komulativa), color = "#1874CD", pch=16, size=2)  +
+  geom_path(aes(x= df$ime, y=df$komulativa, group=1), color = "#1874CD", lty=2, size=0.9) + 
+  theme(axis.text.x = element_text(angle=90, vjust=0.6)) +
+  labs(title = "Pareto diagram", subtitle = "vzorec", x = "vzorci", y ="napake")
+
+```
+
+
+
+```{r, setup, include=FALSE}
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3")
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+
+```
+
+
+V Pythonu je zadeva podobna. Obstajajo paketi za izdelavo in obstaja "ročni" načih. V nadaljevanje izdelano z _matplotlib_ brez kakšnih "import pareto".
+
+
+```{python Pareto}
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.ticker import PercentFormatter
+
+
+imena    = ["A", "B", "C", "D", "E"]
+napake   = [73,  25,  12,  14,  8]
+
+df = pd.DataFrame({'napake': napake})
+df.index = imena
+
+df = df.sort_values(by="napake", ascending=False)
+df["cumpercentage"] = df["napake"].cumsum()/df["napake"].sum()*100
+
+
+fig, ax = plt.subplots()
+ax.bar(df.index, df["napake"], color="C0")
+ax2 = ax.twinx()
+ax2.plot(df.index, df["cumpercentage"], color="C1", marker="D", ms=7)
+ax2.yaxis.set_major_formatter(PercentFormatter())
+
+ax.tick_params(axis="y", colors="C0")
+ax2.tick_params(axis="y", colors="C1")
+plt.show()
+
+
+```
+

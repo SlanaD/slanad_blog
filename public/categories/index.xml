@@ -11,18 +11,45 @@
     
     
     <item>
+      <title>ETL</title>
+      <link>/categories/etl/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/etl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Excel</title>
       <link>/categories/excel/</link>
-      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/excel/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Pandas</title>
+      <link>/categories/pandas/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PowerBI</title>
+      <link>/categories/powerbi/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/powerbi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Python</title>
       <link>/categories/python/</link>
-      <pubDate>Sun, 17 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/python/</guid>
       <description></description>
@@ -34,6 +61,15 @@
       <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R Statistics</title>
+      <link>/categories/r-statistics/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/r-statistics/</guid>
       <description></description>
     </item>
     
