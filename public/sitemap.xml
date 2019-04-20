@@ -101,7 +101,7 @@
   
   <url>
     <loc>/categories/excel/</loc>
-    <lastmod>2019-03-24T11:26:14+01:00</lastmod>
+    <lastmod>2019-04-14T19:54:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -157,13 +157,6 @@
   
   <url>
     <loc>/categories/r/</loc>
-    <lastmod>2019-03-23T08:28:33+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/r-statistics/</loc>
     <lastmod>2019-04-14T19:54:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -172,6 +165,13 @@
   <url>
     <loc>/tags/surs/</loc>
     <lastmod>2019-02-24T19:10:04+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/statistics/</loc>
+    <lastmod>2019-04-14T19:54:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -186,6 +186,13 @@
   <url>
     <loc>/categories/time-series/</loc>
     <lastmod>2019-03-23T08:28:33+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/vba/</loc>
+    <lastmod>2019-04-14T19:54:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -206,7 +213,7 @@
   
   <url>
     <loc>/tags/excel/</loc>
-    <lastmod>2019-03-24T11:26:14+01:00</lastmod>
+    <lastmod>2019-04-14T19:54:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -277,6 +284,13 @@
   <url>
     <loc>/tags/pandas/</loc>
     <lastmod>2019-03-24T11:26:14+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/pareto/</loc>
+    <lastmod>2019-04-14T19:54:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
