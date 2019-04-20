@@ -48,7 +48,7 @@ Zanimivosti:
 
   - Socialistične voditelje je poimenoval "aristokracija razbojnikov" in Marxa ni maral.
 
-  - Demokracija je iluzija, vladajoči razred se vedno pojavi in se obogati. Ključno vprašanje je kako aktivno vladajoči vladajo.
+  - Demokracija je iluzija, vladajoči razred se vedno pojavi in se obogati. Ključno vprašanje je, kako aktivno vladajoči vladajo.
 
   - _Paretov optimum:_  sistem se nahaja v ekonomskem maksimumu, ko nihče ne more izboljšati svojega položaja, brez da ga komu poslabša.
 
@@ -83,7 +83,7 @@ Več o paketu _qcc_:
   
   
 
-Če primerjamo podoben vzorec s običajnim _ggplot2_ načinom, je _qcc_ mnogo enostavnejši, samo oblikovanje po meri, pa je možno v obeh primerih.
+Če primerjam podoben vzorec s običajnim _ggplot2_ načinom, je _qcc_ mnogo enostavnejši, samo oblikovanje po meri, pa je možno v obeh primerih.
 
 ***
 
@@ -176,42 +176,43 @@ plt.show()
 
 Da ne pozabim na excel, kjer je vstavljanje Pareto diagrama v Excel2016 lepo integrirano in enostavno. Makro spodaj je samo za reproduktivni prikaz, enostavneje je preko menija.
 
-```{R, eval=FALSE, echo=TRUE, message=FALSE, error=FALSE, warning=FALSE}
-#kopiraš kot makro v excel brez oznak za komentarje
-# 
-# 'Podatki
-#     Range("A1").Value = "ime"
-#     Range("A2").Value = "A"
-#     Range("A3").Value = "B"
-#     Range("A4").Value = "C"
-#     Range("A5").Value = "D"
-#     Range("A6").Value = "E"
-#     
-#     Range("B1").Value = "napaka"
-#     Range("B2").Value = "73"
-#     Range("B3").Value = "25"
-#     Range("B4").Value = "12"
-#     Range("B5").Value = "14"
-#     Range("B6").Value = "8"
-# 
-# 'Tabela iz podatkov
-#     Set tabela = ActiveSheet.ListObjects.Add(xlSrcRange, Range("$A$1:$B$6"), , xlYes)
-#     tabela.Range.Select
-# 'Pareto diagram
-#     Set graf = ActiveSheet.Shapes.AddChart2(366, xlPareto)
-#     graf.Chart.ChartTitle.Text = "Pareto"
-#     With graf
-#         .Top = Range("B8").Top
-#         .Left = Range("B8").Left
-#     End With
-#  
-# }
+<pre class="sourceCode VBA"><code>
+'Podatki
+    Range("A1").Value = "ime"
+    Range("A2").Value = "A"
+    Range("A3").Value = "B"
+    Range("A4").Value = "C"
+    Range("A5").Value = "D"
+    Range("A6").Value = "E"
 
-```
+    Range("B1").Value = "napaka"
+    Range("B2").Value = "73"
+    Range("B3").Value = "25"
+    Range("B4").Value = "12"
+    Range("B5").Value = "14"
+    Range("B6").Value = "8"
+
+'Tabela iz podatkov
+    Set tabela = ActiveSheet.ListObjects.Add(xlSrcRange, Range("$A$1:$B$6"), , xlYes)
+    tabela.Range.Select
+'Pareto diagram
+    Set graf = ActiveSheet.Shapes.AddChart2(366, xlPareto)
+    graf.Chart.ChartTitle.Text = "Pareto"
+    With graf
+        .Top = Range("B8").Top
+        .Left = Range("B8").Left
+    End With
+
+</code></pre>
 
 
 Ukaz za vstavljanje najdeš v meniju "Vstavi" med grafikoni.  
 ![](/images/2019-04-14 Pareto.png){width=70%}
+
+
+
+
+
 
 
 

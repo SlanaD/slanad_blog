@@ -41,7 +41,7 @@ image: /images/2019-14-04_VilfredoPareto.jpg
 <ul>
 <li><p>Revolucije se ne zgodijo od spodaj navzgor ampak ob menjavi elit. Običajni ljudje zgolj podpirajo ene ali druge.</p></li>
 <li><p>Socialistične voditelje je poimenoval “aristokracija razbojnikov” in Marxa ni maral.</p></li>
-<li><p>Demokracija je iluzija, vladajoči razred se vedno pojavi in se obogati. Ključno vprašanje je kako aktivno vladajoči vladajo.</p></li>
+<li><p>Demokracija je iluzija, vladajoči razred se vedno pojavi in se obogati. Ključno vprašanje je, kako aktivno vladajoči vladajo.</p></li>
 <li><p><em>Paretov optimum:</em> sistem se nahaja v ekonomskem maksimumu, ko nihče ne more izboljšati svojega položaja, brez da ga komu poslabša.</p></li>
 </ul>
 <p><strong>Paretov diagram</strong>: To je histogram, ki je urejen glede na frekvenco pojavov, ki prikazujejo, koliko rezultatov je povzročil posamezni prepoznani vzrok. Uporablja se med drugim v procesih zagotavljanja kakovosti.</p>
@@ -71,7 +71,7 @@ pareto.chart(napake,
 <li><p><a href="http://blog.yhat.com/posts/quality-control-in-r.html" class="uri">http://blog.yhat.com/posts/quality-control-in-r.html</a></p></li>
 <li><p><a href="https://cran.r-project.org/web/packages/qcc/vignettes/qcc_a_quick_tour.html" class="uri">https://cran.r-project.org/web/packages/qcc/vignettes/qcc_a_quick_tour.html</a></p></li>
 </ul>
-<p>Če primerjamo podoben vzorec s običajnim <em>ggplot2</em> načinom, je <em>qcc</em> mnogo enostavnejši, samo oblikovanje po meri, pa je možno v obeh primerih.</p>
+<p>Če primerjam podoben vzorec s običajnim <em>ggplot2</em> načinom, je <em>qcc</em> mnogo enostavnejši, samo oblikovanje po meri, pa je možno v obeh primerih.</p>
 <hr />
 <div>
 <details> <summary> <i>KLIKNI ZA 2. PRIMER </i> </summary>
@@ -175,35 +175,34 @@ plt.show()</code></pre>
 <div id="excel" class="section level2">
 <h2>Excel</h2>
 <p>Da ne pozabim na excel, kjer je vstavljanje Pareto diagrama v Excel2016 lepo integrirano in enostavno. Makro spodaj je samo za reproduktivni prikaz, enostavneje je preko menija.</p>
-<pre class="r"><code>#kopiraš kot makro v excel brez oznak za komentarje
-# 
-# &#39;Podatki
-#     Range(&quot;A1&quot;).Value = &quot;ime&quot;
-#     Range(&quot;A2&quot;).Value = &quot;A&quot;
-#     Range(&quot;A3&quot;).Value = &quot;B&quot;
-#     Range(&quot;A4&quot;).Value = &quot;C&quot;
-#     Range(&quot;A5&quot;).Value = &quot;D&quot;
-#     Range(&quot;A6&quot;).Value = &quot;E&quot;
-#     
-#     Range(&quot;B1&quot;).Value = &quot;napaka&quot;
-#     Range(&quot;B2&quot;).Value = &quot;73&quot;
-#     Range(&quot;B3&quot;).Value = &quot;25&quot;
-#     Range(&quot;B4&quot;).Value = &quot;12&quot;
-#     Range(&quot;B5&quot;).Value = &quot;14&quot;
-#     Range(&quot;B6&quot;).Value = &quot;8&quot;
-# 
-# &#39;Tabela iz podatkov
-#     Set tabela = ActiveSheet.ListObjects.Add(xlSrcRange, Range(&quot;$A$1:$B$6&quot;), , xlYes)
-#     tabela.Range.Select
-# &#39;Pareto diagram
-#     Set graf = ActiveSheet.Shapes.AddChart2(366, xlPareto)
-#     graf.Chart.ChartTitle.Text = &quot;Pareto&quot;
-#     With graf
-#         .Top = Range(&quot;B8&quot;).Top
-#         .Left = Range(&quot;B8&quot;).Left
-#     End With
-#  
-# }</code></pre>
+<pre class="sourceCode VBA"><code>
+'Podatki
+    Range("A1").Value = "ime"
+    Range("A2").Value = "A"
+    Range("A3").Value = "B"
+    Range("A4").Value = "C"
+    Range("A5").Value = "D"
+    Range("A6").Value = "E"
+
+    Range("B1").Value = "napaka"
+    Range("B2").Value = "73"
+    Range("B3").Value = "25"
+    Range("B4").Value = "12"
+    Range("B5").Value = "14"
+    Range("B6").Value = "8"
+
+'Tabela iz podatkov
+    Set tabela = ActiveSheet.ListObjects.Add(xlSrcRange, Range("$A$1:$B$6"), , xlYes)
+    tabela.Range.Select
+'Pareto diagram
+    Set graf = ActiveSheet.Shapes.AddChart2(366, xlPareto)
+    graf.Chart.ChartTitle.Text = "Pareto"
+    With graf
+        .Top = Range("B8").Top
+        .Left = Range("B8").Left
+    End With
+
+</code></pre>
 <p>Ukaz za vstavljanje najdeš v meniju “Vstavi” med grafikoni.<br />
 <img src="/images/2019-04-14%20Pareto.png" style="width:70.0%" /></p>
 </div>
