@@ -1,0 +1,67 @@
+---
+title: "Untitled"
+author: "Danilo Slana"
+date: "1 5 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(reticulate)
+use_condaenv("base")
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3")
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+```
+
+```{python}
+a=1
+import pandas
+import matplotlib.pyplot as plt
+import numpy as np
+
+t = np.arange(0.0, 2.0, 0.01)
+s = 1 + np.sin(2*3.14*t)
+
+plt.plot(t,s)
+plt.grid(True)
+plt.show()
+
+```
+
+
+
+## Python, primer za 1
+
+```{python}
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({'x': range(1,101), 'y': np.random.uniform(low=1, high=3, size=100)})                 
+
+import matplotlib.pyplot as plt
+import matplotlib.style as style
+import seaborn as sns
+
+sns.set()
+
+ax = sns.lineplot(data = df, 
+                  x = "x", y = "y",
+                  lw=1, 
+                  color = 'red',
+                  alpha=0.7)
+ax.set(xlabel='time [s]', ylabel='U [V]')
+ax.set_title('Nakljucni signal', loc='left')
+plt.show()
+
+
+```
+
+
+
+
+

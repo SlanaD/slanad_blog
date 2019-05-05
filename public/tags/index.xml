@@ -6,10 +6,28 @@
     <description>Recent content in Tags on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DataExplorer</title>
+      <link>/tags/dataexplorer/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dataexplorer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EDA</title>
+      <link>/tags/eda/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/eda/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ETL</title>
@@ -41,9 +59,18 @@
     <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R pandas</title>
+      <link>/tags/r-pandas/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r-pandas/</guid>
       <description></description>
     </item>
     
@@ -53,6 +80,15 @@
       <pubDate>Sun, 24 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/surs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VBA</title>
+      <link>/tags/vba/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/vba/</guid>
       <description></description>
     </item>
     
@@ -68,7 +104,7 @@
     <item>
       <title>excel</title>
       <link>/tags/excel/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/excel/</guid>
       <description></description>
@@ -95,7 +131,7 @@
     <item>
       <title>graf</title>
       <link>/tags/graf/</link>
-      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/graf/</guid>
       <description></description>
@@ -149,16 +185,34 @@
     <item>
       <title>pandas</title>
       <link>/tags/pandas/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/pandas/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>pandas-profiling</title>
+      <link>/tags/pandas-profiling/</link>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pandas-profiling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pareto</title>
+      <link>/tags/pareto/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pareto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>podatki</title>
       <link>/tags/podatki/</link>
-      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/podatki/</guid>
       <description></description>
@@ -203,7 +257,7 @@
     <item>
       <title>python</title>
       <link>/tags/python/</link>
-      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/python/</guid>
       <description></description>
@@ -212,7 +266,7 @@
     <item>
       <title>r</title>
       <link>/tags/r/</link>
-      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
@@ -275,7 +329,7 @@
     <item>
       <title>vizualizacija</title>
       <link>/tags/vizualizacija/</link>
-      <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/vizualizacija/</guid>
       <description></description>

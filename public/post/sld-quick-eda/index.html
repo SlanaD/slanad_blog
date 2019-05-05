@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] Quick EDA - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="“Не может быть поражений — могут быть лишь временные трудности.”
+Александр Васильевич Колчак
+Hitro, hitreje… Časa nikoli dovolj. Tudi nepoznan podatkovni izvor lahko hitro pregledaš z nekaj orodji.
+Primer nepoznanega podatkovnega setaIz http://insideairbnb.com/get-the-data.html sem snel podatke o nočitvah na Dunaju (The data behind the Inside Airbnb site is sourced from publicly available information from the Airbnb site.). Zanima me, kaj se v teh podatkih “skriva”. Podatke sem shranil lokalno v 2019-05-04_listings." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-quick-eda/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] Quick EDA" />
+<meta property="og:description" content="“Не может быть поражений — могут быть лишь временные трудности.”
+Александр Васильевич Колчак
+Hitro, hitreje… Časa nikoli dovolj. Tudi nepoznan podatkovni izvor lahko hitro pregledaš z nekaj orodji.
+Primer nepoznanega podatkovnega setaIz http://insideairbnb.com/get-the-data.html sem snel podatke o nočitvah na Dunaju (The data behind the Inside Airbnb site is sourced from publicly available information from the Airbnb site.). Zanima me, kaj se v teh podatkih “skriva”. Podatke sem shranil lokalno v 2019-05-04_listings." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-quick-eda/" />
+<meta property="article:published_time" content="2019-05-04T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-05-04T21:48:51&#43;02:00"/>
+
+<meta itemprop="name" content="[SLD] Quick EDA">
+<meta itemprop="description" content="“Не может быть поражений — могут быть лишь временные трудности.”
+Александр Васильевич Колчак
+Hitro, hitreje… Časa nikoli dovolj. Tudi nepoznan podatkovni izvor lahko hitro pregledaš z nekaj orodji.
+Primer nepoznanega podatkovnega setaIz http://insideairbnb.com/get-the-data.html sem snel podatke o nočitvah na Dunaju (The data behind the Inside Airbnb site is sourced from publicly available information from the Airbnb site.). Zanima me, kaj se v teh podatkih “skriva”. Podatke sem shranil lokalno v 2019-05-04_listings.">
+
+
+<meta itemprop="datePublished" content="2019-05-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-04T21:48:51&#43;02:00" />
+<meta itemprop="wordCount" content="544">
+
+
+
+<meta itemprop="keywords" content="EDA,python,R,R pandas,DataExplorer,pandas-profiling,graf,pandas,podatki,vizualizacija," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] Quick EDA"/>
+<meta name="twitter:description" content="“Не может быть поражений — могут быть лишь временные трудности.”
+Александр Васильевич Колчак
+Hitro, hitreje… Časa nikoli dovolj. Tudi nepoznan podatkovni izvor lahko hitro pregledaš z nekaj orodji.
+Primer nepoznanega podatkovnega setaIz http://insideairbnb.com/get-the-data.html sem snel podatke o nočitvah na Dunaju (The data behind the Inside Airbnb site is sourced from publicly available information from the Airbnb site.). Zanima me, kaj se v teh podatkih “skriva”. Podatke sem shranil lokalno v 2019-05-04_listings."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] Quick EDA</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-04 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            <a href="/categories/r/"> R </a>
+            <a href="/categories/pandas/"> Pandas </a>
+            <a href="/categories/vizualizacija/"> Vizualizacija </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>“Не может быть поражений — могут быть лишь временные трудности.”</em></p>
+<p><em><a href="https://histrf.ru/lichnosti/biografii/p/kolchak-alieksandr-vasilievich">Александр Васильевич Колчак</a></em></p>
+<p><img src="/images/2019-05-04_Lever.png" style="width:50.0%" /></p>
+</center>
+<p>Hitro, hitreje… Časa nikoli dovolj. Tudi nepoznan podatkovni izvor lahko hitro pregledaš z nekaj orodji.</p>
+<div id="primer-nepoznanega-podatkovnega-seta" class="section level2">
+<h2>Primer nepoznanega podatkovnega seta</h2>
+<p>Iz <a href="http://insideairbnb.com/get-the-data.html" class="uri">http://insideairbnb.com/get-the-data.html</a> sem snel podatke o nočitvah na Dunaju <em>(The data behind the Inside Airbnb site is sourced from publicly available information from the Airbnb site.)</em>. Zanima me, kaj se v <a href="http://data.insideairbnb.com/austria/vienna/vienna/2019-02-09/visualisations/listings.csv">teh</a> podatkih “skriva”. Podatke sem shranil lokalno v <a href="/data/2019-05-04_listings.csv">2019-05-04_listings.csv</a>.</p>
+</div>
+<div id="zacetek" class="section level2">
+<h2>Začetek</h2>
+<p><a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> zapis so z ločilom ločeni podatki. V slovenski lokalizaciji je ločilo običajno podpičje “;”, ker je tako osnovna nastavitev v Excelu, bolj običajno pa je ločilo vejica “,”, ker večina podatkov nastane izven <a href="https://sl.wikipedia.org/wiki/Zastava_Slovenije#/media/File:Slovenska_zastava.JPG">Slovenije</a> in excela.</p>
+<p>Da se ne zaženem direktno z dvoklikom v Excel, kar sem se, in na srečo je podatkovni vir majhen, sem dobil sledeč rezulat :</p>
+<div class="figure">
+<img src="/images/2019-05-04_listings_v_Excel.png" alt="CSV z vejico v slovenski lokalizaciji excela" />
+<p class="caption">CSV z vejico v slovenski lokalizaciji excela</p>
+</div>
+<p>Bolj pametno bi bilo, če najprej pogledam s pregledovalnikom velikih besedil, ki bere direktno z diska in ne bo zablokiral ob vsaki malo večji datoteki:</p>
+<ul>
+<li>ukaz “MORE” v windows CMD</li>
+<li><a href="https://www.portablefreeware.com/?id=693">Large Text File Viewer</a></li>
+<li><a href="https://glogg.bonnefon.org/screenshots.html">glogg</a></li>
+<li>vim v linux bash</li>
+</ul>
+<div class="figure">
+<img src="/images/2019-05-05_vim_view.png" alt="CSV ogled v OS:Windows10, VIM zagnan v GIT-bash" />
+<p class="caption">CSV ogled v OS:Windows10, VIM zagnan v GIT-bash</p>
+</div>
+<p>V obeh primerih se vidi, da ima vir glavo podatkov in da so podatki ločeni z vejico. Nekaj je številk in nekaj je teksta in nekatera besedila so ograjena z narekovaji.</p>
+<p>Dobro je pogledati tudi zadnje vrstice. Linux tail ukaz ali v vim G-end. V MORE se poslužim trika, da preskočim (s) veliko vrsti (npr. 10000000) in potem prikaže samo nekaj zadnjih.</p>
+<p>V tem primeru na koncu ni nobenih presenečenj. Datoteka na koncu izgleda kot na začetku.</p>
+</div>
+<div id="hiter-pregled-v-r" class="section level2">
+<h2>Hiter pregled v R</h2>
+<p>Lahko bi napisal hiter pregled v RStudio in kasneje pri pythonu v Jupyter notes, pa pač nisem.</p>
+<p>Za hiter pregled uporabim paket DataExplorer.</p>
+<pre class="r"><code>library(DataExplorer)
+
+df &lt;-  read.csv(file=&quot;./../../static/data/2019-05-04_listings.csv&quot;, 
+                header=TRUE, sep=&quot;,&quot;)
+
+DataExplorer::create_report(df)
+#alternativa je lahko paket dlookr ali RtutoR ali autoEDA
+#https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html</code></pre>
+<p>Rezultat te kode je izčrpno poročilo o viru <a href="/data/2019-05-04-sld-quick-eda_ReportR.html">GLEJ TUKAJ</a>.</p>
+<p>Pa nekaj o cenah nočitve na Dunaju:</p>
+<pre class="r"><code>#library(psych)
+library(knitr)
+library(dplyr)
+#library(kableExtra)
+
+df &lt;-  read.csv(file=&quot;./../../static/data/2019-05-04_listings.csv&quot;, 
+                header=TRUE, sep=&quot;,&quot;)
+print(summary(df$price))</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    9.00   38.00   56.00   77.85   85.00 9270.00</code></pre>
+<pre class="r"><code>#https://stackoverflow.com/questions/9847054/how-to-get-summary-statistics-by-group
+#tapply(df$price, df$neighbourhood, summary)
+#kable(psych::describeBy(df$price, df$neighbourhood, mat=T))
+
+
+kable(
+  df %&gt;% 
+    group_by(neighbourhood) %&gt;% 
+    summarize(max=max(price),
+              min=min(price),
+              mean=mean(price), 
+              median=median(price)) %&gt;% 
+    arrange(desc(median)) %&gt;% 
+    top_n(5),
+
+format = &quot;html&quot;, digits = 1, longtable = TRUE,
+caption = &quot;TOP 5 na Dunaju&quot;,
+align=c(&#39;l&#39;, &#39;r&#39;, &#39;r&#39;, &#39;r&#39;, &#39;r&#39;),
+table.attr = &quot;style=&#39;width:100%;&#39;&quot;)</code></pre>
+<table style='width:100%;'>
+<caption>
+<span id="tab:OpisCen">Table 1: </span>TOP 5 na Dunaju
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+neighbourhood
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+median
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Innere Stadt
+</td>
+<td style="text-align:right;">
+5500
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+156.2
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LandstraÂ§e
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+81.2
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leopoldstadt
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+75.2
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mariahilf
+</td>
+<td style="text-align:right;">
+750
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+71.2
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neubau
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+70.5
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hiter-pregled-v-python" class="section level2">
+<h2>Hiter pregled v Python</h2>
+<p>Zanimiva paketa sta <a href="http://docs.hioptimus.com/en/latest/">optimus</a> in <a href="https://github.com/pandas-profiling/pandas-profiling">pandas_profiling</a>. Ker oba vrneta rezultate v html objektu, je bolje delati v Jupyter notebooks kot pa v Spyder. Za primer podatkov z AirBnB, hitro poročilo v optimus ni delovala, zato sem uporabil pandas_profiling.</p>
+<pre class="python"><code>#Testiranje pandas_profiling v Jupyter notebooks#  
+#po potrebi instaliraj paket 
+#!pip install pandas-profiling 
+import pandas as pd 
+import pandas_profiling as pp 
+# Naložim podatke:
+df = pd.read_csv(r&quot;.\data\2019-05-04_listings.csv&quot;) 
+df.describe()
+pp.ProfileReport(df)</code></pre>
+<p>Rezultat te kode je poročilo o viru <a href="/data/2019-05-04-sld-quick-eda_ReportPython.html">GLEJ TUKAJ</a>. Podrobnosti je na voljo več kot v DataExplorer.</p>
+<p>Bližnjica do beležnice (Jupyter Notebook) je <a href="/data/2019-05-04-sld-quick-eda_ReportPython.ipynb">TUKAJ</a>.</p>
+<p>Sortiraš podobno kot v R:</p>
+<pre class="python"><code>import numpy as np 
+df3 = df.groupby(&#39;neighbourhood&#39;)[[&#39;price&#39;]].aggregate([min, np.mean, np.median, max])
+df3.sort_values(by=[(&#39;price&#39;, &#39;median&#39;)], ascending=False).head(n=5)</code></pre>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-05-04</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/eda/">EDA</a>
+          <a href="/tags/python/">python</a>
+          <a href="/tags/r/">R</a>
+          <a href="/tags/r-pandas/">R pandas</a>
+          <a href="/tags/dataexplorer/">DataExplorer</a>
+          <a href="/tags/pandas-profiling/">pandas-profiling</a>
+          <a href="/tags/graf/">graf</a>
+          <a href="/tags/pandas/">pandas</a>
+          <a href="/tags/podatki/">podatki</a>
+          <a href="/tags/vizualizacija/">vizualizacija</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/sld-pareto/">
+            <span class="next-text nav-default">[SLD] Pareto</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

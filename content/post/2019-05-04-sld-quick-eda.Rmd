@@ -1,0 +1,166 @@
+---
+title: '[SLD] Quick EDA'
+author: SlanaD
+date: '2019-05-04'
+slug: sld-quick-eda
+categories:
+  - Python
+  - R
+  - Pandas
+  - Vizualizacija
+tags:
+  - EDA
+  - python
+  - R
+  - R pandas
+  - DataExplorer
+  - pandas-profiling
+  - graf
+  - pandas
+  - podatki
+  - vizualizacija
+lastmod: '2019-05-04T21:48:51+02:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-05-04_Lever.png
+
+---
+
+<center>
+
+_"Не может быть поражений — могут быть лишь временные трудности."_  
+
+_[Александр Васильевич Колчак](https://histrf.ru/lichnosti/biografii/p/kolchak-alieksandr-vasilievich)_  
+
+
+![](/images/2019-05-04_Lever.png){width=50%}  
+
+
+
+</center>  
+
+Hitro, hitreje... Časa nikoli dovolj. Tudi nepoznan podatkovni izvor lahko hitro pregledaš z nekaj orodji.
+
+
+## Primer nepoznanega podatkovnega seta
+
+Iz http://insideairbnb.com/get-the-data.html sem snel podatke o nočitvah na Dunaju _(The data behind the Inside Airbnb site is sourced from publicly available information from the Airbnb site.)_. Zanima me, kaj se v [teh](http://data.insideairbnb.com/austria/vienna/vienna/2019-02-09/visualisations/listings.csv) podatkih "skriva". Podatke sem shranil lokalno v [2019-05-04_listings.csv](/data/2019-05-04_listings.csv).
+
+
+## Začetek
+
+[CSV](https://en.wikipedia.org/wiki/Comma-separated_values) zapis so z ločilom ločeni podatki. V slovenski lokalizaciji je ločilo običajno podpičje ";", ker je tako osnovna nastavitev v Excelu, bolj običajno pa je ločilo vejica ",", ker večina podatkov nastane izven [Slovenije](https://sl.wikipedia.org/wiki/Zastava_Slovenije#/media/File:Slovenska_zastava.JPG) in excela.  
+
+Da se ne zaženem direktno z dvoklikom v Excel, kar sem se, in na srečo je podatkovni vir majhen, sem dobil sledeč rezulat : 
+
+![CSV z vejico v slovenski lokalizaciji excela](/images/2019-05-04_listings_v_Excel.png)  
+
+Bolj pametno bi bilo, če najprej pogledam s pregledovalnikom velikih besedil, ki bere direktno z diska in ne bo zablokiral ob vsaki malo večji datoteki:
+
+  - ukaz "MORE" v windows CMD
+  - [Large Text File Viewer](https://www.portablefreeware.com/?id=693)
+  - [glogg](https://glogg.bonnefon.org/screenshots.html)
+  - vim v linux bash
+
+![CSV ogled v OS:Windows10, VIM zagnan v GIT-bash](/images/2019-05-05_vim_view.png)
+
+V obeh primerih se vidi, da ima vir glavo podatkov in da so podatki ločeni z vejico. Nekaj je številk in nekaj je teksta in nekatera besedila so ograjena z narekovaji.  
+
+Dobro je pogledati tudi zadnje vrstice. Linux tail ukaz ali v vim G-end. V MORE se poslužim trika, da preskočim (s) veliko vrsti (npr. 10000000) in potem prikaže samo nekaj zadnjih.
+
+V tem primeru na koncu ni nobenih presenečenj. Datoteka na koncu izgleda kot na začetku.
+
+
+## Hiter pregled v R
+
+Lahko bi napisal hiter pregled v RStudio in kasneje pri pythonu v Jupyter notes, pa pač nisem.  
+
+Za hiter pregled uporabim paket DataExplorer.
+
+```{r DataExplorer, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE}
+library(DataExplorer)
+
+df <-  read.csv(file="./../../static/data/2019-05-04_listings.csv", 
+                header=TRUE, sep=",")
+
+DataExplorer::create_report(df)
+#alternativa je lahko paket dlookr ali RtutoR ali autoEDA
+#https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html
+
+
+
+```
+
+
+Rezultat te kode je izčrpno poročilo o viru [GLEJ TUKAJ](/data/2019-05-04-sld-quick-eda_ReportR.html).  
+
+Pa nekaj o cenah nočitve na Dunaju:  
+
+```{r OpisCen, message=FALSE, warning=FALSE, paged.print=TRUE}
+#library(psych)
+library(knitr)
+library(dplyr)
+#library(kableExtra)
+
+df <-  read.csv(file="./../../static/data/2019-05-04_listings.csv", 
+                header=TRUE, sep=",")
+print(summary(df$price))
+
+#https://stackoverflow.com/questions/9847054/how-to-get-summary-statistics-by-group
+#tapply(df$price, df$neighbourhood, summary)
+#kable(psych::describeBy(df$price, df$neighbourhood, mat=T))
+
+
+kable(
+  df %>% 
+    group_by(neighbourhood) %>% 
+    summarize(max=max(price),
+              min=min(price),
+              mean=mean(price), 
+              median=median(price)) %>% 
+    arrange(desc(median)) %>% 
+    top_n(5),
+
+format = "html", digits = 1, longtable = TRUE,
+caption = "TOP 5 na Dunaju",
+align=c('l', 'r', 'r', 'r', 'r'),
+table.attr = "style='width:100%;'")
+
+
+
+```
+
+
+## Hiter pregled v Python
+
+Zanimiva paketa sta [optimus](http://docs.hioptimus.com/en/latest/) in [pandas_profiling](https://github.com/pandas-profiling/pandas-profiling). Ker oba vrneta rezultate v html objektu, je bolje delati v Jupyter notebooks kot pa v Spyder. Za primer podatkov z AirBnB, hitro poročilo v optimus ni delovala, zato sem uporabil pandas_profiling.
+
+```{python eval=FALSE}
+#Testiranje pandas_profiling v Jupyter notebooks#  
+#po potrebi instaliraj paket 
+#!pip install pandas-profiling 
+import pandas as pd 
+import pandas_profiling as pp 
+# Naložim podatke:
+df = pd.read_csv(r".\data\2019-05-04_listings.csv") 
+df.describe()
+pp.ProfileReport(df)
+
+```
+
+Rezultat te kode je poročilo o viru [GLEJ TUKAJ](/data/2019-05-04-sld-quick-eda_ReportPython.html). Podrobnosti je na voljo več kot v DataExplorer. 
+
+Bližnjica do beležnice (Jupyter Notebook) je [TUKAJ](/data/2019-05-04-sld-quick-eda_ReportPython.ipynb).
+
+
+Sortiraš podobno kot v R:
+
+```{python, eval=FALSE}
+
+import numpy as np 
+df3 = df.groupby('neighbourhood')[['price']].aggregate([min, np.mean, np.median, max])
+df3.sort_values(by=[('price', 'median')], ascending=False).head(n=5)
+
+```
+
