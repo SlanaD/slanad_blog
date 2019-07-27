@@ -6,10 +6,41 @@
     <description>Recent content in Python on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] MLR Večparametrična linearna regresija</title>
+      <link>/post/sld-mlr-ve-parametri-na-linearna-regresija/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-mlr-ve-parametri-na-linearna-regresija/</guid>
+      <description>“Per aspera ad astra”
+Latin
+“In distinguishing the advantages of warriors’ weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate.”
+“The 5 rings” by Miyamoto Musashi
+Večparametrična linearna regresija MLR (en. Multiple Linear Regression)Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov:
+V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale.</description>
+    </item>
+    
+    <item>
+      <title>[SLD] Long - Wide</title>
+      <link>/post/sld-long-wide/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-long-wide/</guid>
+      <description>“Нет человека и нет проблем”
+Анатолий Рыбаков
+“No women no cry”
+Bob Marley
+Bližnjica do grafa v naslovu je TUKAJ
+WIDE DATA FORMAT TO LONG DATA FORMATPythonGlej TUKAJ
+Jupiter Notebook list je na voljo TUKAJ
+ExcelIzvedem s pomočjo Power Query. Navodila so v dokumentu TUKAJ
+R##wide to long#-------df_w &amp;lt;- data.frame( ID = c(1, 2, 3),TimeStamp = c(&amp;#39;12.05.2019 11:34&amp;#39;, &amp;#39;12.</description>
+    </item>
     
     <item>
       <title>[SLD] Quick EDA</title>

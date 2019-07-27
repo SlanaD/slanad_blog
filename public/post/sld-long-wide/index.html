@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] Long - Wide - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="“Нет человека и нет проблем”
+Анатолий Рыбаков
+“No women no cry”
+Bob Marley
+Bližnjica do grafa v naslovu je TUKAJ
+WIDE DATA FORMAT TO LONG DATA FORMATPythonGlej TUKAJ
+Jupiter Notebook list je na voljo TUKAJ
+ExcelIzvedem s pomočjo Power Query. Navodila so v dokumentu TUKAJ
+R##wide to long#-------df_w &amp;lt;- data.frame( ID = c(1, 2, 3),TimeStamp = c(&amp;#39;12.05.2019 11:34&amp;#39;, &amp;#39;12." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-long-wide/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] Long - Wide" />
+<meta property="og:description" content="“Нет человека и нет проблем”
+Анатолий Рыбаков
+“No women no cry”
+Bob Marley
+Bližnjica do grafa v naslovu je TUKAJ
+WIDE DATA FORMAT TO LONG DATA FORMATPythonGlej TUKAJ
+Jupiter Notebook list je na voljo TUKAJ
+ExcelIzvedem s pomočjo Power Query. Navodila so v dokumentu TUKAJ
+R##wide to long#-------df_w &lt;- data.frame( ID = c(1, 2, 3),TimeStamp = c(&#39;12.05.2019 11:34&#39;, &#39;12." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-long-wide/" />
+<meta property="article:published_time" content="2019-05-14T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-05-12T14:29:12&#43;02:00"/>
+
+<meta itemprop="name" content="[SLD] Long - Wide">
+<meta itemprop="description" content="“Нет человека и нет проблем”
+Анатолий Рыбаков
+“No women no cry”
+Bob Marley
+Bližnjica do grafa v naslovu je TUKAJ
+WIDE DATA FORMAT TO LONG DATA FORMATPythonGlej TUKAJ
+Jupiter Notebook list je na voljo TUKAJ
+ExcelIzvedem s pomočjo Power Query. Navodila so v dokumentu TUKAJ
+R##wide to long#-------df_w &lt;- data.frame( ID = c(1, 2, 3),TimeStamp = c(&#39;12.05.2019 11:34&#39;, &#39;12.">
+
+
+<meta itemprop="datePublished" content="2019-05-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-12T14:29:12&#43;02:00" />
+<meta itemprop="wordCount" content="474">
+
+
+
+<meta itemprop="keywords" content="r,python,time-series,power query,excel,jupyter notebooks,long,wide," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] Long - Wide"/>
+<meta name="twitter:description" content="“Нет человека и нет проблем”
+Анатолий Рыбаков
+“No women no cry”
+Bob Marley
+Bližnjica do grafa v naslovu je TUKAJ
+WIDE DATA FORMAT TO LONG DATA FORMATPythonGlej TUKAJ
+Jupiter Notebook list je na voljo TUKAJ
+ExcelIzvedem s pomočjo Power Query. Navodila so v dokumentu TUKAJ
+R##wide to long#-------df_w &lt;- data.frame( ID = c(1, 2, 3),TimeStamp = c(&#39;12.05.2019 11:34&#39;, &#39;12."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] Long - Wide</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-14 </span>
+        <div class="post-category">
+            <a href="/categories/excel/"> Excel </a>
+            <a href="/categories/power-query/"> Power Query </a>
+            <a href="/categories/python/"> Python </a>
+            <a href="/categories/r/"> R </a>
+            <a href="/categories/time-series/"> Time-series </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>“Нет человека и нет проблем”</em></p>
+<p><em>Анатолий Рыбаков</em></p>
+<p><em>“No women no cry”</em></p>
+<p><em>Bob Marley</em></p>
+<p><img src="/images/2019-05-14_Circular.png" style="width:50.0%" /></p>
+</center>
+<p>Bližnjica do grafa v naslovu je <a href="https://www.r-graph-gallery.com/122-a-circular-plot-with-the-circlize-package/">TUKAJ</a></p>
+<div id="wide-data-format-to-long-data-format" class="section level1">
+<h1>WIDE DATA FORMAT TO LONG DATA FORMAT</h1>
+<div id="python" class="section level2">
+<h2>Python</h2>
+<p>Glej <a href="/data/2019-05-14_WideToLong.html">TUKAJ</a></p>
+<p>Jupiter Notebook list je na voljo <a href="/data/2019-05-14_WideToLong.ipynb">TUKAJ</a></p>
+</div>
+<div id="excel" class="section level2">
+<h2>Excel</h2>
+<p>Izvedem s pomočjo Power Query. Navodila so v dokumentu <a href="/data/2019-05-14_WideToLong.xlsx">TUKAJ</a></p>
+</div>
+<div id="r" class="section level2">
+<h2>R</h2>
+<pre class="r"><code>##wide to long
+#-------
+
+df_w &lt;- data.frame( ID = c(1, 2, 3),
+                    TimeStamp = c(&#39;12.05.2019 11:34&#39;, &#39;12.05.2019 12:34&#39;, &#39;12.05.2019 13:34&#39;),
+                    A = c(0, 1, 0),
+                    B = c(3, 1, 0),
+                    C = c(5, 3, 3)
+                    )
+#http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/
+cat(&quot;WIDE \n&quot;)</code></pre>
+<pre><code>## WIDE</code></pre>
+<pre class="r"><code>df_w</code></pre>
+<pre><code>##   ID        TimeStamp A B C
+## 1  1 12.05.2019 11:34 0 3 5
+## 2  2 12.05.2019 12:34 1 1 3
+## 3  3 12.05.2019 13:34 0 0 3</code></pre>
+<pre class="r"><code>cat(&quot;\nLONG: reshape \n&quot;)</code></pre>
+<pre><code>## 
+## LONG: reshape</code></pre>
+<pre class="r"><code>#reshape from (base)
+reshape(df_w, 
+        direction = &quot;long&quot;,
+        timevar = &quot;Atribut&quot;, 
+        v.names = &quot;Vrednost&quot;,
+        varying = 3:5,
+        times = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;))</code></pre>
+<pre><code>##     ID        TimeStamp Atribut Vrednost id
+## 1.A  1 12.05.2019 11:34       A        0  1
+## 2.A  2 12.05.2019 12:34       A        1  2
+## 3.A  3 12.05.2019 13:34       A        0  3
+## 1.B  1 12.05.2019 11:34       B        3  1
+## 2.B  2 12.05.2019 12:34       B        1  2
+## 3.B  3 12.05.2019 13:34       B        0  3
+## 1.C  1 12.05.2019 11:34       C        5  1
+## 2.C  2 12.05.2019 12:34       C        3  2
+## 3.C  3 12.05.2019 13:34       C        3  3</code></pre>
+<pre class="r"><code>cat(&quot;\nLONG: tidyr::gather \n&quot;)</code></pre>
+<pre><code>## 
+## LONG: tidyr::gather</code></pre>
+<pre class="r"><code>library(tidyr)
+df_l &lt;- tidyr::gather(df_w, 
+              key = &quot;Atribut&quot;,
+              gathercols = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;),
+              value = &quot;Vrednost&quot;)
+df_l</code></pre>
+<pre><code>##   ID        TimeStamp Atribut Vrednost
+## 1  1 12.05.2019 11:34       A        0
+## 2  2 12.05.2019 12:34       A        1
+## 3  3 12.05.2019 13:34       A        0
+## 4  1 12.05.2019 11:34       B        3
+## 5  2 12.05.2019 12:34       B        1
+## 6  3 12.05.2019 13:34       B        0
+## 7  1 12.05.2019 11:34       C        5
+## 8  2 12.05.2019 12:34       C        3
+## 9  3 12.05.2019 13:34       C        3</code></pre>
+<pre class="r"><code>cat(&quot;\nv obratni smeri: tidyr::spread \n&quot;)</code></pre>
+<pre><code>## 
+## v obratni smeri: tidyr::spread</code></pre>
+<pre class="r"><code>tidyr::spread(df_l, key=&quot;Atribut&quot;, value=&quot;Vrednost&quot;)</code></pre>
+<pre><code>##   ID        TimeStamp A B C
+## 1  1 12.05.2019 11:34 0 3 5
+## 2  2 12.05.2019 12:34 1 1 3
+## 3  3 12.05.2019 13:34 0 0 3</code></pre>
+<pre class="r"><code>cat(&quot;\nLONG: reshape2::melt \n&quot;)</code></pre>
+<pre><code>## 
+## LONG: reshape2::melt</code></pre>
+<pre class="r"><code>library(reshape2)
+reshape2:: melt(df_w, 
+                id_vars = c(&quot;ID&quot;, &quot;TimeStamp&quot;),
+                measure.vars = c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;),
+                variable.name = &quot;Atribut&quot;,
+                value.name = &quot;Vrednost&quot;)</code></pre>
+<pre><code>##   ID        TimeStamp Atribut Vrednost
+## 1  1 12.05.2019 11:34       A        0
+## 2  2 12.05.2019 12:34       A        1
+## 3  3 12.05.2019 13:34       A        0
+## 4  1 12.05.2019 11:34       B        3
+## 5  2 12.05.2019 12:34       B        1
+## 6  3 12.05.2019 13:34       B        0
+## 7  1 12.05.2019 11:34       C        5
+## 8  2 12.05.2019 12:34       C        3
+## 9  3 12.05.2019 13:34       C        3</code></pre>
+<pre class="r"><code>#from excel over clipboard:
+#x &lt;- read.table(file = &quot;clipboard&quot;, sep = &quot;\t&quot;, header=TRUE)
+
+#to excel over cliboard:
+#write.table(df_l, &quot;clipboard&quot;, sep=&quot;\t&quot;, dec=&quot;,&quot;, row.names=FALSE, col.names=TRUE)</code></pre>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-05-12</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/r/">r</a>
+          <a href="/tags/python/">python</a>
+          <a href="/tags/time-series/">time-series</a>
+          <a href="/tags/power-query/">power query</a>
+          <a href="/tags/excel/">excel</a>
+          <a href="/tags/jupyter-notebooks/">jupyter notebooks</a>
+          <a href="/tags/long/">long</a>
+          <a href="/tags/wide/">wide</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/sld-mlr-ve-parametri-na-linearna-regresija/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">[SLD] MLR Večparametrična linearna regresija</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/sld-many-to-many-in-powerpivot/">
+            <span class="next-text nav-default">[SLD] Many to Many in PowerPivot</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

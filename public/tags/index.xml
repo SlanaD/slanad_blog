@@ -39,6 +39,24 @@
     </item>
     
     <item>
+      <title>ML</title>
+      <link>/tags/ml/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MLR</title>
+      <link>/tags/mlr/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/mlr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>MS Office</title>
       <link>/tags/ms-office/</link>
       <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
@@ -59,7 +77,7 @@
     <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
@@ -71,6 +89,15 @@
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/r-pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>/tags/sql/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/sql/</guid>
       <description></description>
     </item>
     
@@ -93,6 +120,15 @@
     </item>
     
     <item>
+      <title>access</title>
+      <link>/tags/access/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/access/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>encoding</title>
       <link>/tags/encoding/</link>
       <pubDate>Sun, 24 Feb 2019 00:00:00 +0000</pubDate>
@@ -104,7 +140,7 @@
     <item>
       <title>excel</title>
       <link>/tags/excel/</link>
-      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/excel/</guid>
       <description></description>
@@ -113,7 +149,7 @@
     <item>
       <title>forecast</title>
       <link>/tags/forecast/</link>
-      <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/forecast/</guid>
       <description></description>
@@ -131,7 +167,7 @@
     <item>
       <title>graf</title>
       <link>/tags/graf/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/graf/</guid>
       <description></description>
@@ -156,6 +192,15 @@
     </item>
     
     <item>
+      <title>infographics</title>
+      <link>/tags/infographics/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/infographics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>informacija</title>
       <link>/tags/informacija/</link>
       <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
@@ -165,11 +210,38 @@
     </item>
     
     <item>
+      <title>jupyter notebooks</title>
+      <link>/tags/jupyter-notebooks/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/jupyter-notebooks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>long</title>
+      <link>/tags/long/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/long/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ma</title>
       <link>/tags/ma/</link>
       <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/ma/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>many to many relation</title>
+      <link>/tags/many-to-many-relation/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/many-to-many-relation/</guid>
       <description></description>
     </item>
     
@@ -228,6 +300,24 @@
     </item>
     
     <item>
+      <title>power pivot</title>
+      <link>/tags/power-pivot/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/power-pivot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>power query</title>
+      <link>/tags/power-query/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/power-query/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>powerbi</title>
       <link>/tags/powerbi/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
@@ -257,7 +347,7 @@
     <item>
       <title>python</title>
       <link>/tags/python/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/python/</guid>
       <description></description>
@@ -266,7 +356,7 @@
     <item>
       <title>r</title>
       <link>/tags/r/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>
@@ -302,7 +392,7 @@
     <item>
       <title>time-series</title>
       <link>/tags/time-series/</link>
-      <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/time-series/</guid>
       <description></description>
@@ -332,6 +422,15 @@
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/vizualizacija/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wide</title>
+      <link>/tags/wide/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/wide/</guid>
       <description></description>
     </item>
     

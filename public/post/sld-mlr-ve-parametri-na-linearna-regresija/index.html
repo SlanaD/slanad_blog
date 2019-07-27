@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] MLR Večparametrična linearna regresija - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="“Per aspera ad astra”
+Latin
+“In distinguishing the advantages of warriors’ weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate.”
+“The 5 rings” by Miyamoto Musashi
+Večparametrična linearna regresija MLR (en. Multiple Linear Regression)Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov:
+V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-mlr-ve-parametri-na-linearna-regresija/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] MLR Večparametrična linearna regresija" />
+<meta property="og:description" content="“Per aspera ad astra”
+Latin
+“In distinguishing the advantages of warriors’ weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate.”
+“The 5 rings” by Miyamoto Musashi
+Večparametrična linearna regresija MLR (en. Multiple Linear Regression)Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov:
+V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-mlr-ve-parametri-na-linearna-regresija/" />
+<meta property="article:published_time" content="2019-07-27T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-27T17:42:04&#43;02:00"/>
+
+<meta itemprop="name" content="[SLD] MLR Večparametrična linearna regresija">
+<meta itemprop="description" content="“Per aspera ad astra”
+Latin
+“In distinguishing the advantages of warriors’ weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate.”
+“The 5 rings” by Miyamoto Musashi
+Večparametrična linearna regresija MLR (en. Multiple Linear Regression)Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov:
+V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale.">
+
+
+<meta itemprop="datePublished" content="2019-07-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-27T17:42:04&#43;02:00" />
+<meta itemprop="wordCount" content="586">
+
+
+
+<meta itemprop="keywords" content="MLR,ML,excel,forecast,python,R," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] MLR Večparametrična linearna regresija"/>
+<meta name="twitter:description" content="“Per aspera ad astra”
+Latin
+“In distinguishing the advantages of warriors’ weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate.”
+“The 5 rings” by Miyamoto Musashi
+Večparametrična linearna regresija MLR (en. Multiple Linear Regression)Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov:
+V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] MLR Večparametrična linearna regresija</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-07-27 </span>
+        <div class="post-category">
+            <a href="/categories/excel/"> Excel </a>
+            <a href="/categories/python/"> Python </a>
+            <a href="/categories/r/"> R </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>“Per aspera ad astra”</em></p>
+<p><em>Latin</em></p>
+<p><em>“In distinguishing the advantages of warriors’ weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate.”</em></p>
+<p><em>“The 5 rings” by Miyamoto Musashi</em></p>
+<p><img src="/images/2019-07-27_LR.png" style="width:70.0%" /></p>
+</center>
+<div id="vecparametricna-linearna-regresija-mlr-en.-multiple-linear-regression" class="section level1">
+<h1>Večparametrična linearna regresija MLR (en. Multiple Linear Regression)</h1>
+<p>Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov:</p>
+<p>V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale.</p>
+<p>Podatki v excelu so <a href="/data/2019-07-27_Costs.xlsx">TUKAJ</a>.</p>
+<table style='width:100%;'>
+<caption>
+<span id="tab:unnamed-chunk-1">Table 1: </span>Vstopni podatki (zadnjih 6)
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+MonthF
+</th>
+<th style="text-align:right;">
+Working days
+</th>
+<th style="text-align:right;">
+Working units
+</th>
+<th style="text-align:right;">
+Costs
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2019-01
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+333715.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+351693.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-03
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+372979.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+341544.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+373718.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-06
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+306089.1
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Naloga:</strong></p>
+<p><strong>Napovej skupen strošek, če veš koliko delovnih enot bo delalo v tem mesecu in koliko delovnih dni bodo delali.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mesec:</td>
+<td>07</td>
+</tr>
+<tr class="even">
+<td>Delovni dni:</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td>Enote:</td>
+<td>38</td>
+</tr>
+</tbody>
+</table>
+<div id="excel" class="section level2">
+<h2>Excel</h2>
+<p>Rezultati so v isti datoteki kot podatki, na listu <a href="/data/2019-07-27_Costs.xlsx">Analysis</a>.
+MLR izvedeš s pomočjo dodatka za analize. Posnetek zaslona je na prej omenjenem listu.</p>
+<p>Izračunane so tri napovedi:</p>
+<ol style="list-style-type: decimal">
+<li>Napoved s pomočjo povprečne cene : costs = povpr. cene * delovnih dni * št. enot</li>
+<li>Napoved s pomočjo dvoparameterske regresijske analize</li>
+<li>Napoved s pomočjo trenda rasti povprečne cene</li>
+</ol>
+<p>Napovedovanje je vedno nehvaležno. Katera napoved je sedaj pravilna? Glede na izražen trend rasti povprečne cene, bi se verjetno odločil za tretjo varianto.</p>
+<p><img src="/images/2019-07-27_Povprecna_cena.png" style="width:70.0%" /></p>
+</div>
+<div id="python" class="section level2">
+<h2>Python</h2>
+<pre class="python"><code>import pandas as pd
+from sklearn import linear_model
+
+#Preberi podatki
+df =  pd.read_excel(&quot;./../../static/data/2019-07-27_Costs.xlsx&quot;, 
+                         sheet_name = &quot;DATA&quot; )
+                         
+myData = df[df.MonthF != &#39;2019-07&#39;].copy() #odstrani zadnji mesec, ker tam ni rezultata
+
+# with sklearn
+regr = linear_model.LinearRegression()
+X = myData[[&#39;Working days&#39;, &#39;Working units&#39;]]
+Y = myData[[&#39;Costs&#39;]]
+
+regr.fit(X, Y)</code></pre>
+<pre><code>## LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+##          normalize=False)</code></pre>
+<pre class="python"><code>print(&#39;Intercept: \n&#39;, regr.intercept_)</code></pre>
+<pre><code>## Intercept: 
+##  [-193877.84443355]</code></pre>
+<pre class="python"><code>print(&#39;Coefficients: \n&#39;, regr.coef_)
+
+#napoved za 21 dni in 38 enot</code></pre>
+<pre><code>## Coefficients: 
+##  [[8839.1747215  8048.40834209]]</code></pre>
+<pre class="python"><code>napoved = regr.predict([[21 , 38]]).item(0)
+ 
+print(&#39;Napoved: &#39;, napoved)</code></pre>
+<pre><code>## Napoved:  297584.34171746176</code></pre>
+</div>
+<div id="r" class="section level2">
+<h2>R</h2>
+<pre class="r"><code>##MLR
+#-------
+library(tidyverse)
+
+df &lt;- readxl::read_excel(path =&quot;./../../static/data/2019-07-27_Costs.xlsx&quot;, 
+                         sheet = &quot;DATA&quot; )
+
+myData  &lt;- df %&gt;% subset(MonthF != &#39;2019-07&#39;) 
+
+# Multiple Linear Regresion: lm() is used to fit linear models
+
+fit1 &lt;- lm(formula = Costs ~  `Working days` + `Working units`, data = myData)
+summary(fit1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Costs ~ `Working days` + `Working units`, data = myData)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -19659 -11933  -2833  10190  27844 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)      -193878     107231  -1.808  0.10406   
+## `Working days`      8839       4346   2.034  0.07245 . 
+## `Working units`     8048       1882   4.277  0.00206 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 17210 on 9 degrees of freedom
+## Multiple R-squared:  0.7472, Adjusted R-squared:  0.691 
+## F-statistic:  13.3 on 2 and 9 DF,  p-value: 0.002053</code></pre>
+<pre class="r"><code>myData_test &lt;- data.frame(
+                  &#39;Working days&#39; = c(21), 
+                  &#39;Working units&#39; = c(38) )
+colnames(myData_test) = c(&quot;Working days&quot;, &quot;Working units&quot;)
+
+p1 &lt;- predict(fit1, newdata = myData_test, se.fit = TRUE, level = 0.95 )
+#izpis rezultatov    
+cat(&quot;            Prediction     : &quot;, p1$fit[[1]], &quot;\n&quot;)</code></pre>
+<pre><code>##             Prediction     :  297584.3</code></pre>
+<table style='width:100%;'>
+<caption>
+<span id="tab:unnamed-chunk-4">Table 2: </span>Napovedi
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+MonthF
+</th>
+<th style="text-align:right;">
+Working days
+</th>
+<th style="text-align:right;">
+Working units
+</th>
+<th style="text-align:right;">
+Costs
+</th>
+<th style="text-align:right;">
+Predicted
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2018-06
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+319267.2
+</td>
+<td style="text-align:right;">
+329778.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-07
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+284515.0
+</td>
+<td style="text-align:right;">
+296002.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-08
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+338597.2
+</td>
+<td style="text-align:right;">
+354714.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+289570.1
+</td>
+<td style="text-align:right;">
+279906.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-10
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+297008.0
+</td>
+<td style="text-align:right;">
+297584.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-12
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+301280.0
+</td>
+<td style="text-align:right;">
+320938.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-01
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+333715.2
+</td>
+<td style="text-align:right;">
+329778.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+351693.3
+</td>
+<td style="text-align:right;">
+328196.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-03
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+372979.2
+</td>
+<td style="text-align:right;">
+378068.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+341544.0
+</td>
+<td style="text-align:right;">
+329778.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+373718.4
+</td>
+<td style="text-align:right;">
+345874.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-06
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+306089.1
+</td>
+<td style="text-align:right;">
+319357.3
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-07-27</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/mlr/">MLR</a>
+          <a href="/tags/ml/">ML</a>
+          <a href="/tags/excel/">excel</a>
+          <a href="/tags/forecast/">forecast</a>
+          <a href="/tags/python/">python</a>
+          <a href="/tags/r/">R</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/sld-long-wide/">
+            <span class="next-text nav-default">[SLD] Long - Wide</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

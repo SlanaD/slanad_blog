@@ -6,10 +6,24 @@
     <description>Recent content in forecast on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sat, 23 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/forecast/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] MLR Večparametrična linearna regresija</title>
+      <link>/post/sld-mlr-ve-parametri-na-linearna-regresija/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-mlr-ve-parametri-na-linearna-regresija/</guid>
+      <description>“Per aspera ad astra”
+Latin
+“In distinguishing the advantages of warriors’ weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate.”
+“The 5 rings” by Miyamoto Musashi
+Večparametrična linearna regresija MLR (en. Multiple Linear Regression)Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov:
+V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale.</description>
+    </item>
     
     <item>
       <title>[SLD] Glajenje časovnih vrst</title>

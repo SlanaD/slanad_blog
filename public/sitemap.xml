@@ -10,6 +10,34 @@
   </url>
   
   <url>
+    <loc>/post/sld-mlr-ve-parametri-na-linearna-regresija/</loc>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/post/sld-long-wide/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/post/sld-many-to-many-in-powerpivot/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/post/sld-infografika-10-korakov-za-bolj-i-graf/</loc>
+    <lastmod>2019-05-09T21:59:50+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/post/sld-quick-eda/</loc>
     <lastmod>2019-05-04T21:48:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -122,7 +150,28 @@
   
   <url>
     <loc>/categories/excel/</loc>
-    <lastmod>2019-04-14T19:54:51+02:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/infographics/</loc>
+    <lastmod>2019-05-09T21:59:50+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ml/</loc>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/mlr/</loc>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -150,7 +199,21 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/power-pivot/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/power-query/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -164,21 +227,21 @@
   
   <url>
     <loc>/categories/python/</loc>
-    <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/r/</loc>
-    <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/r/</loc>
-    <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -186,6 +249,13 @@
   <url>
     <loc>/tags/r-pandas/</loc>
     <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/sql/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -213,7 +283,7 @@
   
   <url>
     <loc>/categories/time-series/</loc>
-    <lastmod>2019-03-23T08:28:33+01:00</lastmod>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -233,6 +303,13 @@
   </url>
   
   <url>
+    <loc>/tags/access/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/encoding/</loc>
     <lastmod>2019-02-24T19:10:04+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -241,14 +318,14 @@
   
   <url>
     <loc>/tags/excel/</loc>
-    <lastmod>2019-04-14T19:54:51+02:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/forecast/</loc>
-    <lastmod>2019-02-23T15:48:10+01:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -262,7 +339,7 @@
   
   <url>
     <loc>/tags/graf/</loc>
-    <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <lastmod>2019-05-09T21:59:50+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -282,6 +359,13 @@
   </url>
   
   <url>
+    <loc>/tags/infographics/</loc>
+    <lastmod>2019-05-09T21:59:50+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/informacija/</loc>
     <lastmod>2019-04-14T19:54:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -289,8 +373,29 @@
   </url>
   
   <url>
+    <loc>/tags/jupyter-notebooks/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/long/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/ma/</loc>
     <lastmod>2019-02-23T15:48:10+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/many-to-many-relation/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -345,6 +450,20 @@
   </url>
   
   <url>
+    <loc>/tags/power-pivot/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/power-query/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/powerbi/</loc>
     <lastmod>2019-03-24T11:26:14+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -367,14 +486,14 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/r/</loc>
-    <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <lastmod>2019-07-27T17:42:04+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -402,7 +521,7 @@
   
   <url>
     <loc>/tags/time-series/</loc>
-    <lastmod>2019-03-23T08:28:33+01:00</lastmod>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -424,6 +543,13 @@
   <url>
     <loc>/tags/vizualizacija/</loc>
     <lastmod>2019-05-04T21:48:51+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/wide/</loc>
+    <lastmod>2019-05-12T14:29:12+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

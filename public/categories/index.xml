@@ -22,9 +22,18 @@
     <item>
       <title>Excel</title>
       <link>/categories/excel/</link>
-      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/excel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Infographics</title>
+      <link>/categories/infographics/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/infographics/</guid>
       <description></description>
     </item>
     
@@ -34,6 +43,24 @@
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Power Pivot</title>
+      <link>/categories/power-pivot/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/power-pivot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Power Query</title>
+      <link>/categories/power-query/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/power-query/</guid>
       <description></description>
     </item>
     
@@ -49,7 +76,7 @@
     <item>
       <title>Python</title>
       <link>/categories/python/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/python/</guid>
       <description></description>
@@ -58,7 +85,7 @@
     <item>
       <title>R</title>
       <link>/categories/r/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/r/</guid>
       <description></description>
@@ -76,7 +103,7 @@
     <item>
       <title>Time-series</title>
       <link>/categories/time-series/</link>
-      <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/time-series/</guid>
       <description></description>

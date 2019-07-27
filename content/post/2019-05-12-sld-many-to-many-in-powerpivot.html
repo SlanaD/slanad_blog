@@ -1,0 +1,129 @@
+---
+title: '[SLD] Many to Many in PowerPivot'
+output: html_document
+author: SlanaD
+date: '2019-05-12'
+slug: sld-many-to-many-in-powerpivot
+categories:
+  - Excel
+  - Power Pivot
+  - Power Query
+  - Time-series
+tags:
+  - time-series
+  - power pivot
+  - power query
+  - excel
+  - many to many relation
+  - access
+  - SQL
+lastmod: '2019-05-12T14:29:12+02:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-05-12_AssholePingi.png
+
+---
+
+
+
+<center>
+<p><em>“Software is like sex: it’s better when it’s free.”</em></p>
+<p><em><a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torval</a></em></p>
+<p><em>“In this world, you get what you pay for.”</em></p>
+<p><em><a href="https://en.wikipedia.org/wiki/Cat%27s_Cradle">Kurt Vonnegut, Cat’s Cradle</a></em></p>
+<p><img src="/images/2019-05-12_AssholePingi.png" style="width:50.0%" /></p>
+</center>
+<p><a href="https://support.office.com/en-us/article/power-pivot-overview-and-learning-f9001958-7901-4caa-ad80-028a6d2432ed?ui=en-US&amp;rs=en-US&amp;ad=US">Power Pivot</a> je eno izmed treh “power” orodij v Excelu. Uporabno, reklamirano, vendar:</p>
+<ul>
+<li><p>ne podpira večih indeksov</p></li>
+<li><p>ne podpira M2M relacij</p></li>
+<li><p><em>… verjetno še kaj, samo ni tema tega zapisa</em></p></li>
+</ul>
+<div id="analiza-osebnih-dohodkov-v-podjetju-grafen-von-cilli" class="section level1">
+<h1>Analiza osebnih dohodkov v podjetju <em>Grafen von Cilli</em></h1>
+<p>Mesečno računovodstvo pripravi OD v obliki:</p>
+<pre>
+| Personal_ID | NETO         | BRUTO        | DODATKI    |
+|-------------|--------------|--------------|------------|
+| 10000       |  1.316,00 €  |  2.632,00 €  |  87,00 €   |
+| ...         |  ....        |  ...         |  ...       |
+
+</pre>
+<p>V skoraj enaki obliki imajo vsak mesec pripravljene osebne podatke zaposlenih.</p>
+<pre>
+| Personal_ID | Ime in priimek   | Spol | Posta  | Delovno mesto | .... |
+|-------------|------------------|------|--------|---------------|----- |
+| 10000       | Frederik Celjski | M    | SI3000 | grof          | ...  |
+| 10001       | ...              | ...  | ...    | ...           | ...  |
+
+
+</pre>
+<p>Ko združiš (pojavi se novo polje <em>Datum</em>) tabele za več mesecev, dobiš obliko :</p>
+<pre>
+| Datum  | Personal_ID | NETO         | BRUTO        | DODATKI    |
+|--------|-------------|--------------|--------------|------------|
+|2019-01 | 10000       |  1.316,00 €  |  2.632,00 €  |  87,00 €   |
+|...     | ...         |  ....        |  ...         |  ...       |
+|2019-02 | 10000       |  1.349,00 €  |  2.679,00 €  |  12,00 €   |
+|...     | ...         |  ....        |  ...         |  ...       |
+
+</pre>
+<p>Enako narediš s tabelo z osebnimi podatki.</p>
+<p>V reklami sem prebral, da zaradi Power Pivot več ne bom potreboval VLOOKUP in da se podatke povezuje preko relacij. Bil sem prepričan, da bo delovalo enako kot v SQL in bo dal stavek v nadaljevanju rešitev združevanja tabel:</p>
+<pre>
+SELECT *
+FROM tblOsebni, tblPlace
+WHERE (tblOsebni.DatumF = tblPlace.DatumF ) 
+      AND
+      (tblOsebni.Personal_ID = tblPlace.Personal_ID)
+
+</pre>
+<p>ali da bom dobil vsote po posameznih kriterij podobno kot z:</p>
+<pre>
+SELECT tblOsebni.Spol, SUM(tblPlace.NETO) as PlaceNeto
+FROM tblOsebni RIGHT JOIN tblPlace 
+               ON  tblOsebni.DatumF = tblPlace.DatumF 
+                 AND
+                   tblOsebni.Personal_ID = tblPlace.Personal_ID
+GROUP BY tblOsebni.Spol;
+
+</pre>
+<p>Kar bi bil hiter ogovor na to, koliko zaslužijo celjski glede na spol.</p>
+<p>Pa ni tako enostavno. <a href="https://en.wikipedia.org/wiki/Many-to-many_(data_model)">M2M</a> preprosto ni stvar, ki bi bila v Power Query ali v Power Pivot nekaj naravnega. Različni avtorji ponujajo različne rešitve kot npr. s <a href="https://powerpivotpro.com/2012/11/a-mystifying-and-awesome-solution-for-many-2-many/">prehodnimi tabelami</a> ali pa s pomočjo <a href="https://social.technet.microsoft.com/wiki/contents/articles/22202.a-practical-example-of-how-to-handle-simple-many-to-many-relationships-in-power-pivotssas-tabular-models.aspx">DAX funkcij</a>.</p>
+<p>Glede na strukturo podatkov se mi zdi najenostavneje z uvedbo dodatnega indeksa, ki spremeni M2M v <a href="One-to-many%20(data%20model)">O2M</a> ali celo <a href="https://en.wikipedia.org/wiki/One-to-one_(data_model)">O2O</a>.</p>
+Komplicirane besede in kratice za enostaven postopek:<br />
+
+<pre>
+Združi Mesec & Personal_ID v novi indeks, kot:
+   "2019-03" in 10001 v "2019-03_10001"
+
+</pre>
+V Power Query dodam nov stolpec po meri in uporabim formulo:
+<pre>
+  ID = [DatumF] &"_" &Text.From([Personal_ID])
+  
+  Query potem izgleda takole:
+  let
+    Vir = Excel.CurrentWorkbook(){[Name="tblOsebni"]}[Content],
+    #"Spremenjena vrsta" = Table.TransformColumnTypes(Vir,{{"DatumF", type text}, {"Personal_ID", Int64.Type}, {"Ime in priimek", type text}, {"Spol", type text}, {"Posta", type text}, {"Delovno mesto", type text}}),
+ <B>   #"Dodano po meri" = Table.AddColumn(#"Spremenjena vrsta", "ID", each [DatumF] &"_" &Text.From([Personal_ID])) </B>
+in
+    #"Dodano po meri"
+    
+</pre>
+<p>Tako dobim nov indeks <em>ID</em>, enaki indeks ustvarim tudi v tabeli za plače in sedaj lahko delam po običajnem postopku v Power Pivot ali pa že v Power Query ustvarim novo poizvedbo s povezavo preko <em>ID</em>. Pa naj bo samo povezava v PP:</p>
+<p><img src="/images/2019-05-12_PowerPivot_2.png" style="width:50.0%" /></p>
+<div id="primer-rezultatov-iz-vrtilne-tabele" class="section level2">
+<h2>Primer rezultatov iz vrtilne tabele</h2>
+<pre>
+    Vrednosti       
+Spol    Vsota BRUTO Procent od skupni BRUTO Štetje BRUTO
+F        25.998,00 €     53,99%                  10
+M        22.158,00 €     46,01%                   9
+vsota    48.156,00 €    100,00%                  19
+
+</pre>
+<p>Delovni zvezek z vzorčnimi podatki in podatkovnim modelom se nahaja <a href="/data/2019-05-12_M2M.xlsx">TUKAJ</a>.</p>
+</div>
+</div>

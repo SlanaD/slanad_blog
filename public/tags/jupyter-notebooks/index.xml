@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jupyter notebooks on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/tags/jupyter-notebooks/</link>
+    <description>Recent content in jupyter notebooks on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/jupyter-notebooks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] Long - Wide</title>
+      <link>/post/sld-long-wide/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-long-wide/</guid>
+      <description>“Нет человека и нет проблем”
+Анатолий Рыбаков
+“No women no cry”
+Bob Marley
+Bližnjica do grafa v naslovu je TUKAJ
+WIDE DATA FORMAT TO LONG DATA FORMATPythonGlej TUKAJ
+Jupiter Notebook list je na voljo TUKAJ
+ExcelIzvedem s pomočjo Power Query. Navodila so v dokumentu TUKAJ
+R##wide to long#-------df_w &amp;lt;- data.frame( ID = c(1, 2, 3),TimeStamp = c(&amp;#39;12.05.2019 11:34&amp;#39;, &amp;#39;12.</description>
+    </item>
+    
+  </channel>
+</rss>

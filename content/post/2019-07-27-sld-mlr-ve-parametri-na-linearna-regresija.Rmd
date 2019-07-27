@@ -1,0 +1,187 @@
+---
+title: '[SLD] MLR Večparametrična linearna regresija'
+author: SlanaD
+date: '2019-07-27'
+slug: sld-mlr-ve-parametri-na-linearna-regresija
+categories:
+  - Excel
+  - Python
+  - R
+tags:
+  - MLR
+  - ML
+  - excel
+  - forecast
+  - python
+  - R
+lastmod: '2019-07-27T17:42:04+02:00'
+keywords: []
+description: ''
+image: /images/2019-07-27_LR.png
+comment: no
+---
+
+<center>
+
+_"Per aspera ad astra"_     
+
+_Latin_ 
+
+
+_"In distinguishing the advantages of warriors' weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate."_
+
+_"The 5 rings" by Miyamoto Musashi_
+
+
+
+![](/images/2019-07-27_LR.png){width=70%}  
+
+</center>  
+
+
+# Večparametrična linearna regresija MLR (en. Multiple Linear Regression)
+
+Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov: 
+
+V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale.  
+
+Podatki v excelu so [TUKAJ](/data/2019-07-27_Costs.xlsx).
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(tidyverse)
+library(knitr)
+
+df <- readxl::read_excel(path ="./../../static/data/2019-07-27_Costs.xlsx", 
+                         sheet = "DATA" )
+
+
+knitr::kable(
+  df %>% 
+    subset(MonthF != '2019-07') %>% 
+    slice(tail(1:n(), 6)),
+
+
+format = "html", digits = 2, longtable = TRUE,
+caption = "Vstopni podatki (zadnjih 6)",
+align=c('l', 'r', 'r', 'r'),
+table.attr = "style='width:100%;'")
+
+```
+
+
+
+__Naloga:__   
+
+__Napovej skupen strošek, če veš koliko delovnih enot bo delalo v tem mesecu in koliko delovnih dni bodo delali.__
+
+| Parameter     |    |   
+|-------------- | ---|   
+| Mesec:        | 07 |   
+| Delovni dni:  | 21 |   
+| Enote:        | 38 |  
+
+
+
+## Excel
+
+Rezultati so v isti datoteki kot podatki, na listu [Analysis](/data/2019-07-27_Costs.xlsx). 
+MLR izvedeš s pomočjo dodatka za analize. Posnetek zaslona je na prej omenjenem listu.
+
+Izračunane so tri napovedi:
+
+1. Napoved s pomočjo povprečne cene : costs = povpr. cene * delovnih dni *  št. enot
+2. Napoved s pomočjo dvoparameterske regresijske analize
+3. Napoved s pomočjo trenda rasti povprečne cene
+
+Napovedovanje je vedno nehvaležno. Katera napoved je sedaj pravilna? Glede na izražen trend rasti povprečne cene, bi se verjetno odločil za tretjo varianto.
+
+![](/images/2019-07-27_Povprecna_cena.png){width=70%}  
+
+
+## Python
+
+```{r, setup, include=FALSE}
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3")
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+
+```
+
+```{python echo=TRUE}
+import pandas as pd
+from sklearn import linear_model
+
+#Preberi podatki
+df =  pd.read_excel("./../../static/data/2019-07-27_Costs.xlsx", 
+                         sheet_name = "DATA" )
+                         
+myData = df[df.MonthF != '2019-07'].copy() #odstrani zadnji mesec, ker tam ni rezultata
+
+# with sklearn
+regr = linear_model.LinearRegression()
+X = myData[['Working days', 'Working units']]
+Y = myData[['Costs']]
+
+regr.fit(X, Y)
+
+print('Intercept: \n', regr.intercept_)
+print('Coefficients: \n', regr.coef_)
+
+#napoved za 21 dni in 38 enot
+napoved = regr.predict([[21 , 38]]).item(0)
+ 
+print('Napoved: ', napoved)
+
+```
+
+
+## R
+
+```{r message=FALSE, warning=FALSE}
+##MLR
+#-------
+library(tidyverse)
+
+df <- readxl::read_excel(path ="./../../static/data/2019-07-27_Costs.xlsx", 
+                         sheet = "DATA" )
+
+myData  <- df %>% subset(MonthF != '2019-07') 
+
+# Multiple Linear Regresion: lm() is used to fit linear models
+
+fit1 <- lm(formula = Costs ~  `Working days` + `Working units`, data = myData)
+summary(fit1)
+
+myData_test <- data.frame(
+                  'Working days' = c(21), 
+                  'Working units' = c(38) )
+colnames(myData_test) = c("Working days", "Working units")
+
+p1 <- predict(fit1, newdata = myData_test, se.fit = TRUE, level = 0.95 )
+#izpis rezultatov    
+cat("            Prediction     : ", p1$fit[[1]], "\n")
+
+
+```
+
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+df2 <- myData 
+
+df2$Predicted <- predict(fit1, myData) 
+
+kable(df2,
+      
+format = "html", digits = 2, longtable = TRUE,
+caption = "Napovedi",
+align=c('l', 'r', 'r', 'r', 'r' ),
+table.attr = "style='width:100%;'"
+)
+
+```
+

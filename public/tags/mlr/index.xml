@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MLR on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/tags/mlr/</link>
+    <description>Recent content in MLR on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/mlr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] MLR Večparametrična linearna regresija</title>
+      <link>/post/sld-mlr-ve-parametri-na-linearna-regresija/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-mlr-ve-parametri-na-linearna-regresija/</guid>
+      <description>“Per aspera ad astra”
+Latin
+“In distinguishing the advantages of warriors’ weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate.”
+“The 5 rings” by Miyamoto Musashi
+Večparametrična linearna regresija MLR (en. Multiple Linear Regression)Napovedovanje pričakovanih stroškov na osnovi zgodovinskih podatkov:
+V primeru imaš zgodovinske podatke za preteklih 12 mesecev in sicer poznaš končni strošek, število delovnih enot, ki je ta strošek povzročilo in koliko delovni dni v mesecu so te delovne enote delale.</description>
+    </item>
+    
+  </channel>
+</rss>

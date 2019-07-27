@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Power Query on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/categories/power-query/</link>
+    <description>Recent content in Power Query on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/power-query/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] Long - Wide</title>
+      <link>/post/sld-long-wide/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-long-wide/</guid>
+      <description>“Нет человека и нет проблем”
+Анатолий Рыбаков
+“No women no cry”
+Bob Marley
+Bližnjica do grafa v naslovu je TUKAJ
+WIDE DATA FORMAT TO LONG DATA FORMATPythonGlej TUKAJ
+Jupiter Notebook list je na voljo TUKAJ
+ExcelIzvedem s pomočjo Power Query. Navodila so v dokumentu TUKAJ
+R##wide to long#-------df_w &amp;lt;- data.frame( ID = c(1, 2, 3),TimeStamp = c(&amp;#39;12.05.2019 11:34&amp;#39;, &amp;#39;12.</description>
+    </item>
+    
+    <item>
+      <title>[SLD] Many to Many in PowerPivot</title>
+      <link>/post/sld-many-to-many-in-powerpivot/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-many-to-many-in-powerpivot/</guid>
+      <description>“Software is like sex: it’s better when it’s free.”
+Linus Torval
+“In this world, you get what you pay for.”
+Kurt Vonnegut, Cat’s Cradle
+Power Pivot je eno izmed treh “power” orodij v Excelu. Uporabno, reklamirano, vendar:
+ne podpira večih indeksov
+ne podpira M2M relacij
+… verjetno še kaj, samo ni tema tega zapisa
+Analiza osebnih dohodkov v podjetju Grafen von CilliMesečno računovodstvo pripravi OD v obliki:</description>
+    </item>
+    
+  </channel>
+</rss>
