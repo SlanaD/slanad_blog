@@ -1,0 +1,20 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3/envs/keras-gpu")
+use_condaenv("keras-gpu")
+```
+
+
+
+```{python}
+import sys
+print(sys.version)
+
+```
+

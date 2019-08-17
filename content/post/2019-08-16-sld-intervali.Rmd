@@ -1,0 +1,187 @@
+---
+title: '[SLD] Intervali'
+author: SlanaD
+date: '2019-08-16'
+slug: sld-intervali
+categories:
+  - Python
+  - R
+tags:
+  - python
+  - R
+  - pandas
+  - tidyverse
+  - datetime
+lastmod: '2019-08-16T23:49:29+02:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-08-16_Interval.png
+---
+<center>
+
+_"In bad times, the bad do well."_     
+
+_neznan avtor_ 
+
+
+_"Documentation is like sex; when it’s good, it’s very, very good, and when it’s bad, it’s better than nothing."_
+
+_Dick Brandon_
+
+
+
+![](/images/2019-08-16_Interval.png){width=70%}  
+
+</center>  
+
+
+# Da bo napisano
+
+_Ni povezano z nadaljevanjem!_  
+
+Civilizacijsko smo napredovali do te mere, da danes dobiš vrhunsko znanje zastonj (primer [TUKAJ](https://www.researchgate.net/publication/259653472_Gradient_Boosting_Machines_A_Tutorial), [pa TUKAJ](https://arxiv.org/)), plačat pa moraš za skoraj vsako neumnost (zaradi politične korektnosti je to brez primerov).
+
+
+# Intervali
+
+Časovni interval je podmnožica podatkov, kjer je časovni žig podatkov (_Time Stamp_) omejen s spodnjo in zgornjo mejo. Matematiki bi temu rekli krajišči. Odvisno od tega ali sta vključeni v interval imamo lahko odprte, zaprte ali polodprte.
+
+Tipični primer časovnih intervalov je delovni čas zaposlenih. Primer:
+
+    .
+    | Čas dogodka       | Ime intervala               |  
+    |-------------------|-----------------------------|  
+    |  06:05            | Delovni čas - prva izmena   |  
+    |  09:42            | Malica 1                    | 
+    |  16:33            | Delovni čas - druga izmena  |
+    ...
+
+Za ugotavljanje v kateri časovni interval spada nek časovni žig in koliko spada v to obdobje, si lahko napišeš svojo funkcijo kot npr.:
+
+<pre class="sourceCode Python"><code>
+
+def fInterval(t1, t2):
+    '''izracuna stevilo ur po intervalih 
+    Vstop: zacetni cas, koncni cas npr. 10.0 14.0
+    Rezultat: tuple (4,0,0)
+    '''
+    ure_po_izmenah = [0,0,0]
+    interval_ime = [3, 1, 2, 3, 3, 1, 2, 3]
+    interval = [
+            [0, 6],
+            [6, 14],
+            [14, 22],
+            [22, 24],
+            [24, 6+24],
+            [6+24, 14+24],
+            [14+24, 22+24],
+            [22+24, 24+24]
+            ]  
+    interval_znotraj = [0, 0, 0, 0, 0, 0, 0, 0]
+
+    try: 
+        #Ce je 24 ur - ni možno
+        if t1 == t2:
+            return [0,0,0] 
+   
+        if t1 >= t2: t2 = t2 + 24 #prekoracitev polnoci    
+
+        for i in range(0, len(interval)):
+            ts = interval[i][0]
+            te = interval[i][1] 
+            if (t1 < ts and t2 < ts):
+                tn = 0
+            elif (t1 >= ts and t1 < te) and (t2 <= te ):
+                tn = t2 - t1
+            elif (t1 > te):
+                tn = 0
+            elif (t1 < ts) and (t2 > ts and t2 <= te):
+                tn = t2 - ts
+            elif (t1 >= ts and t1 < te) and t2 > te:
+                tn = te - t1
+            elif (t1 <= ts) and (t2 > te):
+                tn = te - ts
+            else:
+                tn = 0
+
+            interval_znotraj[i] = tn    
+                    
+        for i in range(0, len(interval)):
+            j = interval_ime[i]-1
+            ure_po_izmenah[j] += interval_znotraj[i]
+    
+        return ure_po_izmenah
+    except:
+        return [0,0,0]   
+</code></pre>
+
+Lahko pa poskusiš s čim bolj enostavnim, če te zanima samo v katerem intervalu se je ta dogodek zgodil.
+
+# Določitev intervala v R
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(chron)
+library(knitr)
+
+# Vzorčni dogodki
+df <- data.frame(TimeStamp = c("06:05:00", "09:32:00", "16:45:00"))
+
+## Razdelim na izmene 
+df$izmena <- cut(chron::times(df$TimeStamp), 
+                 breaks = (1/24) * c(0,6,14,22,24), 
+                 labels = c("3", "1", "2", "3"))
+df$izmena[is.na(df$izmena)] <- "3" #pri 0:00 vrne zgornji izraz napako NA in to popravim na 3 izmeno
+
+knitr::kable(df,
+             format = "html", longtable = TRUE,
+             caption = "Izmene",
+             align=c('l', 'l'),
+             table.attr = "style='width:50%;'")
+
+```
+
+
+_Bodi pozoren, da je funkcija base::cut() relativno počasna funkcija in da že pri 10.000 vrsticah lahko čakaš kakšno sekundo._
+
+
+
+
+# Določitev intervala v PYTHON
+Postopek je skoraj enak kot v R.
+
+```{r, setup, include=FALSE}
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3")
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+```
+
+```{python}
+import numpy as np
+import pandas as pd
+from datetime import datetime
+
+
+df = pd.DataFrame( {'TS': ['08:30:00', '09:00:00', '09:30:00', '10:00:00', '11:00:00', '12:00:00']} )
+#df['TS2'] = df['TS'].astype(np.datetime64)
+df['TS3'] = df['TS'].apply(lambda x: datetime.strptime(x, '%H:%M:%S'))
+
+bins = ['00:00:00', '09:00:00', '09:30:00', '23:59:00']
+#bins3 = [(lambda x: datetime.strptime(x, '%H:%M:%S'))(x) for x in bins]
+bins3 = [datetime.strptime(x, '%H:%M:%S') for x in bins]
+
+df['intervali'] = pd.cut(df['TS3'], bins3, labels=["DELO1","MALICA","DELO2"])
+
+print(df)
+
+```
+
+
+_Datum/čas je problematičen tip spremenljivke, ker se lahko pojavlja v različnih oblikah (npr. numeric, str, np.datetime64, datetime.datetime) in ti tipi med seboj niso  kompatibilni. Nabolje, da že takoj na začetku določiš kateri bo osnovni tip in vse pretvoriš v ta format._
+
+
+
+

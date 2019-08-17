@@ -1,0 +1,232 @@
+# Razne uporabne stvari za HUGO md in rmd
+***
+
+# Področje se s klikom odpri
+
+***
+
+<div> <details>
+<summary> <i>KLIKNI ZA PRIMER </i> </summary>
+<p>
+##Primer z R
+
+```{r Graf, echo=TRUE, fig.height=2, fig.width=3, message=FALSE, warning=FALSE, paged.print=TRUE, fig.cap="Vzorec časovne vrste", fig.align="center", fig.lp='' }
+#
+library("tidyverse")
+library("scales")
+
+```
+</p>
+</details> </div>
+
+***
+
+
+<div> <details>
+<summary> <i>KLIKNI ZA SLAB PRIMER </i> </summary>
+<p>
+##SLABA VIZUALIZACIJA
+```{r Graf2, echo=TRUE, fig.height=3, fig.width=3, message=FALSE, warning=FALSE, paged.print=TRUE, fig.cap="Vzorec časovne vrste", fig.align="center", fig.lp='' }
+#
+
+```
+Grafikon je narisan zelo na hitro in je uporaben samo za lastno uporabo (npr. hiter pregled podatkov). Brez poznavanja podatkov v ozadju, takšnega grafa ne moreš razumeti. Manjka naslov, leto, enote ...
+
+</p>
+</details> </div>
+
+***
+
+
+
+# Tri zvezdice naredijo ------
+
+***
+
+
+
+# Postavi na sredino
+
+<center>
+_“Simplify, simplify, simplify.”_
+
+_Henry David Thorea_
+
+</center>
+
+
+
+# Citiranje knjige v MD
+
+> Knaflic, Cole Nussbaumer. Storytelling with data: A data visualization guide for business professionals. John Wiley & Sons, 2015.
+
+
+
+# Tabela s slikami v MD
+
+Cole Nussbaumer Knaflic                | 1-klik
+:-------------------------------------:|:---------------------------------------:
+![opis](/images/2019-02-11_Img01.png) | ![opis](/images/2019-02-11_Img02.png)
+
+
+
+# Vključi PYTHON in da prikažeš slike
+
+```{r, setup, include=FALSE}
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3")
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+```
+
+
+```{python, Graf1, message=FALSE, warning=FALSE, paged.print=TRUE, fig.cap="Vzorec 1", fig.align="center", fig.lp='' }
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({'x': range(1,101), 'y': np.random.uniform(low=1, high=3, size=100)})                 
+
+import matplotlib.pyplot as plt
+import matplotlib.style as style
+import seaborn as sns
+
+sns.set()
+
+ax = sns.lineplot(data = df, 
+                  x = "x", y = "y",
+                  lw=1, 
+                  color = 'red',
+                  alpha=0.7)
+ax.set(xlabel='time [s]', ylabel='U [V]')
+ax.set_title('Naključni signal', loc='left')
+plt.show()
+plt.close()         # da v Markdown ne piše grafa preko grafa
+
+```
+
+
+
+# Bližnjica do slikami
+
+<img src = "/images/2019-02-12_Img3-1.svg"> </img>
+
+v glavi:
+image: /images/2019-02-23_BobRock.jpg
+
+v tekstu RMD
+![](/images/2019-02-23_BobRock.jpg)
+
+malo manjša
+<img src="/images/2019-03-23_Tesla100din.jpg" style="width:30.0%" />
+
+
+# Navajanje bližnjic v RMD
+
+[Vidno besedilo](/data/2019-02-17_Krst_pri_Savici.txt) s strani [vidno besedilo](http://www.pesnik.net/index.php?option=com_content&task=view&id=18)
+
+
+
+# Tipična glava v RMD
+
+---
+title: '[SLD] Glajenje časovnih vrst'
+author: SlanaD
+date: '2019-02-23'
+slug: sld-glajenje-časovnih-vrst
+categories:
+  - R
+  - Time-series
+tags:
+  - excel
+  - R
+  - time-series
+  - ggplot
+  - ma
+  - forecast
+  - ts
+lastmod: '2019-02-23T15:48:10+01:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-02-23_BobRock.jpg
+---
+<center>
+
+_"Per aspera ad astra"_     
+
+_Latin_ 
+
+
+_"In distinguishing the advantages of warriors' weapons, we discover that, whatever the weapon, there is a time and a situation in which it is appropriate."_
+
+_"The 5 rings" by Miyamoto Musashi_
+
+
+
+![](/images/2019-07-27_LR.png){width=70%}  
+
+</center>  
+
+
+# Pa naslov
+
+
+
+# Vstaviš "kodo", ki se ne izvaja izgleda pa kot koda
+
+<pre class="sourceCode VBA"><code>
+'Podatki
+    Range("A1").Value = "ime"
+    Range("A2").Value = "A"
+
+'Tabela iz podatkov
+    Set tabela = ActiveSheet.ListObjects.Add(xlSrcRange, Range("$A$1:$B$6"), , xlYes)
+    tabela.Range.Select
+
+</code></pre>
+
+
+ali npr.
+
+```{python eval=FALSE}
+#Testiranje pandas_profiling v Jupyter notebooks#  
+
+```
+
+
+
+# Malo lepši izpis tabele v R in Rmd
+
+...
+library(knitr)
+library(kableExtra)
+...
+kable(
+  df %>% 
+    group_by(neighbourhood) %>% 
+    summarize(max=max(price),
+              min=min(price),
+              mean=mean(price), 
+              median=median(price)) %>% 
+    arrange(desc(median)) %>% 
+    top_n(5),
+
+format = "html", digits = 1, longtable = TRUE,
+caption = "TOP 5 na Dunaju",
+align=c('l', 'r', 'r', 'r', 'r'),
+table.attr = "style='width:100%;'")
+
+
+
+# Bližnjica do podatkov
+shranjenih v D:\OneDrive\GitHub\slanad_blog\public\data
+
+
+[TUKAJ](/data/2019-05-04-sld-quick-eda_ReportPython.ipynb)
+[TUKAJ](/data/2019-05-12_M2M.xlsx)
+
+
+
+# Drugačen ENV 
+library(reticulate)
+use_python("C:/Users/Slana/Anaconda3/envs/keras-gpu")
+use_condaenv("keras-gpu")
