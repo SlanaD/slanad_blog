@@ -6,10 +6,25 @@
     <description>Recent content in Vizualizacija on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/vizualizacija/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] Grafi v PPT</title>
+      <link>/post/sld-grafi-v-ppt/</link>
+      <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-grafi-v-ppt/</guid>
+      <description>“No more than six words on a slide. EVER”
+Seth Godin
+Graf iz R v Power PointZa prenos grafa iz R v PP je kar nekaj metod:
+Najenostavneje je kopirati iz RSTUDIO preko odložišča.
+- Lahko shraniš z ggsave() in potem uvoziš kot sliko v PP (lahko tudi kot povezavo).
+- Lahko uporabiš metode iz knjižnice oficcer.
+Zadnja metoda se mi zdi najbolj uporabna, ko moraš prenesti večje število grafov, katerih število je na začetku nepoznano, kot na primer iz kakšne for zanke.</description>
+    </item>
     
     <item>
       <title>[SLD] Quick EDA</title>

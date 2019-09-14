@@ -1,0 +1,122 @@
+---
+title: '[SLD] Grafi v PPT'
+author: SlanaD
+date: '2019-09-14'
+slug: sld-grafi-v-ppt
+categories:
+  - R
+  - Python
+  - Vizualizacija
+  - PY
+tags:
+  - graf
+  - power point
+  - predstavitev
+  - R
+  - python
+  - vizualizacija
+lastmod: '2019-09-14T21:12:03+02:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-09-14_PowerPointLogo.png
+---
+<center>
+
+_"No more than six words on a slide. EVER"_     
+
+_Seth Godin_ 
+
+
+
+![](/images/2019-09-14_PowerPointLogo.png){width=70%}  
+
+</center>  
+
+
+# Graf iz R v Power Point
+
+Za prenos grafa iz R v PP je kar nekaj metod:
+
+Najenostavneje je kopirati iz RSTUDIO preko odložišča.  
+  - Lahko shraniš z _ggsave()_ in potem uvoziš kot sliko v PP (lahko tudi kot povezavo).  
+  - Lahko uporabiš metode iz knjižnice [oficcer](https://davidgohel.github.io/officer/articles/powerpoint.html).  
+
+Zadnja metoda se mi zdi najbolj uporabna, ko moraš prenesti večje število grafov, katerih število je na začetku nepoznano, kot na primer iz kakšne _for_ zanke.  
+
+```{r message=FALSE, warning=FALSE}
+library(ggplot2)
+library(magrittr)
+
+library(officer)
+
+
+# Uporabiš lahko prazno podlogo ali pa že obstoječo
+moja_podloga <- officer:: read_pptx() 
+#moja_podloga <- officer::read_pptx("./lib/podloga.pptx")
+
+# s tem stavkom pogledaš, kaj je v podlogi, ker boš potreboval v stavku add_slide()
+#layout_summary(moja_podloga)
+
+for(i in seq(1:3)){
+  set.seed(i)
+  df <- data.frame(x=seq(1,100), y=rnorm(n=100)) #100 naključnih števil
+  p1 <- ggplot(data=df, aes(x=x,y=y, group=1)) + theme_minimal() +
+          geom_line() +  ggtitle(paste("GRAF",i))
+  
+  moja_podloga <- moja_podloga %>% 
+      add_slide(layout = "Blank", master = "Office Theme")
+
+  moja_podloga <- moja_podloga %>% 
+      ph_with(value = p1, location = ph_location_fullsize())
+  
+  print(p1) #prikaže vse grafe, drugače v for stavku tega ne prikaže
+}
+
+#Shrani (tukaj sem zakomentiral)
+#print(moja_podloga, target = "Grafi.pptx") #shranim v datoteko vse grafe.
+
+
+```
+
+
+# Graf iz Python v Power Point
+
+Podobno kot s paketom [officer](https://cran.r-project.org/web/packages/officer/officer.pdf) v R je v Python paket [python-pptx](https://python-pptx.readthedocs.io/en/latest/#user-guide).
+Mogoče ne tako elegantno, pa vseeno.
+
+Vzorci se nahajajo [TUKAJ](https://pbpython.com/creating-powerpoint.html).
+
+Še ena zanimivost, kako ni potrebno shraniti je [TUKAJ](https://stackoverflow.com/questions/43875424/save-matplotlib-graph-in-a-ppt-file-using-python-pptx-without-saving-figure)
+
+
+Nekaj podobnega, kot je bilo v R je sedaj tukaj:
+
+<pre class="sourceCode Python"><code>
+
+    import numpy as np
+    import pandas as pd
+    
+    from io import BytesIO
+    from pptx import Presentation
+    
+    prs = Presentation()
+    
+    for i in range(1,4):
+        np.random.seed(i)
+        df = pd.DataFrame({"x": range(1,101)})
+        df['y'] = np.random.randn(100)
+    
+        p1 = df.plot(x='x', y='y', kind = 'line').get_figure()
+        image_stream = BytesIO() # To z BytesIO je, da ne rabim shraniti slike na disk.
+        p1.savefig(image_stream, format='PNG')
+        
+        slide = prs.slides.add_slide(prs.slide_layouts[6]) #Layout 6 je pri meni prazen layout.
+        pic = slide.shapes.add_picture(image_stream, left=1, top=1)
+    
+    
+    prs.save('Test.ppt')
+
+</code></pre>
+
+

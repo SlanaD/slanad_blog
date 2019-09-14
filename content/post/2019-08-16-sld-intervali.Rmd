@@ -57,6 +57,7 @@ Tipični primer časovnih intervalov je delovni čas zaposlenih. Primer:
     |  16:33            | Delovni čas - druga izmena  |
     ...
 
+
 Za ugotavljanje v kateri časovni interval spada nek časovni žig in koliko spada v to obdobje, si lahko napišeš svojo funkcijo kot npr.:
 
 <pre class="sourceCode Python"><code>
