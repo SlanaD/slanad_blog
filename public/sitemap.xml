@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>/post/sld-pdf-ocr/</loc>
+    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/post/sld-grafi-v-ppt/</loc>
     <lastmod>2019-09-14T21:12:03+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -198,6 +205,20 @@
   </url>
   
   <url>
+    <loc>/tags/ocr/</loc>
+    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/pdf/</loc>
+    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/posixct/</loc>
     <lastmod>2019-03-23T08:28:33+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -220,7 +241,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-09-14T21:12:03+02:00</lastmod>
+    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -248,7 +269,7 @@
   
   <url>
     <loc>/categories/python/</loc>
-    <lastmod>2019-09-14T21:12:03+02:00</lastmod>
+    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -521,7 +542,7 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2019-09-14T21:12:03+02:00</lastmod>
+    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OCR on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/tags/ocr/</link>
+    <description>Recent content in OCR on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ocr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] PDF OCR</title>
+      <link>/post/sld-pdf-ocr/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-pdf-ocr/</guid>
+      <description>“Quod licet iovi,non licet bovi.”
+Bogovom je dovoljeno več kot govedu.
+Publius Terentius Afer
+AlgoritemSkeniraj več PDF strani v en dokument (skener nima vgrajenega OCR).Včitaj shranjen PDF.Na vsaki strani je na določeni lokaciji shranjeno ime.Prečitaj to ime z OCR in shrani stran kot nov PDF s tem imenom.kodo kličeš z:retVal = fPdfOcr2(self.sFile, DatumF=DatumF, d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False)if (retVal == True):#tk.</description>
+    </item>
+    
+  </channel>
+</rss>

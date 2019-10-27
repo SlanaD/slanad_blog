@@ -1,0 +1,277 @@
+---
+title: '[SLD] PDF OCR'
+author: SlanaD
+date: '2019-10-27'
+slug: sld-pdf-ocr
+categories:
+  - Python
+tags:
+  - python
+  - PDF
+  - OCR
+lastmod: '2019-10-27T18:35:09+01:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2019-10-27_OCR.jpg
+---
+
+
+
+<center>
+<p><em><a href="https://sl.wikipedia.org/wiki/Quod_licet_Iovi,_non_licet_bovi">“Quod licet iovi,non licet bovi.”</a></em></p>
+<p><em>Bogovom je dovoljeno več kot govedu.</em></p>
+<p><em>Publius Terentius Afer</em></p>
+<p><img src="/images/2019-10-27_OCR.jpg" style="width:30.0%" /></p>
+</center>
+<div id="algoritem" class="section level1">
+<h1>Algoritem</h1>
+<ul>
+<li>Skeniraj več PDF strani v en dokument (skener nima vgrajenega OCR).</li>
+<li>Včitaj shranjen PDF.</li>
+<li>Na vsaki strani je na določeni lokaciji shranjeno ime.</li>
+<li>Prečitaj to ime z OCR in shrani stran kot nov PDF s tem imenom.</li>
+</ul>
+kodo kličeš z:
+<pre class="sourceCode Python"><code>
+
+    retVal = fPdfOcr2(self.sFile, DatumF=DatumF, d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False)
+    if (retVal == True):
+        #tk.messagebox.showinfo("Info", "Uspeno razstavljeno! ")
+        pass
+    else:
+        tk.messagebox.showinfo("Info", " NEUSPESNO! ")
+
+</code></pre>
+</div>
+<div id="zahteve" class="section level1">
+<h1>Zahteve</h1>
+<p>Različni optični čitalci različno tvorijo PDF. Nekateri ustvarijo preprost PNG in ga povežejo v PDF, ostali pa malo “zakomplicirajo” in razbijejo stran na več elementov, jih različno komprimirajo in potem povežejo v PDF.</p>
+<p>Zaradi tega so zahteve za čitanje različne in obdelava različno hitra.</p>
+<div id="zahteve-za-enostaven-pdf" class="section level2">
+<h2>Zahteve za “enostaven” PDF</h2>
+<p>Pogoj za enostaven PDF je, da je na eni strani en element (slika) in da je ta komprimirana tako, to komprimiranje knjižnica PIL prepozna. Če je stran sestavljena iz več elementov, ki jih PIL prepoznava, je postopek zelo podoben.</p>
+<p>Potrebuješ:</p>
+<ul>
+<li>tesseract _(tesseract-ocr-w32-setup-v5.0.0-alpha.20190708.exe in potem še <a href="https://digi.bib.uni-mannheim.de/tesseract/)_" class="uri">https://digi.bib.uni-mannheim.de/tesseract/)_</a><br />
+</li>
+<li>pytesseract <em>(pip install pytesseract)</em><br />
+</li>
+<li>pillow <em>(pip install pillow)</em><br />
+</li>
+<li>minecart <em>(pip install minecart)</em></li>
+<li>PyPDF2 <em>(pip install PyPDF2)</em></li>
+</ul>
+</div>
+<div id="zahteve-za-sestavljen-pdf" class="section level2">
+<h2>Zahteve za “sestavljen” PDF</h2>
+<p>To deluje tudi na “enostavnih” PDFih, samo čas obdelave je nekaj daljši. Pri daljših dokumentih (nekaj 10 strani) se razlika že občuti. Dodatno k prej navedenemu potrebuše še poppler <em>(poppler-068.0)</em> Le tega shraniš nekam v svojo pot.</p>
+</div>
+</div>
+<div id="python-koda" class="section level1">
+<h1>Python koda</h1>
+<div id="enostaven-pdf" class="section level2">
+<h2>“Enostaven” PDF"</h2>
+<pre class="sourceCode Python"><code>
+
+def fPdfOcr2(sFile, DatumF="2019-10", d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False):
+#Precitaj PDF, pretvori v sliko, obrezi sliko na podrocju, ki te zanimo, zavrti sliko sliko, izvedi ocr na mali sliki, 
+#shrani vsako stran iz PDF z imenom DatumF+_+precitano_ime+.pdf = 2019-10_RezultatOCR.pdf   
+#To je okvir za vzorčni printer, ki ga čitam, w = wide, h=height:
+#    d1_w = 2045/2340
+#    d1_h = 855/3310
+#    d2_w = 2177/2340
+#    d2_h = 1290/3310  
+#    
+#    # za OCR moras namestiti tesseract-ocr-w32-setup-v5.0.0-alpha.20190708.exe in potem še https://digi.bib.uni-mannheim.de/tesseract/
+#    # pip install pytesseract    
+#    # pip install pillow - mogoče bo treba namestiti verzijo 4.0
+#    # pip install minecart
+#    # pip install PyPDF2
+#    
+#    
+#vrne True, ce je uspesno in False, ce ni
+
+
+    from PIL import Image
+    from PyPDF2 import PdfFileWriter, PdfFileReader 
+    import minecart
+
+    import pytesseract
+    if os.path.exists(r'C:\... \AppData\Local\Tesseract-OCR\tesseract.exe'):
+        pytesseract.pytesseract.tesseract_cmd = r'C:\ ... \AppData\Local\Tesseract-OCR\tesseract.exe'
+    else:
+        # print("NO CORRECT PATH")
+        return("No Tesseract path found")
+    
+
+    sPath = os.path.dirname(sFile) #samo pot do obstojece datoteke
+  
+    try:      
+        pdffile = open(sFile, 'rb')
+        doc = minecart.Document(pdffile)
+    
+        page = doc.get_page(0) # getting a single page
+    
+        #Izrezem samo male slikice in pridobim imena
+        i = 0
+        ime = []
+        #iterating through all pages
+        for page in doc.iter_pages():
+            i = i + 1
+            
+         
+            im = page.images[0].as_pil()  # requires pillow
+            
+            if (saveImg == True):
+                 sFileNew = os.path.join(sPath, "PNG%s"%i + ".png")
+                 im.save(sFileNew)
+                 
+            width, height = im.size
+            t1_w = d1_w * width
+            t1_h = d1_h * height
+            t2_w = d2_w * width
+            t2_h = d2_h * height  
+            
+            im = im.crop((t1_w, t1_h, t2_w, t2_h))
+            im = im.rotate(90, expand=True)
+            im = im.convert('L') #L<- grayscale
+            #im.save("test%s.png"%i + ".png")
+            text = pytesseract.image_to_string(im)
+            if text.split()[0:2] == ['Delovno', 'mesto:']: #ce sploh berem pravo podrocje
+                ime.append(text.split()[-1]) #zadnji element je ime
+            else:
+                ime.append("Napaka_stran%s " % i) 
+                sFileNew = os.path.join(sPath, "test%s.png"%i + ".png")
+                im.save(sFileNew)
+            print(i, text)
+        
+        inputpdf = PdfFileReader(open(sFile, "rb"))
+        i = 0
+        for i in range(inputpdf.numPages):
+            output = PdfFileWriter()
+            output.addPage(inputpdf.getPage(i))
+            sFileNew = os.path.join(sPath, DatumF +"_"+ime[i] + ".pdf")
+            with open(sFileNew, "wb") as outputStream:
+                output.write(outputStream)
+            i = i + 1 
+        
+        return True
+    except:
+        return False
+
+
+</code></pre>
+</div>
+<div id="sestavljen-pdf" class="section level2">
+<h2>“Sestavljen” PDF</h2>
+<pre class="sourceCode Python"><code>
+
+# %% Common routines
+import os 
+import sys
+# Poppler mora biti v poti, če ni ga tukaj dodaj
+if os.path.exists('C:\\ .... \\poppler-0.68.0\\bin'):
+    sys.path.append('C:\\ .... \\poppler-0.68.0\\bin')   
+else:
+    print("NO POPPLER !")
+    exit
+    
+import datetime
+
+#%%FUNCIJA Precitaj PDF
+
+def fPdfOcr2(sFile, DatumF="2019-10", d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False):
+#Precitaj PDF, pretvori v sliko, obrezi sliko na podrocju, ki te zanimo, zavrti sliko sliko, izvedi ocr na mali sliki, 
+#shrani vsako stran iz PDF z imenom DatumF+_+precitano_ime+.pdf = 2019-10_RezultatOCR.pdf   
+#To je okvir za vzorčni printer, ki ga čitam, w = wide, h=height:
+#    d1_w = 2045/2340
+#    d1_h = 855/3310
+#    d2_w = 2177/2340
+#    d2_h = 1290/3310  
+#    
+#    # za OCR moras namestiti tesseract-ocr-w32-setup-v5.0.0-alpha.20190708.exe in potem še https://digi.bib.uni-mannheim.de/tesseract/
+#    # pip install pytesseract    
+#    # pip install pillow - mogoče bo treba namestiti verzijo 4.0
+#    # pip install minecart
+#    # pip install PyPDF2
+#    # pip install pdf2Image
+#    # 
+#
+#    #Poppler for windows: http://blog.alivate.com.au/poppler-windows/ 
+#    #bin moraš imeti v poti, to narediš s sys.path.apend("pot do poppler-068.0/bin")
+#
+#vrne True, ce je uspesno in False, ce ni
+    
+    import io
+    from PIL import Image
+    from PyPDF2 import PdfFileWriter, PdfFileReader 
+    import minecart
+    from pdf2image import convert_from_path
+
+    import pytesseract
+    if os.path.exists(r'C:\... \AppData\Local\Tesseract-OCR\tesseract.exe'):
+        pytesseract.pytesseract.tesseract_cmd = r'C:\ ... \AppData\Local\Tesseract-OCR\tesseract.exe'
+    else:
+        # print("NO CORRECT PATH")
+        return("No Tesseract path found")
+    
+
+    sPath = os.path.dirname(sFile) #samo pot do obstojece datoteke
+  
+    try:      
+        images = convert_from_path(sFile)  
+    
+        #Izrezem samo male slikice in pridobim imena
+        i = 0
+        ime = []
+        #iterating through all pages
+        for img in images:
+            i = i + 1
+            
+            png_bytes = io.BytesIO() #shranjujem v pomnilnik
+            img.save(png_bytes,'PNG') #shanim sliko v PNG formatu v pomnilnik
+            
+            im = Image.open(png_bytes) #iz pomnilnika nalozim v PIL format slike
+            
+            if (saveImg == True):
+                 sFileNew = os.path.join(sPath, "PNG%s"%i + ".png")
+                 im.save(sFileNew)
+                 
+            width, height = im.size
+            t1_w = d1_w * width
+            t1_h = d1_h * height
+            t2_w = d2_w * width
+            t2_h = d2_h * height  
+            
+            im = im.crop((t1_w, t1_h, t2_w, t2_h))
+            im = im.rotate(90, expand=True)
+            im = im.convert('L') #L<- grayscale
+            
+            text = pytesseract.image_to_string(im)
+            if text.split()[0:2] == ['Delovno', 'mesto:']: #ce sploh berem pravo podrocje
+                ime.append(text.split()[-1]) #zadnji element je ime
+            else:
+                ime.append("Napaka_stran%s " % i) 
+                sFileNew = os.path.join(sPath, "test%s.png"%i + ".png")
+                im.save(sFileNew)
+            print(i, text)
+        
+        inputpdf = PdfFileReader(open(sFile, "rb"))
+        i = 0
+        for i in range(inputpdf.numPages):
+            output = PdfFileWriter()
+            output.addPage(inputpdf.getPage(i))
+            sFileNew = os.path.join(sPath, DatumF +"_"+ime[i] + ".pdf")
+            with open(sFileNew, "wb") as outputStream:
+                output.write(outputStream)
+            i = i + 1 
+        
+        return True
+    except:
+        return False
+
+
+</code></pre>
+</div>
+</div>

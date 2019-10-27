@@ -66,6 +66,24 @@
     </item>
     
     <item>
+      <title>OCR</title>
+      <link>/tags/ocr/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ocr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PDF</title>
+      <link>/tags/pdf/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pdf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>POSIXct</title>
       <link>/tags/posixct/</link>
       <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
@@ -365,7 +383,7 @@
     <item>
       <title>python</title>
       <link>/tags/python/</link>
-      <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/python/</guid>
       <description></description>

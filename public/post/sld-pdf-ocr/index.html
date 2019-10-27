@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] PDF OCR - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="“Quod licet iovi,non licet bovi.”
+Bogovom je dovoljeno več kot govedu.
+Publius Terentius Afer
+AlgoritemSkeniraj več PDF strani v en dokument (skener nima vgrajenega OCR).Včitaj shranjen PDF.Na vsaki strani je na določeni lokaciji shranjeno ime.Prečitaj to ime z OCR in shrani stran kot nov PDF s tem imenom.kodo kličeš z:retVal = fPdfOcr2(self.sFile, DatumF=DatumF, d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False)if (retVal == True):#tk." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-pdf-ocr/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] PDF OCR" />
+<meta property="og:description" content="“Quod licet iovi,non licet bovi.”
+Bogovom je dovoljeno več kot govedu.
+Publius Terentius Afer
+AlgoritemSkeniraj več PDF strani v en dokument (skener nima vgrajenega OCR).Včitaj shranjen PDF.Na vsaki strani je na določeni lokaciji shranjeno ime.Prečitaj to ime z OCR in shrani stran kot nov PDF s tem imenom.kodo kličeš z:retVal = fPdfOcr2(self.sFile, DatumF=DatumF, d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False)if (retVal == True):#tk." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-pdf-ocr/" />
+<meta property="article:published_time" content="2019-10-27T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-10-27T18:35:09&#43;01:00"/>
+
+<meta itemprop="name" content="[SLD] PDF OCR">
+<meta itemprop="description" content="“Quod licet iovi,non licet bovi.”
+Bogovom je dovoljeno več kot govedu.
+Publius Terentius Afer
+AlgoritemSkeniraj več PDF strani v en dokument (skener nima vgrajenega OCR).Včitaj shranjen PDF.Na vsaki strani je na določeni lokaciji shranjeno ime.Prečitaj to ime z OCR in shrani stran kot nov PDF s tem imenom.kodo kličeš z:retVal = fPdfOcr2(self.sFile, DatumF=DatumF, d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False)if (retVal == True):#tk.">
+
+
+<meta itemprop="datePublished" content="2019-10-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-10-27T18:35:09&#43;01:00" />
+<meta itemprop="wordCount" content="812">
+
+
+
+<meta itemprop="keywords" content="python,PDF,OCR," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] PDF OCR"/>
+<meta name="twitter:description" content="“Quod licet iovi,non licet bovi.”
+Bogovom je dovoljeno več kot govedu.
+Publius Terentius Afer
+AlgoritemSkeniraj več PDF strani v en dokument (skener nima vgrajenega OCR).Včitaj shranjen PDF.Na vsaki strani je na določeni lokaciji shranjeno ime.Prečitaj to ime z OCR in shrani stran kot nov PDF s tem imenom.kodo kličeš z:retVal = fPdfOcr2(self.sFile, DatumF=DatumF, d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False)if (retVal == True):#tk."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] PDF OCR</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-10-27 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em><a href="https://sl.wikipedia.org/wiki/Quod_licet_Iovi,_non_licet_bovi">“Quod licet iovi,non licet bovi.”</a></em></p>
+<p><em>Bogovom je dovoljeno več kot govedu.</em></p>
+<p><em>Publius Terentius Afer</em></p>
+<p><img src="/images/2019-10-27_OCR.jpg" style="width:30.0%" /></p>
+</center>
+<div id="algoritem" class="section level1">
+<h1>Algoritem</h1>
+<ul>
+<li>Skeniraj več PDF strani v en dokument (skener nima vgrajenega OCR).</li>
+<li>Včitaj shranjen PDF.</li>
+<li>Na vsaki strani je na določeni lokaciji shranjeno ime.</li>
+<li>Prečitaj to ime z OCR in shrani stran kot nov PDF s tem imenom.</li>
+</ul>
+kodo kličeš z:
+<pre class="sourceCode Python"><code>
+
+    retVal = fPdfOcr2(self.sFile, DatumF=DatumF, d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False)
+    if (retVal == True):
+        #tk.messagebox.showinfo("Info", "Uspeno razstavljeno! ")
+        pass
+    else:
+        tk.messagebox.showinfo("Info", " NEUSPESNO! ")
+
+</code></pre>
+</div>
+<div id="zahteve" class="section level1">
+<h1>Zahteve</h1>
+<p>Različni optični čitalci različno tvorijo PDF. Nekateri ustvarijo preprost PNG in ga povežejo v PDF, ostali pa malo “zakomplicirajo” in razbijejo stran na več elementov, jih različno komprimirajo in potem povežejo v PDF.</p>
+<p>Zaradi tega so zahteve za čitanje različne in obdelava različno hitra.</p>
+<div id="zahteve-za-enostaven-pdf" class="section level2">
+<h2>Zahteve za “enostaven” PDF</h2>
+<p>Pogoj za enostaven PDF je, da je na eni strani en element (slika) in da je ta komprimirana tako, to komprimiranje knjižnica PIL prepozna. Če je stran sestavljena iz več elementov, ki jih PIL prepoznava, je postopek zelo podoben.</p>
+<p>Potrebuješ:</p>
+<ul>
+<li>tesseract _(tesseract-ocr-w32-setup-v5.0.0-alpha.20190708.exe in potem še <a href="https://digi.bib.uni-mannheim.de/tesseract/)_" class="uri">https://digi.bib.uni-mannheim.de/tesseract/)_</a><br />
+</li>
+<li>pytesseract <em>(pip install pytesseract)</em><br />
+</li>
+<li>pillow <em>(pip install pillow)</em><br />
+</li>
+<li>minecart <em>(pip install minecart)</em></li>
+<li>PyPDF2 <em>(pip install PyPDF2)</em></li>
+</ul>
+</div>
+<div id="zahteve-za-sestavljen-pdf" class="section level2">
+<h2>Zahteve za “sestavljen” PDF</h2>
+<p>To deluje tudi na “enostavnih” PDFih, samo čas obdelave je nekaj daljši. Pri daljših dokumentih (nekaj 10 strani) se razlika že občuti. Dodatno k prej navedenemu potrebuše še poppler <em>(poppler-068.0)</em> Le tega shraniš nekam v svojo pot.</p>
+</div>
+</div>
+<div id="python-koda" class="section level1">
+<h1>Python koda</h1>
+<div id="enostaven-pdf" class="section level2">
+<h2>“Enostaven” PDF"</h2>
+<pre class="sourceCode Python"><code>
+
+def fPdfOcr2(sFile, DatumF="2019-10", d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False):
+#Precitaj PDF, pretvori v sliko, obrezi sliko na podrocju, ki te zanimo, zavrti sliko sliko, izvedi ocr na mali sliki, 
+#shrani vsako stran iz PDF z imenom DatumF+_+precitano_ime+.pdf = 2019-10_RezultatOCR.pdf   
+#To je okvir za vzorčni printer, ki ga čitam, w = wide, h=height:
+#    d1_w = 2045/2340
+#    d1_h = 855/3310
+#    d2_w = 2177/2340
+#    d2_h = 1290/3310  
+#    
+#    # za OCR moras namestiti tesseract-ocr-w32-setup-v5.0.0-alpha.20190708.exe in potem še https://digi.bib.uni-mannheim.de/tesseract/
+#    # pip install pytesseract    
+#    # pip install pillow - mogoče bo treba namestiti verzijo 4.0
+#    # pip install minecart
+#    # pip install PyPDF2
+#    
+#    
+#vrne True, ce je uspesno in False, ce ni
+
+
+    from PIL import Image
+    from PyPDF2 import PdfFileWriter, PdfFileReader 
+    import minecart
+
+    import pytesseract
+    if os.path.exists(r'C:\... \AppData\Local\Tesseract-OCR\tesseract.exe'):
+        pytesseract.pytesseract.tesseract_cmd = r'C:\ ... \AppData\Local\Tesseract-OCR\tesseract.exe'
+    else:
+        # print("NO CORRECT PATH")
+        return("No Tesseract path found")
+    
+
+    sPath = os.path.dirname(sFile) #samo pot do obstojece datoteke
+  
+    try:      
+        pdffile = open(sFile, 'rb')
+        doc = minecart.Document(pdffile)
+    
+        page = doc.get_page(0) # getting a single page
+    
+        #Izrezem samo male slikice in pridobim imena
+        i = 0
+        ime = []
+        #iterating through all pages
+        for page in doc.iter_pages():
+            i = i + 1
+            
+         
+            im = page.images[0].as_pil()  # requires pillow
+            
+            if (saveImg == True):
+                 sFileNew = os.path.join(sPath, "PNG%s"%i + ".png")
+                 im.save(sFileNew)
+                 
+            width, height = im.size
+            t1_w = d1_w * width
+            t1_h = d1_h * height
+            t2_w = d2_w * width
+            t2_h = d2_h * height  
+            
+            im = im.crop((t1_w, t1_h, t2_w, t2_h))
+            im = im.rotate(90, expand=True)
+            im = im.convert('L') #L<- grayscale
+            #im.save("test%s.png"%i + ".png")
+            text = pytesseract.image_to_string(im)
+            if text.split()[0:2] == ['Delovno', 'mesto:']: #ce sploh berem pravo podrocje
+                ime.append(text.split()[-1]) #zadnji element je ime
+            else:
+                ime.append("Napaka_stran%s " % i) 
+                sFileNew = os.path.join(sPath, "test%s.png"%i + ".png")
+                im.save(sFileNew)
+            print(i, text)
+        
+        inputpdf = PdfFileReader(open(sFile, "rb"))
+        i = 0
+        for i in range(inputpdf.numPages):
+            output = PdfFileWriter()
+            output.addPage(inputpdf.getPage(i))
+            sFileNew = os.path.join(sPath, DatumF +"_"+ime[i] + ".pdf")
+            with open(sFileNew, "wb") as outputStream:
+                output.write(outputStream)
+            i = i + 1 
+        
+        return True
+    except:
+        return False
+
+
+</code></pre>
+</div>
+<div id="sestavljen-pdf" class="section level2">
+<h2>“Sestavljen” PDF</h2>
+<pre class="sourceCode Python"><code>
+
+# %% Common routines
+import os 
+import sys
+# Poppler mora biti v poti, če ni ga tukaj dodaj
+if os.path.exists('C:\\ .... \\poppler-0.68.0\\bin'):
+    sys.path.append('C:\\ .... \\poppler-0.68.0\\bin')   
+else:
+    print("NO POPPLER !")
+    exit
+    
+import datetime
+
+#%%FUNCIJA Precitaj PDF
+
+def fPdfOcr2(sFile, DatumF="2019-10", d1_w=0.8739, d1_h=0.2583, d2_w=0.9303, d2_h=0.3897, saveImg=False):
+#Precitaj PDF, pretvori v sliko, obrezi sliko na podrocju, ki te zanimo, zavrti sliko sliko, izvedi ocr na mali sliki, 
+#shrani vsako stran iz PDF z imenom DatumF+_+precitano_ime+.pdf = 2019-10_RezultatOCR.pdf   
+#To je okvir za vzorčni printer, ki ga čitam, w = wide, h=height:
+#    d1_w = 2045/2340
+#    d1_h = 855/3310
+#    d2_w = 2177/2340
+#    d2_h = 1290/3310  
+#    
+#    # za OCR moras namestiti tesseract-ocr-w32-setup-v5.0.0-alpha.20190708.exe in potem še https://digi.bib.uni-mannheim.de/tesseract/
+#    # pip install pytesseract    
+#    # pip install pillow - mogoče bo treba namestiti verzijo 4.0
+#    # pip install minecart
+#    # pip install PyPDF2
+#    # pip install pdf2Image
+#    # 
+#
+#    #Poppler for windows: http://blog.alivate.com.au/poppler-windows/ 
+#    #bin moraš imeti v poti, to narediš s sys.path.apend("pot do poppler-068.0/bin")
+#
+#vrne True, ce je uspesno in False, ce ni
+    
+    import io
+    from PIL import Image
+    from PyPDF2 import PdfFileWriter, PdfFileReader 
+    import minecart
+    from pdf2image import convert_from_path
+
+    import pytesseract
+    if os.path.exists(r'C:\... \AppData\Local\Tesseract-OCR\tesseract.exe'):
+        pytesseract.pytesseract.tesseract_cmd = r'C:\ ... \AppData\Local\Tesseract-OCR\tesseract.exe'
+    else:
+        # print("NO CORRECT PATH")
+        return("No Tesseract path found")
+    
+
+    sPath = os.path.dirname(sFile) #samo pot do obstojece datoteke
+  
+    try:      
+        images = convert_from_path(sFile)  
+    
+        #Izrezem samo male slikice in pridobim imena
+        i = 0
+        ime = []
+        #iterating through all pages
+        for img in images:
+            i = i + 1
+            
+            png_bytes = io.BytesIO() #shranjujem v pomnilnik
+            img.save(png_bytes,'PNG') #shanim sliko v PNG formatu v pomnilnik
+            
+            im = Image.open(png_bytes) #iz pomnilnika nalozim v PIL format slike
+            
+            if (saveImg == True):
+                 sFileNew = os.path.join(sPath, "PNG%s"%i + ".png")
+                 im.save(sFileNew)
+                 
+            width, height = im.size
+            t1_w = d1_w * width
+            t1_h = d1_h * height
+            t2_w = d2_w * width
+            t2_h = d2_h * height  
+            
+            im = im.crop((t1_w, t1_h, t2_w, t2_h))
+            im = im.rotate(90, expand=True)
+            im = im.convert('L') #L<- grayscale
+            
+            text = pytesseract.image_to_string(im)
+            if text.split()[0:2] == ['Delovno', 'mesto:']: #ce sploh berem pravo podrocje
+                ime.append(text.split()[-1]) #zadnji element je ime
+            else:
+                ime.append("Napaka_stran%s " % i) 
+                sFileNew = os.path.join(sPath, "test%s.png"%i + ".png")
+                im.save(sFileNew)
+            print(i, text)
+        
+        inputpdf = PdfFileReader(open(sFile, "rb"))
+        i = 0
+        for i in range(inputpdf.numPages):
+            output = PdfFileWriter()
+            output.addPage(inputpdf.getPage(i))
+            sFileNew = os.path.join(sPath, DatumF +"_"+ime[i] + ".pdf")
+            with open(sFileNew, "wb") as outputStream:
+                output.write(outputStream)
+            i = i + 1 
+        
+        return True
+    except:
+        return False
+
+
+</code></pre>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-10-27</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          <a href="/tags/pdf/">PDF</a>
+          <a href="/tags/ocr/">OCR</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/sld-grafi-v-ppt/">
+            <span class="next-text nav-default">[SLD] Grafi v PPT</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
