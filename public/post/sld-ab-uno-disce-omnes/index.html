@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] ab uno disce omnes »po enem spoznaj vse« - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="It’s simple, but simple isn’t the same as easy
+Old Man’s War (John Scalzi)
+Tukaj sem nametal nekaj skriptov, za katere se mi zdi, da jih bom še potreboval.
+RMD narediš lahko malo lepši s pomočjo teh navodil
+Črtna koda iz PDFZa čitanje PDF uporabim poppler (http://blog.alivate.com.au/poppler-windows/)
+Črtno kodo čitam s pomočjo knjižnice ZBAR (https://sourceforge.net/projects/zbar/files/zbar/0.10/zbar-0.10-setup.exe/download).
+S pip install pyzbar si namestiš pythonov vmesnik.
+
+Deluje nekako tako:" /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-ab-uno-disce-omnes/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] ab uno disce omnes »po enem spoznaj vse«" />
+<meta property="og:description" content="It’s simple, but simple isn’t the same as easy
+Old Man’s War (John Scalzi)
+Tukaj sem nametal nekaj skriptov, za katere se mi zdi, da jih bom še potreboval.
+RMD narediš lahko malo lepši s pomočjo teh navodil
+Črtna koda iz PDFZa čitanje PDF uporabim poppler (http://blog.alivate.com.au/poppler-windows/)
+Črtno kodo čitam s pomočjo knjižnice ZBAR (https://sourceforge.net/projects/zbar/files/zbar/0.10/zbar-0.10-setup.exe/download).
+S pip install pyzbar si namestiš pythonov vmesnik.
+
+Deluje nekako tako:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-ab-uno-disce-omnes/" />
+<meta property="article:published_time" content="2019-12-24T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-12-24T11:00:27&#43;01:00"/>
+
+<meta itemprop="name" content="[SLD] ab uno disce omnes »po enem spoznaj vse«">
+<meta itemprop="description" content="It’s simple, but simple isn’t the same as easy
+Old Man’s War (John Scalzi)
+Tukaj sem nametal nekaj skriptov, za katere se mi zdi, da jih bom še potreboval.
+RMD narediš lahko malo lepši s pomočjo teh navodil
+Črtna koda iz PDFZa čitanje PDF uporabim poppler (http://blog.alivate.com.au/poppler-windows/)
+Črtno kodo čitam s pomočjo knjižnice ZBAR (https://sourceforge.net/projects/zbar/files/zbar/0.10/zbar-0.10-setup.exe/download).
+S pip install pyzbar si namestiš pythonov vmesnik.
+
+Deluje nekako tako:">
+
+
+<meta itemprop="datePublished" content="2019-12-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-24T11:00:27&#43;01:00" />
+<meta itemprop="wordCount" content="1308">
+
+
+
+<meta itemprop="keywords" content="python,r,barcode,folder,pdf," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] ab uno disce omnes »po enem spoznaj vse«"/>
+<meta name="twitter:description" content="It’s simple, but simple isn’t the same as easy
+Old Man’s War (John Scalzi)
+Tukaj sem nametal nekaj skriptov, za katere se mi zdi, da jih bom še potreboval.
+RMD narediš lahko malo lepši s pomočjo teh navodil
+Črtna koda iz PDFZa čitanje PDF uporabim poppler (http://blog.alivate.com.au/poppler-windows/)
+Črtno kodo čitam s pomočjo knjižnice ZBAR (https://sourceforge.net/projects/zbar/files/zbar/0.10/zbar-0.10-setup.exe/download).
+S pip install pyzbar si namestiš pythonov vmesnik.
+
+Deluje nekako tako:"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] ab uno disce omnes »po enem spoznaj vse«</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-12-24 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            <a href="/categories/r/"> R </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>It’s simple, but simple isn’t the same as easy</em></p>
+<p><em>Old Man’s War (John Scalzi)</em></p>
+<p><img src="/images/2019-12-24_barcode.gif" style="width:15.0%" /></p>
+</center>
+<p>Tukaj sem nametal nekaj skriptov, za katere se mi zdi, da jih bom še potreboval.</p>
+<p>RMD narediš lahko malo lepši s pomočjo <a href="https://holtzy.github.io/Pimp-my-rmd/">teh navodil</a></p>
+<div id="crtna-koda-iz-pdf" class="section level1">
+<h1>Črtna koda iz PDF</h1>
+<p>Za čitanje PDF uporabim poppler (<a href="http://blog.alivate.com.au/poppler-windows/" class="uri">http://blog.alivate.com.au/poppler-windows/</a>)</p>
+<p>Črtno kodo čitam s pomočjo knjižnice ZBAR (<a href="https://sourceforge.net/projects/zbar/files/zbar/0.10/zbar-0.10-setup.exe/download" class="uri">https://sourceforge.net/projects/zbar/files/zbar/0.10/zbar-0.10-setup.exe/download</a>).</p>
+<p>S pip install pyzbar si namestiš pythonov vmesnik.<br />
+<br></br></p>
+<p>Deluje nekako tako:</p>
+<ul>
+<li><p>prečitaš PDF</p></li>
+<li><p>v io (pomnilnik) shraniš sliko</p></li>
+<li><p>iz slike prečitaš črtno kodo</p></li>
+</ul>
+<p>Pseudo koda:</p>
+<pre class="sourceCode Python"><code>
+
+  images = convert_from_path(PDF_File, poppler_path = POPPLER_PATH) #iz PDF v sliko  
+  png_bytes = io.BytesIO()                                          #shranjujem v pomnilnik
+  images[0].save(png_bytes,'PNG')                                   #shanim sliko v PNG formatu v pomnilnik
+  im = Image.open(png_bytes)                                        #iz pomnilnika nalozim v PIL format slike
+  barcode = pyzbar.decode(im)                                       #precitam bar kodo
+  text = barcode[0].data.decode("utf-8")                            #razstavim bar kodo in pridobim vsebino
+  
+</code></pre>
+<style> div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;} </style>
+<div>
+<details>
+<summary> <i>
+<div class="blue">
+<p>KLIKNI ZA KODO: Tukaj je celotna koda, vključno s tkinter GUI</p>
+</div>
+</i> </summary>
+<p>
+<pre class="sourceCode Python"><code>
+
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Oct  9 14:11:56 2019
+
+Preberi z bar code
+
+@author: slanad
+
+# NAMESTI PRED ZAČETKOM
+#    #ZBAR
+#    #https://sourceforge.net/projects/zbar/files/zbar/0.10/zbar-0.10-setup.exe/download
+
+#    # pip install pillow - mogoče bo treba namestiti verzijo 4.0
+#    # pip install minecart
+#    # pip install PyPDF2
+#    # pip install pdf2Image
+#    # https://blog.alivate.com.au/poppler-windows/
+#    # Poppler for windows: http://blog.alivate.com.au/poppler-windows/ 
+#    # bin moraš imeti v poti, to narediš s sys.path.apend("pot do poppler-068.0/bin")
+#    # deluje tudi ce dolocis v poti pot do popplerja - glej spodaj ukaz 
+#    # images = convert_from_path(sFile, poppler_path = POPPLER_PATH)
+"""
+
+# %% Common routines
+import os 
+import sys
+import datetime
+
+import tkinter as tk
+from tkinter import filedialog
+from tkinter import messagebox
+import subprocess
+
+import io
+from PIL import Image
+from PyPDF2 import PdfFileWriter, PdfFileReader 
+from pdf2image import convert_from_path
+from pyzbar import pyzbar
+
+
+#import pytesseract
+
+SAVE_IMG_FLAG = True #ali shranjuje vmesne rezultate ali ne
+
+# nastavi glede na racunalnik
+if os.path.exists('D:\\OneDrive'):
+    #SLD DOMA
+    POPPLER_PATH = 'D:\\OneDrive\\Dokumenti\\Python\\PdfOCR01\\poppler-0.68.0\\bin' 
+    sys.path.append('D:\\OneDrive\\Dokumenti\\Python\\PdfOCR01\\poppler-0.68.0\\bin')  
+    #sys.path.append('D:\\OneDrive\\Dokumenti\\Python\\PdfOCR01\\ZBar\\bin')
+
+    #pytesseract.pytesseract.tesseract_cmd = r'C:\Users\Slana\AppData\Local\Tesseract-OCR\tesseract.exe'
+ 
+elif os.path.exists('C:\\Users\\slanad\\OneDrive'):
+    #SLD V SLUZBI
+    POPPLER_PATH = 'C:\\Users\\slanad\\OneDrive\\Dokumenti\\Python\\PdfOCR01\\poppler-0.68.0\\bin'    
+    sys.path.append('C:\\Users\\slanad\\OneDrive\\Dokumenti\\Python\\PdfOCR01\poppler-0.68.0\\bin') 
+    sys.path.append('C:\\Users\\slanad\\OneDrive\\Dokumenti\\Python\\PdfOCR01\\ZBar\\bin')
+    #pytesseract.pytesseract.tesseract_cmd = r'C:\Users\slanad\AppData\Local\Tesseract-OCR\tesseract.exe'
+
+#Testiraj pogoje
+if not(os.path.exists(POPPLER_PATH)):
+   print("NO POPPLER !")
+   exit
+
+#Test data
+sFile = r"C:\Users\slanad\OneDrive\Dokumenti\Python\PdfOCR01\test\PrinterINST_3_CB.pdf"
+d1_w = 100/2340
+d1_h = 700/3310
+d2_w = 350/2340
+d2_h = 1250/3310  
+DatumF="2019-10"
+saveImg = SAVE_IMG_FLAG
+# fPdfBAR1(sFile) #za testiranje funkcije
+
+#%%Precitaj PDF
+
+def fPdfBAR1(sFile, DatumF="2019-10", d1_w=0.0437, d1_h=0.2115, d2_w=0.1496, d2_h=0.3776, saveImg = SAVE_IMG_FLAG):
+#Precitaj PDF, pretvori v sliko, obrezi sliko na podrocju, ki te zanimo, zavrti sliko sliko, izvedi ocr na mali sliki, 
+#shrani vsako stran iz PDF z imenom DatumF+_+precitano_ime+.pdf = 2019-10_MFC04.pdf   
+#To je okvir za printer iz vzdrževanja, ki ga čitam, w = wide, h=height:
+#    d1_w = 2045/2340
+#    d1_h = 855/3310
+#    d2_w = 2177/2340
+#    d2_h = 1290/3310  
+# vrne True, ce je uspesno in False, ce ni
+    
+    sPath = os.path.dirname(sFile) #samo pot do obstojece datoteke
+  
+    try:      
+        images = convert_from_path(sFile, poppler_path = POPPLER_PATH)  
+    
+        #Izrezem samo male slikice in pridobim imena
+        i = 0
+        ime = []
+        #iterating through all pages
+        for img in images:
+            i = i + 1
+            
+            png_bytes = io.BytesIO() #shranjujem v pomnilnik
+            img.save(png_bytes,'PNG') #shanim sliko v PNG formatu v pomnilnik
+
+            im = Image.open(png_bytes) #iz pomnilnika nalozim v PIL format slike
+            
+            if (saveImg == True):
+                 sFileNew = os.path.join(sPath, "PNG%s"%i + ".png")
+                 im.save(sFileNew)
+                 
+            width, height = im.size
+            t1_w = d1_w * width
+            t1_h = d1_h * height
+            t2_w = d2_w * width
+            t2_h = d2_h * height  
+            
+            im = im.crop((t1_w, t1_h, t2_w, t2_h))
+            im = im.rotate(90, expand=True)
+            im = im.convert('L') #L<- grayscale
+            
+            barcode = pyzbar.decode(im)
+            try:
+                text = barcode[0].data.decode("utf-8")
+            except:
+                text = "Napaka"+str(i)
+    
+            print (text)
+            #text = pytesseract.image_to_string(im)
+            
+            if text != "":
+                ime.append(text) #zadnji element je ime
+                
+                if (saveImg == True):
+                    sFileNew = os.path.join(sPath, "izsek%s"%i + ".png")
+                    im.save(sFileNew)  
+                    
+            else:
+                ime.append("Napaka_stran%s " % i) 
+                sFileNew = os.path.join(sPath, "napaka%s"%i + ".png")
+                im.save(sFileNew)
+            print(i, text)
+
+        
+        inputpdf = PdfFileReader(open(sFile, "rb"))
+        i = 0
+        for i in range(inputpdf.numPages):
+            output = PdfFileWriter()
+            output.addPage(inputpdf.getPage(i))
+            sFileNew = os.path.join(sPath, DatumF +"_"+ime[i] + ".pdf")
+            with open(sFileNew, "wb") as outputStream:
+                output.write(outputStream)
+            i = i + 1 
+        
+        return True
+    except:
+        return False
+
+#%%TKINTER
+class MainApplication(tk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        self.parent = parent
+                
+        self.mesec  = tk.Label(parent, text = "Mesec: ").pack(side="top")
+        self.vnos_text = tk.StringVar() #datumF npr. 2019-03
+        self.SaveImageFlag = tk.IntVar() #Zastavica ali se naj shranjujejo pomozne slike
+        self.sDatoteka = tk.StringVar() #lokacija datoteke za dodajanje
+        #default vrednost za datum
+        now = datetime.datetime.now() - datetime.timedelta(days=27) #danasnji datum za ca mesec nazaj
+        datumF = "%d"%(now.year) + "-" +  ('{num:02d}'.format(num=now.month)) #vzorec 2019-03     
+        
+        self.vnos_text.set(datumF)
+        self.vnos = tk.Entry(parent, textvariable = self.vnos_text).pack(side="top")
+        
+        self.chBox1 = tk.Checkbutton(parent, text = "Slike se shranijo?", variable = self.SaveImageFlag,
+                 onvalue = 1, offvalue = 0, height=2,
+                 width = 20,
+                 command=self.fSaveImageFlag_state).pack(side="top")
+        
+        self.btn1 = tk.Button(parent, height = 2, width = 35, bg="#995599", font=("Helvetica", 14),
+                         text="  BAR, razstavi, preimenuj, shrani   ",
+                         command=self.fPdfOCRsave).pack(side="bottom")
+    
+    def fSaveImageFlag_state(self):
+        if self.SaveImageFlag.get()==1:
+            local_SAVE_IMG_FLAG = True
+        else:
+            local_SAVE_IMG_FLAG = False
+        return local_SAVE_IMG_FLAG
+        
+    def fPdfOCRsave(self):
+        self.sFile = tk.filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("pdf","*.pdf"),("all files","*.*")))     
+        try:
+            
+            DatumF = str(self.vnos_text.get()) # DatumF = '2019-06'
+            
+            retVal = fPdfBAR1(self.sFile, DatumF=DatumF, d1_w=0.0437, d1_h=0.2115, d2_w=0.1496, d2_h=0.3776, saveImg = self.fSaveImageFlag_state() )
+            if (retVal == True):
+                #tk.messagebox.showinfo("Information", "Uspeno razstavljeno! ")
+                pass
+            else:
+                tk.messagfPdfBAR1ebox.showinfo("Information", " NEUSPESNO! ")
+                
+            sPath = os.path.dirname(self.sFile) #samo pot do obstojece datoteke
+            sPath = os.path.abspath(sPath)
+            print(sPath)
+            subprocess.call("explorer " + sPath, shell=True)
+            
+        except:
+            tk.messagebox.showwarning("Information", " NAPAKA! ")
+        
+
+#%% MAIN
+if __name__ == "__main__":  
+
+    root = tk.Tk()
+    root.title("Dodajanje datotek")
+    MainApplication(root).pack(side="top", fill="both", expand=True)
+    root.mainloop()
+
+
+  
+</code></pre>
+</p>
+</details>
+</div>
+<hr />
+</div>
+<div id="zagon-python-skriptov" class="section level1">
+<h1>Zagon python skriptov</h1>
+<p>V windows končnica py ni nastavljena, da se zažene python ampak se običajno odpre urejevalnik besedil. To je OK, saj tako ne zaženeš nekaj po naključju (npr. kak podprogram). Da pa lahko zaženem python skript z dvoklikom uporabljma ali CMD ali VBS.</p>
+<style> div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;} </style>
+<div>
+<details>
+<summary> <i>
+<div class="blue">
+<p>KLIKNI ZA KODO: Primer zagona s CMD</p>
+</div>
+</i> </summary>
+<p>
+<p>Narediš datoteko s končnico *.CMD (npr. <em>zagon.cmd</em>) .</p>
+<pre class="sourceCode CMD"><code>
+
+Y:
+cd "Y:\xx\xxx"
+
+call C:\Users\slanad\AppData\Local\Continuum\anaconda3\Scripts\activate.bat C:\Users\slanad\AppData\Local\Continuum\anaconda3
+python.exe SCRIPT_00.py
+
+pause
+exit
+  
+</code></pre>
+</p>
+</details>
+</div>
+<style> div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 10px;} </style>
+<div>
+<details>
+<summary> <i>
+<div class="blue">
+<p>KLIKNI ZA KODO: Primer zagona z VBS</p>
+</div>
+</i> </summary>
+<p>
+<p>Narediš datoteko s končnico *.CMD (npr. <em>ED.cmd</em>). Kjer nastaviš, kako boš zaganjal VBS. V osnovi lahko zaženeš VBS direktno, samo potem ne veš ali se bo izvršil 32bitni ali 64bitni. Odvisno od nastavitve v računalniku</p>
+<pre class="sourceCode CMD"><code>
+
+@ECHO OFF
+Echo "START SCRIPT ime"
+
+ECHO
+ECHO "ZAGANJAM SKRIPT 64 bitno"
+REM standarni 32bitni cscript ne delujez nekaterimi računalniki in z adodb.connect, zato ta verzija
+CD .\xxxxx\
+C:\Windows\SysWOW64\CScript.exe "ED.vbs"
+CD ..
+ECHO 'Logiranje '; %DATE%; %TIME% >>ETLcmd_log.txt
+
+Echo "END"
+
+REM Da takoj ne zapre okna
+timeout 10
+REM ali pa vpisi PAUSE
+
+exit
+  
+</code></pre>
+<p>Naslednji del pa je, da pripraviš datoteko VBS (npr. <em>ED.vbs</em>) in z njo zaženeš pythonove skripte. VBS script ima določene prednosti pri nekaterih opravilih v windowsih, zato je včasih kombinacija smiselna. Če ne drugje, ko krpaš skupaj kaj novega in obstoječega.</p>
+<pre class="sourceCode VBS"><code>
+'Zagon python skripta z dvoklikom na datoteko .vbs
+'Slana 2018-12-11
+
+sPath = SetPath() 'Sets path to current directory
+pPath = PythonPath() 'Sets the path for python.exe
+
+
+PythonScript("SCRIPT.py")
+
+Function SetPath()
+
+    'Pot vzame iz starša datoteke, kjer se skripta nahaja. Doda še \ za lazje zdruzevanje
+    'Path is taken from parent of the file, where script is located. Adds a \ for easier combining
+    SetPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName) & "\"
+
+End Function
+
+
+Function PythonPath()
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    'Setting path for Python
+    'Nastavljanje poti Pythona
+
+    path_p = "C:/Users/slanad/AppData/Local/Continuum/anaconda3/Python.exe"
+
+    If (fso.FileExists(path_p)) Then
+        PythonPath = path_p
+    Else
+        WScript.Echo "Could not find path"
+    End If
+
+End Function
+
+Sub PythonScript(ScriptName)
+
+    'Runs cmd line
+    Set winShell = CreateObject("WScript.Shell")
+    WaitOnReturn = False
+    windowStyle = 1
+
+    'Define the command to run the python file and exit when done
+    command1 = pPath & " " & ScriptName
+    command2 = "exit"
+
+    'Run the commands
+    Call winShell.Run("cmd /k " & command1 & " & " & command2, windowStyle, WaitOnReturn)
+
+End Sub
+
+</code></pre>
+</p>
+</details>
+</div>
+<hr />
+</div>
+<div id="vrzi-v-mapo-in-procesiraj-drop-to-folder-process" class="section level1">
+<h1>Vrži v mapo in procesiraj (DROP TO FOLDER &amp; PROCESS)</h1>
+<p>To se mi zdi uporabno namesto raznih vmesnikov, kjer izbiraš, katero datoteko boš obdelal. V tem primeru odložiš datotekov v točno definirano mapo, tam jo program prevzame, preveri, obdela in premakne v mapo, kjer so že obdelane datoteke. V nadaljevanju so zakomentirane še opcije, kako narediš urnik obdelav ali pa kako izvedeš paralelno procesiranje.</p>
+<style> div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;} </style>
+<div>
+<details>
+<summary> <i>
+<div class="blue">
+<p>KLIKNI ZA KODO: DROP TO FOLDER &amp; PROCESS</p>
+</div>
+</i> </summary>
+<p>
+<p>Potrebuješ mapi DROP in PROCESSED.</p>
+<pre class="sourceCode Python"><code>
+
+#https://github.com/satssehgal/Excel_Data_Analysis_Scheduler/blob/master/ExcelCron/myutil.py
+#Najprej naredis mapo DROP
+#Potem rabis mapo PROCESSED
+
+# to potrebujem
+import shutil
+import os
+import pandas as pd
+from openpyxl import load_workbook
+import schedule
+import time
+
+#Najprej kontroliras ali je kaj v mapi DROP
+
+def job():
+    koncnica_datoteke = '.txt'
+    #vse datoteke, ki si jih ze predelal
+    folder_processed = 'processed' #to je mapa v katero kopiras zakljucene jobe 
+    #files_processed = [file for file in os.listdir(folder_processed) if file.endswith(koncnica_datoteke)]
+    #path_processed = os.path.join(os.getcwd(),folder_processed)
+
+    #poglej v mapo droped, ce je kaj novega znotraj
+    folder_dropped = 'drop'
+    files_droped = [file for file in os.listdir(folder_dropped) if file.endswith(koncnica_datoteke)]
+ 
+    #ce se pojavi nova datoteka jo obdelaj v funciji fToDo in ce ta vrne da je True, premakni med obdelane
+    for file in files_droped:
+        if fToDo(file) == True:
+            shutil.move(os.path.join(folder_dropped, file), os.path.join(folder_processed, file))
+    return True
+
+def fToDo(sFile):
+#Tukaj dodaj funkcijo, ki se izvede na definirani datoteki.
+    print(sFile)
+    #tukaj sedaj lahko to datoteko npr. preberes itd. Ko bos zakljucil, jo bo premaknilo med procesirane.
+    return True
+
+
+job()
+
+#tukaj planiras, kdaj se bo funcija 'job' zagnala
+#schedule.every().day.at("10:30").do(job)
+
+# schedule.every(10).minutes.do(job)
+# schedule.every().hour.do(job)
+# schedule.every().day.at("10:30").do(job)
+# schedule.every(5).to(10).minutes.do(job)
+# schedule.every().monday.do(job)
+# schedule.every().wednesday.at("13:15").do(job)
+# schedule.every().minute.at(":17").do(job)
+
+# while True:
+#     schedule.run_pending()
+#     time.sleep(10) #cas v sekundah
+
+#jobs in paralel
+#https://schedule.readthedocs.io/en/stable/faq.html#how-to-execute-jobs-in-parallel
+
+
+
+# import time
+ 
+# def sleeper():
+#     while True:
+#         # Get user input
+#         num = input('How long to wait: ')
+ 
+#         # Try to convert it to a float
+#         try:
+#             num = float(num)
+#         except ValueError:
+#             print('Please enter in a number.\n')
+#             continue
+ 
+#         # Run our time.sleep() command,
+#         # and show the before and after time
+#         print('Before: %s' % time.ctime())
+#         time.sleep(num)
+#         print('After: %s\n' % time.ctime())
+ 
+ 
+# try:
+#     sleeper()
+# except KeyboardInterrupt:
+#     print('\n\nKeyboard exception received. Exiting.')
+#     exit()
+
+
+</code></pre>
+</p>
+</details>
+</div>
+<hr />
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-12-24</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          <a href="/tags/r/">r</a>
+          <a href="/tags/barcode/">barcode</a>
+          <a href="/tags/folder/">folder</a>
+          <a href="/tags/pdf/">pdf</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/sld-pdf-ocr/">
+            <span class="next-text nav-default">[SLD] PDF OCR</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

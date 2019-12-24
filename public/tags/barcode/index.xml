@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>barcode on p o p - PRIPOVEDKE O PODATKIH</title>
+    <link>/tags/barcode/</link>
+    <description>Recent content in barcode on p o p - PRIPOVEDKE O PODATKIH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>sl-SI</language>
+    <lastBuildDate>Tue, 24 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/barcode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[SLD] ab uno disce omnes »po enem spoznaj vse«</title>
+      <link>/post/sld-ab-uno-disce-omnes/</link>
+      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-ab-uno-disce-omnes/</guid>
+      <description>It’s simple, but simple isn’t the same as easy
+Old Man’s War (John Scalzi)
+Tukaj sem nametal nekaj skriptov, za katere se mi zdi, da jih bom še potreboval.
+RMD narediš lahko malo lepši s pomočjo teh navodil
+Črtna koda iz PDFZa čitanje PDF uporabim poppler (http://blog.alivate.com.au/poppler-windows/)
+Črtno kodo čitam s pomočjo knjižnice ZBAR (https://sourceforge.net/projects/zbar/files/zbar/0.10/zbar-0.10-setup.exe/download).
+S pip install pyzbar si namestiš pythonov vmesnik.
+
+Deluje nekako tako:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -73,7 +73,7 @@ Potrebuješ:
   
 
 ## Zahteve za "sestavljen" PDF
-To deluje tudi na "enostavnih" PDFih, samo čas obdelave je nekaj daljši. Pri daljših dokumentih (nekaj 10 strani) se razlika že občuti. Dodatno k prej navedenemu potrebuše še poppler _(poppler-068.0)_ Le tega shraniš nekam v svojo pot.
+To deluje tudi na "enostavnih" PDFih, samo čas obdelave je nekaj daljši. Pri daljših dokumentih (nekaj 10 strani) se razlika že občuti. Dodatno k prej navedenemu potrebuješ še poppler _(poppler-068.0)_ Le tega shraniš nekam v svojo pot.
 
 
 

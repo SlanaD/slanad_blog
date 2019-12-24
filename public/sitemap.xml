@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>/post/sld-ab-uno-disce-omnes/</loc>
+    <lastmod>2019-12-24T11:00:27+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/post/sld-pdf-ocr/</loc>
     <lastmod>2019-10-27T18:35:09+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -241,7 +248,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
+    <lastmod>2019-12-24T11:00:27+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -269,7 +276,7 @@
   
   <url>
     <loc>/categories/python/</loc>
-    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
+    <lastmod>2019-12-24T11:00:27+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -283,7 +290,7 @@
   
   <url>
     <loc>/categories/r/</loc>
-    <lastmod>2019-09-14T21:12:03+02:00</lastmod>
+    <lastmod>2019-12-24T11:00:27+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -352,6 +359,13 @@
   </url>
   
   <url>
+    <loc>/tags/barcode/</loc>
+    <lastmod>2019-12-24T11:00:27+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/datetime/</loc>
     <lastmod>2019-08-16T23:49:29+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -368,6 +382,13 @@
   <url>
     <loc>/tags/excel/</loc>
     <lastmod>2019-07-27T17:42:04+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/folder/</loc>
+    <lastmod>2019-12-24T11:00:27+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -485,6 +506,13 @@
   </url>
   
   <url>
+    <loc>/tags/pdf/</loc>
+    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/podatki/</loc>
     <lastmod>2019-05-04T21:48:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -542,7 +570,7 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2019-10-27T18:35:09+01:00</lastmod>
+    <lastmod>2019-12-24T11:00:27+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

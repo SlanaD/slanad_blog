@@ -147,6 +147,15 @@
     </item>
     
     <item>
+      <title>barcode</title>
+      <link>/tags/barcode/</link>
+      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/barcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>datetime</title>
       <link>/tags/datetime/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
@@ -170,6 +179,15 @@
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/excel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>folder</title>
+      <link>/tags/folder/</link>
+      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/folder/</guid>
       <description></description>
     </item>
     
@@ -309,6 +327,15 @@
     </item>
     
     <item>
+      <title>pdf</title>
+      <link>/tags/pdf/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pdf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>podatki</title>
       <link>/tags/podatki/</link>
       <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
@@ -383,7 +410,7 @@
     <item>
       <title>python</title>
       <link>/tags/python/</link>
-      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/python/</guid>
       <description></description>
