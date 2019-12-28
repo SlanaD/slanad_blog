@@ -6,10 +6,23 @@
     <description>Recent content in vizualizacija on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sat, 14 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/vizualizacija/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] KPI indicator Design</title>
+      <link>/post/sld-kpi-indicator-design/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-kpi-indicator-design/</guid>
+      <description>Manj kot govoriš, bolj ti prisluhnejo.
+Pauline Philips
+To je v angleščini. Brez kode sem objavil na LinkedIN
+ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
+ ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) + 0.</description>
+    </item>
     
     <item>
       <title>[SLD] Grafi v PPT</title>

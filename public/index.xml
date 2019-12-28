@@ -24,6 +24,19 @@ ABOUT ME Nothing to tell - go back and read posts.</description>
     </item>
     
     <item>
+      <title>[SLD] KPI indicator Design</title>
+      <link>/post/sld-kpi-indicator-design/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-kpi-indicator-design/</guid>
+      <description>Manj kot govoriš, bolj ti prisluhnejo.
+Pauline Philips
+To je v angleščini. Brez kode sem objavil na LinkedIN
+ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
+ ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) + 0.</description>
+    </item>
+    
+    <item>
       <title>[SLD] ab uno disce omnes »po enem spoznaj vse«</title>
       <link>/post/sld-ab-uno-disce-omnes/</link>
       <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>

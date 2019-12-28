@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] KPI indicator Design - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="Manj kot govoriš, bolj ti prisluhnejo.
+Pauline Philips
+To je v angleščini. Brez kode sem objavil na LinkedIN
+ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
+ ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) &#43; 0." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-kpi-indicator-design/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] KPI indicator Design" />
+<meta property="og:description" content="Manj kot govoriš, bolj ti prisluhnejo.
+Pauline Philips
+To je v angleščini. Brez kode sem objavil na LinkedIN
+ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
+ ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) &#43; 0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-kpi-indicator-design/" />
+<meta property="article:published_time" content="2019-12-28T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-12-28T20:20:18&#43;01:00"/>
+
+<meta itemprop="name" content="[SLD] KPI indicator Design">
+<meta itemprop="description" content="Manj kot govoriš, bolj ti prisluhnejo.
+Pauline Philips
+To je v angleščini. Brez kode sem objavil na LinkedIN
+ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
+ ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) &#43; 0.">
+
+
+<meta itemprop="datePublished" content="2019-12-28T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-28T20:20:18&#43;01:00" />
+<meta itemprop="wordCount" content="1001">
+
+
+
+<meta itemprop="keywords" content="r,vizualizacija," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] KPI indicator Design"/>
+<meta name="twitter:description" content="Manj kot govoriš, bolj ti prisluhnejo.
+Pauline Philips
+To je v angleščini. Brez kode sem objavil na LinkedIN
+ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
+ ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) &#43; 0."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] KPI indicator Design</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-12-28 </span>
+        <div class="post-category">
+            <a href="/categories/r/"> R </a>
+            <a href="/categories/vizualizacija/"> Vizualizacija </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>Manj kot govoriš, bolj ti prisluhnejo.</em></p>
+<p><em><a href="https://en.wikipedia.org/wiki/Pauline_Phillips">Pauline Philips</a></em></p>
+<p><img src="/images/2019-12-28_S0.png" style="width:50.0%" /></p>
+</center>
+<p>To je v angleščini. Brez kode sem objavil na <a href="https://www.linkedin.com/pulse/design-kpi-indicator-danilo-slana">LinkedIN</a></p>
+</code>
+</pre>
+<style> div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;} </style>
+<div>
+<details>
+<summary> <i>
+<div class="blue">
+<p>KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE</p>
+</div>
+</i> </summary>
+<p>
+<pre class="sourceCode Python"><code>
+
+
+
+
+```r
+# COMMON ROUTINES
+#Usually called as:
+#source("./lib/SLD_default.R")
+
+#--------------
+# COMMON ROUTINES
+# Last change: 2019-12-28 SLD
+
+#----- libraries commonly used -----
+
+library(knitr)
+library(tidyverse)
+library(readxl)
+library(scales)
+library(gridExtra)
+library(chron)
+library(reshape2)
+
+
+#----- Workind directory -----
+f_InitDS <- function(working_folder){
+  
+  ## Slana, 11.6.2017
+  ## choose work folder, create work folder if it does not exist
+  ## spremenjeno na GitHub mapo 21.8.2019
+  
+  #set working folder
+  folder <- working_folder
+
+  path_home <- "D:/OneDrive/GitHub"
+  path_work <- "C:/Users/slanad/OneDrive/GitHub" 
+  
+  if (file.exists(path_home)) {
+    path <- path_home
+  } else if (file.exists(path_work)) {
+    path <- path_work
+  } else {
+    print("NO CORRECT PATH")
+  }
+  dir.create(file.path(path, folder), showWarnings = FALSE) #create folder if it does not exists
+  setwd(file.path(path,folder))
+  cat("Working folder:", getwd(), "\n")
+  rm(list=c("folder", "path_home", "path_work", "path"))
+  
+  # clean ALL in function
+  #rm(list=ls(all=TRUE))
+
+}
+
+
+
+#----- graphics ggplot2, SLD theme setup -----
+#orange0, modra, temno siva, siva, 
+barva <- c("#EE7600", "#1C86EE", "#595959", "#7A7A7A")
+
+themeSLD01 <- function(){
+    #names(pdfFonts()) #prikaze seznam fontov na razpolago.
+    font <- "sans"
+    ggplot2::theme(
+        plot.margin = ggplot2::margin(0.5, 0.5, 0.5, 0.5, "cm"),
+        plot.title = ggplot2::element_text(family = font, size = 24, face = "bold", color = "#595959"), 
+        plot.subtitle = ggplot2::element_text(family = font, size = 16, color = "#7A7A7A", margin = ggplot2::margin(9, 0, 9, 0)), 
+        plot.caption = ggplot2::element_text(family = font, size = 8, color = "#7A7A7A"),
+        legend.position = "top", legend.text.align = 0, 
+        legend.background = ggplot2::element_blank(),
+        legend.title = ggplot2::element_blank(), 
+        legend.key = ggplot2::element_blank(),
+        legend.text = ggplot2::element_text(family = font, size = 12, color = "#7A7A7A"), 
+        axis.title.y = ggplot2::element_text(family = font, size = 12, color = "#7A7A7A"),
+        #axis.title.y = ggplot2::element_blank(),
+        axis.title.x = ggplot2::element_blank(),
+        axis.text = ggplot2::element_text(family = font, size = 12, color = "#7A7A7A"), 
+        axis.text.x = ggplot2::element_text(margin = ggplot2::margin(5, b = 10)), 
+        axis.ticks = ggplot2::element_blank(),
+        axis.line = ggplot2::element_blank(), 
+        panel.grid.minor = ggplot2::element_blank(),
+        panel.grid.major.y = ggplot2::element_line(color = "#cbcbcb"),
+        panel.grid.major.x = ggplot2::element_line(color = "#cbcbcb"),
+        #panel.grid.major.x = ggplot2::element_blank(), 
+        panel.background = ggplot2::element_blank(),
+        strip.background = ggplot2::element_rect(fill = "white"),
+        strip.text = ggplot2::element_text(size = 14, hjust = 0))
+}
+
+
+
+#----- some nice functins to help -----
+## Copy data out of R
+CB.to <- function(obj, size = 4096) {
+  clip <- paste('clipboard-', size, sep = '')
+  f <- file(description = clip, open = 'w')
+  write.table(obj, f, row.names = FALSE, sep = '\t', dec = ",")
+  close(f)  
+}
+
+## Paste data into R
+CB.from <- function() {
+  f <- file(description = 'clipboard', open = 'r')
+  df <- read.table(f, sep = '\t', header = TRUE, dec = ",")
+  close(f)
+  return(df)
+}
+
+
+#------ Gauge plot ------
+##Gauge plot
+get.poly <- function(a,b,r1=0.6,r2=1.0) {
+  th.start <- pi*(1-a/100)
+  th.end   <- pi*(1-b/100)
+  th       <- seq(th.start,th.end,length=100)
+  x        <- c(r1*cos(th),rev(r2*cos(th)))
+  y        <- c(r1*sin(th),rev(r2*sin(th)))
+  return(data.frame(x,y))
+}
+
+gg.gaugeSLD <- function(pos, previous_pos=0, breaks=c(0,30,70,100), sSign="%", sTitle="", sSubtitle="", sCaption="", sUnits="", sColors=c('red','gold','green') ) {
+  #Modified from https://stackoverflow.com/questions/24900903/how-to-draw-gauge-chart-in-r
+  require(ggplot2)
+  get.poly <- function(a,b,r1=0.6,r2=1.0) {
+    th.start <- pi*(1-a/100)
+    th.end   <- pi*(1-b/100)
+    th       <- seq(th.start,th.end,length=100)
+    x        <- c(r1*cos(th),rev(r2*cos(th)))
+    y        <- c(r1*sin(th),rev(r2*sin(th)))
+    return(data.frame(x,y))
+  }
+  
+  if (previous_pos==0){previous_pos <- pos}
+  values <- breaks
+  breaks <- (breaks - min(breaks)) / (max(breaks) - min(breaks)) * 100 #normaliziram
+  pos    <- data.frame(pos = (pos - min(values)) / (max(values) - min(values)) * 100, value = pos)
+  previous_pos <- data.frame(pos = (previous_pos - min(values)) / (max(values) - min(values)) * 100, value = previous_pos)
+  values <- data.frame(breaks=breaks, values=values)
+  
+  if (pos$pos > max(values$breaks)) {pos$pos = max(values$breaks) + 0.02*max(values$breaks)
+  } else if (pos$pos < min(values$breaks)) {pos$pos = min(values$breaks) - 0.02*min(values$breaks)
+  }
+  
+  ggplot()+ 
+    geom_polygon(data=get.poly(breaks[1],breaks[2]),aes(x,y),fill=sColors[1])+
+    geom_polygon(data=get.poly(breaks[2],breaks[3]),aes(x,y),fill=sColors[2])+
+    geom_polygon(data=get.poly(breaks[3],breaks[4]),aes(x,y),fill=sColors[3])+
+    geom_polygon(data=get.poly(previous_pos$pos-0.3,previous_pos$pos+0.3, 0.2, 0.9),aes(x,y), fill='gray60')+
+    geom_polygon(data=get.poly(pos$pos-0.5,pos$pos+0.5, 0.2, 1.02),aes(x,y))+
+    geom_text(data=values, size=5, fontface="bold", vjust=0,
+              aes(x=1.1*cos(pi*(1-breaks/100)),y=1.1*sin(pi*(1-breaks/100)),label=paste0(values,sSign)))+
+    annotate("text",x=0,y=0,label=pos$value,vjust=0,size=8,fontface="bold")+
+    annotate("text",x=0,y=-0.08,label=sUnits,vjust=0,size=5,fontface="bold")+
+    coord_fixed()+
+    theme_bw()+
+    theme(axis.text=element_blank(),
+          axis.title=element_blank(),
+          axis.ticks=element_blank(),
+          panel.grid=element_blank(),
+          panel.border=element_blank()) +
+    labs(
+      title = sTitle,
+      subtitle = sSubtitle,
+      caption = sCaption)
+}
+
+
+
+# --------------
+```
+
+</code></pre>
+</p>
+</details>
+</div>
+<hr />
+<div id="generiram-osnovne-podatke" class="section level2">
+<h2>Generiram osnovne podatke:</h2>
+<pre class="r"><code>#Generiram podatke za primer KPI.
+# - Meseci bodo index
+set.seed(123) #fiksiram seed
+
+KPI01 &lt;- data.frame(MonthF = as.vector(month.abb), KPI = rnorm(12,100,10)) #normalna porazdelitev
+
+KPI02 &lt;- data.frame(MonthF = as.vector(month.abb), KPI = rpois(12,100)) #poissonova porazdelitev
+
+#skupni KPI je 70% prvega in 30$ drugega
+KPI00 &lt;- data.frame(MonthF = as.vector(month.abb), KPI = KPI01$KPI * 0.7 + KPI02$KPI * 0.3) 
+
+#npr. da za zadnja dva meseva še ni podatkov
+KPI02$KPI[12] &lt;- NA
+KPI02$KPI[11] &lt;- NA
+KPI01$KPI[12] &lt;- NA
+KPI01$KPI[11] &lt;- NA
+KPI00$KPI[12] &lt;- NA
+KPI00$KPI[11] &lt;- NA</code></pre>
+</div>
+<div id="design-of-kpi-indicator" class="section level1">
+<h1>Design of KPI indicator</h1>
+<p>Implementing a good key process indicator (KPI) is difficult but maintaining it is even harder. Fortunately designing the indicator is much easier.</p>
+<p>Let say, that you have one MAIN KPI as seen on picture bellow.</p>
+<pre class="r"><code>dd &lt;- KPI00$KPI
+breaks=c(80,97,103,120)
+gg.gaugeSLD( ceiling(dd[10]),
+             breaks=breaks, 
+             sSign=&quot; &quot;, 
+             sTitle=&quot;MAIN KPI&quot;, 
+             sSubtitle = &quot; is the result of sub process indicators&quot;, 
+             sCaption=&quot;SLD 2019&quot;,
+             sUnit = &quot;OCT&quot;, 
+             sColors=c(&#39;firebrick&#39;,&#39;darkorange&#39;, &#39;forestgreen&#39;))</code></pre>
+<p><img src="/post/2019-12-28-sld-kpi-indicator-design_files/figure-html/Gauge_1-1.png" width="672" /></p>
+<p>For this example this so called Main KPI is the result of 70% of the first process indicator and 30% of the second process indicator and it’s good when it’s value is over 103 and tolerable till is over 97.</p>
+<pre class="r"><code>dd &lt;- KPI01$KPI
+breaks=c(80,100,100,120)
+P1 &lt;- gg.gaugeSLD( ceiling(dd[10]),
+             breaks=breaks, 
+             sSign=&quot; &quot;, 
+             sTitle=&quot;PI 1: add 70% to KPI&quot;, 
+             sSubtitle = &quot; is the result of ... (random numbers for this example, normal distr.)&quot;, 
+             sCaption=&quot;&quot;,
+             sUnit = &quot;OCT&quot;, 
+             sColors=c(&#39;firebrick&#39;,&#39;darkorange&#39;, &#39;forestgreen&#39;))
+
+dd &lt;- KPI02$KPI
+breaks=c(80,100,100,120)
+P2 &lt;- gg.gaugeSLD( ceiling(dd[10]),
+             breaks=breaks, 
+             sSign=&quot; &quot;, 
+             sTitle=&quot;PI 2: add 30% to KPI&quot;,
+             sSubtitle = &quot; is the result of ... (random numbers for this example, Poisson distr.)&quot;, 
+             sCaption=&quot;SLD 2019&quot;,
+             sUnit = &quot;OCT&quot;, 
+             sColors=c(&#39;firebrick&#39;,&#39;darkorange&#39;, &#39;forestgreen&#39;))
+
+
+library(gridExtra)
+library(grid)
+grid.newpage()
+grid.draw(arrangeGrob(P1,P2,ncol=2))</code></pre>
+<p><img src="/post/2019-12-28-sld-kpi-indicator-design_files/figure-html/Gauge_2-1.png" width="1536" /></p>
+<p>If all values are in RED you need to check how things were developing. Let’s access timeline view.</p>
+<pre class="r"><code>ggplot(data=KPI00, aes(x=as.factor(MonthF), y=KPI, group = 1)) + themeSLD01() +
+    scale_x_discrete(limits=KPI00$MonthF) + #To potrebujes, da ne razvrsti mesecev po abecedi
+    labs(
+        x = &quot;Month&quot;,
+        y = &quot;KPI&quot;,
+        title = &quot;MAIN KPI&quot;,
+        subtitle = &quot; timeline view&quot;,
+        caption = &quot;random data generated&quot;) +
+    geom_rect(aes(xmin=&quot;Jan&quot;, xmax=&quot;Dec&quot;, ymin=80, ymax=97), color=0, fill=&quot;red&quot;, alpha=0.02) +
+    geom_rect(aes(xmin=&quot;Jan&quot;, xmax=&quot;Dec&quot;, ymin=97.2, ymax=102.8), color=0, fill=&quot;gold&quot;, alpha=0.02) +
+    geom_rect(aes(xmin=&quot;Jan&quot;, xmax=&quot;Dec&quot;, ymin=103, ymax=120), color=0, fill=&quot;green&quot;, alpha=0.02) +
+    
+    geom_line(color=barva[4], size=2) +
+    geom_point(color=barva[3], size=2) +
+    
+    geom_hline(yintercept = 100, linetype = &quot;dashed&quot;, color=barva[1], size=1.3) +
+    annotate(&quot;text&quot;, x=&#39;Jan&#39;, y=110, label=&quot;over 100 is good&quot;, col=barva[3], vjust = -0.1, hjust = -0.1) +
+    annotate(&quot;text&quot;, x=&#39;Jan&#39;, y=90, label=&quot;bellow 100 is bad&quot;, col=barva[3], vjust = -0.1, hjust = -0.1)</code></pre>
+<p><img src="/post/2019-12-28-sld-kpi-indicator-design_files/figure-html/Timeline-1.png" width="1536" /></p>
+<p>So the problem begins already on JUN. Why there is no comment what happened there?</p>
+<p>So it would be good to have comments connected to your KPI result, which would describe, why that particular change occured. That goes under maintenance of KPI! You have to comment your past results with the knowledge from today. All PIs show past, perhaps present, but certainly not future. And it would also be good to connect actions to your KPI value. In future you should check if actions are still active and if they are helping to turn the trend.</p>
+<pre class="r"><code>ggplot(data=KPI00, aes(x=as.factor(MonthF), y=KPI, group = 1)) + themeSLD01() +
+    scale_x_discrete(limits=KPI00$MonthF) + #To potrebujes, da ne razvrsti mesecev po abecedi
+    labs(
+        x = &quot;Month&quot;,
+        y = &quot;KPI&quot;,
+        title = &quot;MAIN KPI&quot;,
+        subtitle = &quot; timeline view&quot;,
+        caption = &quot;random data generated&quot;) +
+    geom_rect(aes(xmin=&quot;Jan&quot;, xmax=&quot;Dec&quot;, ymin=80, ymax=97), color=0, fill=&quot;red&quot;, alpha=0.02) +
+    geom_rect(aes(xmin=&quot;Jan&quot;, xmax=&quot;Dec&quot;, ymin=97.2, ymax=102.8), color=0, fill=&quot;gold&quot;, alpha=0.02) +
+    geom_rect(aes(xmin=&quot;Jan&quot;, xmax=&quot;Dec&quot;, ymin=103, ymax=120), color=0, fill=&quot;green&quot;, alpha=0.02) +
+    
+    geom_line(color=barva[4], size=2) +
+    geom_point(color=barva[3], size=2) +
+    
+    geom_hline(yintercept = 100, linetype = &quot;dashed&quot;, color=barva[1], size=1.3) +
+    annotate(&quot;text&quot;, x=&#39;Jan&#39;, y=110, label=&quot;over 100 is good&quot;, col=barva[3], vjust = -0.1, hjust = -0.1) +
+    annotate(&quot;text&quot;, x=&#39;Jan&#39;, y=90, label=&quot;bellow 100 is bad&quot;, col=barva[3], vjust = -0.1, hjust = -0.1) +
+    geom_segment(aes(x=&quot;Jun&quot;, y=117, xend=&quot;Jun&quot;, yend=113), arrow = arrow(), size=2, color=barva[1]) +
+    geom_label(aes(x=&quot;Jun&quot;, y=117), size=8, label.size = 0.8, nudge_x = -0.0, nudge_y = 0.5, label = &quot;comment 1, ...&quot;, color=barva[1])+
+    geom_segment(aes(x=&quot;Jul&quot;, y=107, xend=&quot;Jul&quot;, yend=103), arrow = arrow(), size=2, color=barva[1]) +
+    geom_label(aes(x=&quot;Jul&quot;, y=107), size=8, label.size = 0.8, nudge_x = 0.70, nudge_y = 0.5, label = &quot;comment 2, ...&quot;, color=barva[1])+
+    geom_segment(aes(x=&quot;Aug&quot;, y=82, xend=&quot;Aug&quot;, yend=87), arrow = arrow(), size=2, color=barva[2]) +
+    geom_label(aes(x=&quot;Aug&quot;, y=82), size=8, label.size = 0.8, nudge_x = -0.0, nudge_y = 0.5, label = &quot;action 1,...&quot;, color=barva[2]) +
+    geom_segment(aes(x=&quot;Sep&quot;, y=88, xend=&quot;Sep&quot;, yend=93), arrow = arrow(), size=2, color=barva[2]) +
+    geom_label(aes(x=&quot;Sep&quot;, y=88), size=8, label.size = 0.8, nudge_x = -0.0, nudge_y = 0.5, label = &quot;action 2,...&quot;, color=barva[2])</code></pre>
+<p><img src="/post/2019-12-28-sld-kpi-indicator-design_files/figure-html/unnamed-chunk-1-1.png" width="1536" /></p>
+<p>To see this all in one picture, I suggest following design of KPI indicator:</p>
+<ol style="list-style-type: decimal">
+<li>KPI indicator, like gauge or box plot or …</li>
+<li>TREND indicator, like arrow or simple text (“trend positive”) or value before - now … If possible also prediction.</li>
+<li>COMMENT section, like just links to comments where causes for events, trends, etc., should be explained.</li>
+<li>ACTION section, like number of active actions with links to actions.</li>
+</ol>
+<p>Example:</p>
+<pre class="r"><code>dd &lt;- KPI00$KPI
+breaks=c(80,97,103,120)
+gg.gaugeSLD( ceiling(dd[10]), ceiling(dd[9]),
+             breaks=breaks, 
+             sSign=&quot; &quot;, 
+             sTitle=&quot;MAIN KPI&quot;, 
+             sSubtitle = &quot; 70% (PI1 = 96) + 30% (PI2 = 92)&quot;, 
+             sCaption=&quot;SLD 2019&quot;,
+             sUnit = &quot;OCT&quot;, 
+             sColors=c(&#39;firebrick&#39;,&#39;darkorange&#39;, &#39;forestgreen&#39;)) +
+     geom_text(aes(x=0, y=-0.7), size=5, nudge_x = 0.8, nudge_y = 0.5, label = &quot;3 open actions (link)&quot;, color=barva[2]) + 
+         geom_text(aes(x=0, y=-0.7), size=5, nudge_x = -0.8, nudge_y = 0.5, label = &quot;comments (link)&quot;, color=barva[2]) +
+    geom_polygon(data=get.poly(52-0.3,52+0.3, 0.2, 1.04),aes(x,y), fill=&#39;gray80&#39;)</code></pre>
+<p><img src="/post/2019-12-28-sld-kpi-indicator-design_files/figure-html/Gauge_3-1.png" width="672" /></p>
+<p>Not a big change, but now I see from one picture that influence factors for my KPI are PI1 and PI2 with their respective values, I see the trend (grey pointer to black pointer), number of open actions and everything is connected to sub masks for further inspection.</p>
+<p>This design is platform agnostic as can be achieved in Excel, PowerBi, Tableau … or even on paper.</p>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-12-28</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/r/">r</a>
+          <a href="/tags/vizualizacija/">vizualizacija</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/sld-ab-uno-disce-omnes/">
+            <span class="next-text nav-default">[SLD] ab uno disce omnes »po enem spoznaj vse«</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
