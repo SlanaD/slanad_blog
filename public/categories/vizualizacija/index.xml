@@ -20,8 +20,9 @@
       <description>Manj kot govoriš, bolj ti prisluhnejo.
 Pauline Philips
 To je v angleščini. Brez kode sem objavil na LinkedIN
- div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
- ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) + 0.</description>
+Implementing a good key process indicator (KPI) is difficult but maintaining it is even harder. Fortunately designing the indicator is much easier.
+To see this all in one picture, I suggest following design of KPI indicator:
+KPI indicator, like gauge or box plot or …TREND indicator, like arrow or simple text (“trend positive”) or value before - now … If possible also prediction.</description>
     </item>
     
     <item>

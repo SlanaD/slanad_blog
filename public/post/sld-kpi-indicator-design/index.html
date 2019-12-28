@@ -19,8 +19,9 @@
 <meta name="author" content="SlanaD" /><meta name="description" content="Manj kot govoriš, bolj ti prisluhnejo.
 Pauline Philips
 To je v angleščini. Brez kode sem objavil na LinkedIN
- div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
- ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) &#43; 0." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+Implementing a good key process indicator (KPI) is difficult but maintaining it is even harder. Fortunately designing the indicator is much easier.
+To see this all in one picture, I suggest following design of KPI indicator:
+KPI indicator, like gauge or box plot or …TREND indicator, like arrow or simple text (“trend positive”) or value before - now … If possible also prediction." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
 
 
 
@@ -46,8 +47,9 @@ Pauline Philips
 <meta property="og:description" content="Manj kot govoriš, bolj ti prisluhnejo.
 Pauline Philips
 To je v angleščini. Brez kode sem objavil na LinkedIN
- div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
- ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) &#43; 0." />
+Implementing a good key process indicator (KPI) is difficult but maintaining it is even harder. Fortunately designing the indicator is much easier.
+To see this all in one picture, I suggest following design of KPI indicator:
+KPI indicator, like gauge or box plot or …TREND indicator, like arrow or simple text (“trend positive”) or value before - now … If possible also prediction." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/sld-kpi-indicator-design/" />
 <meta property="article:published_time" content="2019-12-28T00:00:00&#43;00:00"/>
@@ -57,13 +59,14 @@ Pauline Philips
 <meta itemprop="description" content="Manj kot govoriš, bolj ti prisluhnejo.
 Pauline Philips
 To je v angleščini. Brez kode sem objavil na LinkedIN
- div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
- ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) &#43; 0.">
+Implementing a good key process indicator (KPI) is difficult but maintaining it is even harder. Fortunately designing the indicator is much easier.
+To see this all in one picture, I suggest following design of KPI indicator:
+KPI indicator, like gauge or box plot or …TREND indicator, like arrow or simple text (“trend positive”) or value before - now … If possible also prediction.">
 
 
 <meta itemprop="datePublished" content="2019-12-28T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-28T20:20:18&#43;01:00" />
-<meta itemprop="wordCount" content="1001">
+<meta itemprop="wordCount" content="1092">
 
 
 
@@ -73,8 +76,9 @@ Pauline Philips
 <meta name="twitter:description" content="Manj kot govoriš, bolj ti prisluhnejo.
 Pauline Philips
 To je v angleščini. Brez kode sem objavil na LinkedIN
- div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}  KLIKNI ZA KODO: Tukaj je iniciacijska koda s subrutino za GAUGE
- ```r# COMMON ROUTINES#Usually called as:#source(&#34;./lib/SLD_default.R&#34;)#--------------# COMMON ROUTINES# Last change: 2019-12-28 SLD#----- libraries commonly used -----library(knitr)library(tidyverse)library(readxl)library(scales)library(gridExtra)library(chron)library(reshape2)#----- Workind directory -----f_InitDS max(values$breaks)) {pos$pos = max(values$breaks) &#43; 0."/>
+Implementing a good key process indicator (KPI) is difficult but maintaining it is even harder. Fortunately designing the indicator is much easier.
+To see this all in one picture, I suggest following design of KPI indicator:
+KPI indicator, like gauge or box plot or …TREND indicator, like arrow or simple text (“trend positive”) or value before - now … If possible also prediction."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -165,6 +169,14 @@ Pauline Philips
 <p><img src="/images/2019-12-28_S0.png" style="width:50.0%" /></p>
 </center>
 <p>To je v angleščini. Brez kode sem objavil na <a href="https://www.linkedin.com/pulse/design-kpi-indicator-danilo-slana">LinkedIN</a></p>
+<p>Implementing a good key process indicator (KPI) is difficult but maintaining it is even harder. Fortunately designing the indicator is much easier.</p>
+<p>To see this all in one picture, I suggest following design of KPI indicator:</p>
+<ol style="list-style-type: decimal">
+<li>KPI indicator, like gauge or box plot or …</li>
+<li>TREND indicator, like arrow or simple text (“trend positive”) or value before - now … If possible also prediction.</li>
+<li>COMMENT section, like just links to comments where causes for events, trends, etc., should be explained.</li>
+<li>ACTION section, like number of active actions with links to actions.</li>
+</ol>
 </code>
 </pre>
 <style> div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;} </style>
