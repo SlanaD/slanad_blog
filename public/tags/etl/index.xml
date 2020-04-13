@@ -6,10 +6,22 @@
     <description>Recent content in ETL on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/etl/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] Web scraping dynamical pages with R</title>
+      <link>/post/sld-web-scraping-with-r/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-web-scraping-with-r/</guid>
+      <description>Bilo je i večih problema, pa ih nismo riješili.
+Grunf
+Kako prebrati podatke iz tabele na dinamični straniKo “rvest” ne deluje!Dinamične strani se generirajo šele, ko se naložijo v “browser”, pred tem pa določeni elementi na njih ne obstajajo. Običajno so rezultat jscript funkcije. S takšnih strani običajno ni možno brati tabel s pomočjo Rvest paketa (ali česa podobnega).
+Obvod je s pomočjo paketa RSelenium (Selenium v pythonu).</description>
+    </item>
     
     <item>
       <title>[SLD] ETL - Extract, Transfer, Load</title>

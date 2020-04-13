@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] Web scraping dynamical pages with R - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="Bilo je i večih problema, pa ih nismo riješili.
+Grunf
+Kako prebrati podatke iz tabele na dinamični straniKo “rvest” ne deluje!Dinamične strani se generirajo šele, ko se naložijo v “browser”, pred tem pa določeni elementi na njih ne obstajajo. Običajno so rezultat jscript funkcije. S takšnih strani običajno ni možno brati tabel s pomočjo Rvest paketa (ali česa podobnega).
+Obvod je s pomočjo paketa RSelenium (Selenium v pythonu)." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-web-scraping-with-r/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] Web scraping dynamical pages with R" />
+<meta property="og:description" content="Bilo je i večih problema, pa ih nismo riješili.
+Grunf
+Kako prebrati podatke iz tabele na dinamični straniKo “rvest” ne deluje!Dinamične strani se generirajo šele, ko se naložijo v “browser”, pred tem pa določeni elementi na njih ne obstajajo. Običajno so rezultat jscript funkcije. S takšnih strani običajno ni možno brati tabel s pomočjo Rvest paketa (ali česa podobnega).
+Obvod je s pomočjo paketa RSelenium (Selenium v pythonu)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-web-scraping-with-r/" />
+<meta property="article:published_time" content="2020-04-13T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-04-13T20:26:38&#43;02:00"/>
+
+<meta itemprop="name" content="[SLD] Web scraping dynamical pages with R">
+<meta itemprop="description" content="Bilo je i večih problema, pa ih nismo riješili.
+Grunf
+Kako prebrati podatke iz tabele na dinamični straniKo “rvest” ne deluje!Dinamične strani se generirajo šele, ko se naložijo v “browser”, pred tem pa določeni elementi na njih ne obstajajo. Običajno so rezultat jscript funkcije. S takšnih strani običajno ni možno brati tabel s pomočjo Rvest paketa (ali česa podobnega).
+Obvod je s pomočjo paketa RSelenium (Selenium v pythonu).">
+
+
+<meta itemprop="datePublished" content="2020-04-13T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-04-13T20:26:38&#43;02:00" />
+<meta itemprop="wordCount" content="573">
+
+
+
+<meta itemprop="keywords" content="R,web scraping,ETL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] Web scraping dynamical pages with R"/>
+<meta name="twitter:description" content="Bilo je i večih problema, pa ih nismo riješili.
+Grunf
+Kako prebrati podatke iz tabele na dinamični straniKo “rvest” ne deluje!Dinamične strani se generirajo šele, ko se naložijo v “browser”, pred tem pa določeni elementi na njih ne obstajajo. Običajno so rezultat jscript funkcije. S takšnih strani običajno ni možno brati tabel s pomočjo Rvest paketa (ali česa podobnega).
+Obvod je s pomočjo paketa RSelenium (Selenium v pythonu)."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] Web scraping dynamical pages with R</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-13 </span>
+        <div class="post-category">
+            <a href="/categories/r/"> R </a>
+            <a href="/categories/etl/"> ETL </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>Bilo je i večih problema, pa ih nismo riješili.</em></p>
+<p><em>Grunf</em></p>
+<p><img src="/images/2020-04_13_Grunf.jpg" style="width:50.0%" /></p>
+</center>
+<div id="kako-prebrati-podatke-iz-tabele-na-dinamicni-strani" class="section level1">
+<h1>Kako prebrati podatke iz tabele na dinamični strani</h1>
+<div id="ko-rvest-ne-deluje" class="section level2">
+<h2>Ko “rvest” ne deluje!</h2>
+<p>Dinamične strani se generirajo šele, ko se naložijo v “browser”, pred tem pa določeni elementi na njih ne obstajajo. Običajno so rezultat jscript funkcije. S takšnih strani običajno ni možno brati tabel s pomočjo Rvest paketa (ali česa podobnega).</p>
+<p>Obvod je s pomočjo paketa RSelenium (Selenium v pythonu). Ta odpre stran v brskalniku (oz. simulaciji brskalnika) in potem prebere HTML elemente.</p>
+</div>
+<div id="namestitev-seleniuma" class="section level2">
+<h2>Namestitev Seleniuma</h2>
+<ol style="list-style-type: decimal">
+<li><p>Najprej si snemi <a href="https://chromedriver.chromium.org/downloads">chromdrive.exe</a> in ga daj nekam v sistemsko pot (PATH).</p></li>
+<li><p>Java mora biti nameščena.</p></li>
+<li><p>Nato snemi <a href="https://www.selenium.dev/downloads/">selenium-server-standalone-x.x.x.jar</a>. Za tega moraš nastaviti pot v skripti (<em>moraš ga CDjat</em>)</p></li>
+<li><p>V R namesti: <em>install.packages(“RSelenium”)</em>. Git je <a href="https://github.com/ropensci/RSelenium">tu</a>.</p></li>
+</ol>
+<hr />
+</div>
+</div>
+<div id="primer-na-30-day-federal-funds-futures" class="section level1">
+<h1>Primer na <em>30 Day Federal Funds Futures</em></h1>
+<p>To je s spletne strani (<a href="https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund.html" class="uri">https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund.html</a>).</p>
+<p><img src="/images/2020-04-13_30%20Day%20Federal%20Funds%20Futures%20Quotes%20.jpg" style="width:80.0%" /></p>
+<p>Funkcija odpre brskalnik, prebere tabelo in jo vrne kot DataFrame (toXTS=FALSE) ali pa XTS (toXTS=TRUE).</p>
+<p><em>Funkcija se ne izvede tukaj, ker ni nameščenih zgoraj navednih objektov - samo prikaz!</em></p>
+<pre class="r"><code>getCME30DFF &lt;-function(PathTo_SeleniumServer = &quot;D:/OneDrive/Dokumenti/R/Stocks&quot;, toXTS = TRUE) {
+    # 2020-01-20; SLD
+    #
+    # Pridobi podatke s strani https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund.html
+    # in vrne prebrano tabelo v xts obliki
+    #
+    # Za delovanje potrebuje:
+    #    chromedriver.exe (za verzijo 79xx)
+    #    selenium-server-standalone-3.9.1.jar
+    # chromium mora biti v poti (Path)
+    # shranil sem ga  &quot;C:\Users\Slana\Anaconda3&quot;
+    # jar file pa moraš cd-jat. (nastavis PathTo_SeleniumServer)
+    # toXTS = FALSE vrne data.frame(), TRUE vrne xts timeserie
+    
+
+    # https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html
+    library(rvest)
+    library(httr)
+    library(RSelenium)
+    library(plyr)
+    library(lubridate)
+    library(XML)
+    library(xts)
+    library(tidyquant)
+    
+    # system2(&quot;cd&quot;, args = &quot;C:/Users/slanad/OneDrive/Dokumenti/R/Stocks&quot;,
+    system2(&quot;cd&quot;, args = PathTo_SeleniumServer,
+            stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+            env = character(), wait = TRUE,
+            minimized = FALSE, invisible = TRUE, timeout = 0)
+    
+    system2(&quot;cmd&quot;, args = c(&quot;/k&quot;, &quot;java&quot;, &quot;-jar&quot;, &quot;selenium-server-standalone-3.9.1.jar -port 4445&quot;),
+            stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+            env = character(), wait = FALSE,
+            minimized = FALSE, invisible = TRUE, timeout = 0)
+    
+    
+    #Odpres oddaljen strežnik
+    remDr &lt;- remoteDriver(
+        remoteServerAddr = &quot;localhost&quot;,
+        port = 4445,
+        browserName = &quot;chrome&quot;
+    )
+    
+    remDr$open()
+    #remDr$getStatus()
+    remDr$navigate(&quot;https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund.html&quot;)
+    #remDr$getCurrentUrl()
+    remDr$getTitle()
+    
+    Sys.sleep(10) #sleep for 10 so everything can load
+    
+    # Tukaj si izvlečeš tabelo. Strukturo strani si je dobro pogledati v browserju (F12)
+    doc &lt;- htmlParse(remDr$getPageSource()[[1]])
+    table_tmp &lt;- readHTMLTable(doc)
+    df = data.frame(table_tmp[[1]])
+    
+    # tega se ne da rešiti. Večina podatkov bo kot str, pa četudi so številke
+    df$Prior.Settle &lt;- as.numeric(as.character(df$Prior.Settle))
+    df$Last &lt;- as.numeric(as.character(df$Last))
+    plyr::revalue(df$Change, c(&quot;UNCH&quot; = &quot;0.00&quot;)) -&gt; df$Change #zamenjaj vrestnosti
+    df$Change &lt;- as.numeric(as.character(df$Change))
+    df$Open &lt;- as.numeric(as.character(df$Open))
+    df$High &lt;- as.numeric(as.character(df$High))
+    df$Low &lt;- as.numeric(as.character(df$Low))
+    df$Volume &lt;- as.numeric(as.character(df$Volume))
+    df$Month = lubridate::parse_date_time(as.character(df$Month), orders = c(&quot;bdy&quot;, &quot;bY&quot;))
+    df$Charts &lt;- NULL
+    
+    #write.table(df, &quot;CME30DFF.csv&quot;, sep=&quot;;&quot;, dec = &quot;,&quot;, row.names=FALSE)
+    
+    
+    # close session
+    remDr$close() 
+    
+    system2(&quot;taskkill&quot;, args = c(&quot;/F /IM&quot;, &quot;chromedriver.exe&quot;),
+            stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+            env = character(), wait = TRUE,
+            minimized = FALSE, invisible = TRUE, timeout = 0)
+    
+    # system2(&quot;taskkill&quot;, args = c(&quot;/F /IM&quot;, &quot;cmd.exe&quot;),
+    #         stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+    #         env = character(), wait = TRUE,
+    #         minimized = FALSE, invisible = FALSE, timeout = 0)
+    
+    # system2(&quot;taskkill&quot;, args = c(&quot;/F /IM&quot;, &quot;chrome.exe&quot;),
+    #         stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+    #         env = character(), wait = TRUE,
+    #         minimized = FALSE, invisible = FALSE, timeout = 0)
+    
+    if (toXTS == TRUE) { df &lt;- timetk::tk_xts(df, date_col = &quot;Month&quot;) } #return xts timeserie object
+    
+    return(df)
+
+}
+
+
+df &lt;- getCME30DFF()</code></pre>
+<p><em>“It’s just that easy.”</em></p>
+<p><em>(famous last words that screw up just about anything being referenced)</em></p>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2020-04-13</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/r/">R</a>
+          <a href="/tags/web-scraping/">web scraping</a>
+          <a href="/tags/etl/">ETL</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/sld-power-bi-malenkosti/">
+            <span class="next-text nav-default">[SLD] Power BI malenkosti</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

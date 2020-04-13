@@ -1,0 +1,91 @@
+---
+title: '[SLD] Power BI malenkosti'
+author: SlanaD
+date: '2020-01-18'
+slug: sld-power-bi-malenkosti
+categories:
+  - PowerBI
+  - PYthon
+  - R
+tags:
+  - powerbi
+  - R
+  - python
+  - import
+  - path
+lastmod: '2020-01-18T10:08:53+01:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2020-01-18_PushButton.jpg
+---
+
+<center>
+
+_Technology is a word that describes something that doesn’t work yet._  
+
+_[Douglas Adams](https://en.wikipedia.org/wiki/Douglas_Adams)_ 
+
+
+
+_It’s supposed to be automatic, but actually you have to push this button._  
+
+_[John Brunner](https://en.wikipedia.org/wiki/John_Brunner_(novelist))_ 
+
+
+
+[![](/images/2020-01-18_PushButton.jpg){width=50%}](https://media.istockphoto.com/photos/robot-push-the-button-picture-id109164750?k=6&m=109164750&s=612x612&w=0&h=l4oB9Ru3S78my1GFGLGd_s6B6WQqsPAe6lOJa47DB18= "refence")
+
+
+</center>  
+
+# Power BI: Pot do podatkov
+
+Neugodno je, ker Power BI ne pozna relativnih poti (npr. `./A/Podatki.xls`). Primer: izbereš podatke, ki so v excelovi tabeli v mapi A (`C:\A\Podatki.xls`) in potem premakneš ali preimenuješ mapo A. S tem avtomatsko izgubiš povezavo s podatki in moraš v naprednem urejevalniku popraviti pot do podatkov.
+
+Neki strici so našli obvod do tega, kje ločeno nastaviš pot do podatkov in potem po preimenovanju ali premikanju samo spremeniš eno vrstico v Power BI.
+
+Postopek je nekako takole:
+
+  1. Ustvariš prazno poizvedbo (Blank Query)  
+  
+  2. V prazno poizvedbo vpišeš pot do svojih podatkov: `c:\A\`  in to poizvedbo preimenuješ v `Path` (lahko tudi v katero drugo ime spremenljivke)
+  
+  3. Po običajnem postopku uvoziš podatke iz svoje `Podatki.xls` iz mape npr. `c:\A\Podatki.xls`  
+  
+  4. Grep v napredni editor in sedaj spremeniš 
+  
+      iz: `Excel.Workbook( File.Content(  "C:\A\Podatki.xls"), null, true)`    
+      v:  `Excel.Workbook( File.Content(  Path & "Podatki.xls"), null, true)`  
+       
+  5. Sedaj, ko premakneš podatke, spremeniš samo poizvedbo Path.
+  
+
+Ta postopek ime dve prednosti pred spreminjanjem v naprednem urejevalniku in sicer: 
+       
+  a) Ko imaš več izvorov v istih relativni poti, lahko pot spremeniš samo enkrat in ne pri vsakem izvoru posebaj,
+  
+  b) Ko imaš uporabnika, ki ga je strah uporabljati napredni urejevalnik, je tako lažje ...
+  
+  
+  
+# Power BI: Povezava z RDS virom (z uporabo R Script)
+
+V RDS so podatki že v obliki DataFrame in jih je potrebno le prebrati s readRDS(). Postopek je:
+
+  1. Get Data --> Other --> R Script  --> Connect
+  
+  2. V Script vpišeš : `input <- readRDS(file = paste("C:/mapa do podatkov/", "podatki.RDS", sep="") )` in potem OK
+  
+Sedaj imaš podatke naložene z vsemi stolpci, kot običajno. Ime _input_ je lahko poljubno (npr. _df_). Tako se potem avtomatsko imenuje tabela s stolpci.
+
+
+
+_"It's just that easy."_  
+
+_(famous last words that screw up just about anything being referenced)_
+
+
+
+
+

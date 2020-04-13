@@ -6,10 +6,24 @@
     <description>Recent content in powerbi on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/powerbi/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] Power BI malenkosti</title>
+      <link>/post/sld-power-bi-malenkosti/</link>
+      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-power-bi-malenkosti/</guid>
+      <description>Technology is a word that describes something that doesn’t work yet.
+Douglas Adams
+It’s supposed to be automatic, but actually you have to push this button.
+John Brunner
+
+Power BI: Pot do podatkovNeugodno je, ker Power BI ne pozna relativnih poti (npr. ./A/Podatki.xls). Primer: izbereš podatke, ki so v excelovi tabeli v mapi A (C:\A\Podatki.xls) in potem premakneš ali preimenuješ mapo A. S tem avtomatsko izgubiš povezavo s podatki in moraš v naprednem urejevalniku popraviti pot do podatkov.</description>
+    </item>
     
     <item>
       <title>[SLD] ETL - Extract, Transfer, Load</title>

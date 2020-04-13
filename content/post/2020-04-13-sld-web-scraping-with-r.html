@@ -1,0 +1,151 @@
+---
+title: '[SLD] Web scraping dynamical pages with R'
+author: SlanaD
+date: '2020-04-13'
+slug: sld-web-scraping-with-r
+categories:
+  - R
+  - ETL
+tags:
+  - R
+  - web scraping
+  - ETL
+lastmod: '2020-04-13T20:26:38+02:00'
+keywords: []
+description: ''
+comment: no
+image: /images/2020-04_13_Grunf.jpg
+---
+
+
+
+<center>
+<p><em>Bilo je i večih problema, pa ih nismo riješili.</em></p>
+<p><em>Grunf</em></p>
+<p><img src="/images/2020-04_13_Grunf.jpg" style="width:50.0%" /></p>
+</center>
+<div id="kako-prebrati-podatke-iz-tabele-na-dinamicni-strani" class="section level1">
+<h1>Kako prebrati podatke iz tabele na dinamični strani</h1>
+<div id="ko-rvest-ne-deluje" class="section level2">
+<h2>Ko “rvest” ne deluje!</h2>
+<p>Dinamične strani se generirajo šele, ko se naložijo v “browser”, pred tem pa določeni elementi na njih ne obstajajo. Običajno so rezultat jscript funkcije. S takšnih strani običajno ni možno brati tabel s pomočjo Rvest paketa (ali česa podobnega).</p>
+<p>Obvod je s pomočjo paketa RSelenium (Selenium v pythonu). Ta odpre stran v brskalniku (oz. simulaciji brskalnika) in potem prebere HTML elemente.</p>
+</div>
+<div id="namestitev-seleniuma" class="section level2">
+<h2>Namestitev Seleniuma</h2>
+<ol style="list-style-type: decimal">
+<li><p>Najprej si snemi <a href="https://chromedriver.chromium.org/downloads">chromdrive.exe</a> in ga daj nekam v sistemsko pot (PATH).</p></li>
+<li><p>Java mora biti nameščena.</p></li>
+<li><p>Nato snemi <a href="https://www.selenium.dev/downloads/">selenium-server-standalone-x.x.x.jar</a>. Za tega moraš nastaviti pot v skripti (<em>moraš ga CDjat</em>)</p></li>
+<li><p>V R namesti: <em>install.packages(“RSelenium”)</em>. Git je <a href="https://github.com/ropensci/RSelenium">tu</a>.</p></li>
+</ol>
+<hr />
+</div>
+</div>
+<div id="primer-na-30-day-federal-funds-futures" class="section level1">
+<h1>Primer na <em>30 Day Federal Funds Futures</em></h1>
+<p>To je s spletne strani (<a href="https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund.html" class="uri">https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund.html</a>).</p>
+<p><img src="/images/2020-04-13_30%20Day%20Federal%20Funds%20Futures%20Quotes%20.jpg" style="width:80.0%" /></p>
+<p>Funkcija odpre brskalnik, prebere tabelo in jo vrne kot DataFrame (toXTS=FALSE) ali pa XTS (toXTS=TRUE).</p>
+<p><em>Funkcija se ne izvede tukaj, ker ni nameščenih zgoraj navednih objektov - samo prikaz!</em></p>
+<pre class="r"><code>getCME30DFF &lt;-function(PathTo_SeleniumServer = &quot;D:/OneDrive/Dokumenti/R/Stocks&quot;, toXTS = TRUE) {
+    # 2020-01-20; SLD
+    #
+    # Pridobi podatke s strani https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund.html
+    # in vrne prebrano tabelo v xts obliki
+    #
+    # Za delovanje potrebuje:
+    #    chromedriver.exe (za verzijo 79xx)
+    #    selenium-server-standalone-3.9.1.jar
+    # chromium mora biti v poti (Path)
+    # shranil sem ga  &quot;C:\Users\Slana\Anaconda3&quot;
+    # jar file pa moraš cd-jat. (nastavis PathTo_SeleniumServer)
+    # toXTS = FALSE vrne data.frame(), TRUE vrne xts timeserie
+    
+
+    # https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html
+    library(rvest)
+    library(httr)
+    library(RSelenium)
+    library(plyr)
+    library(lubridate)
+    library(XML)
+    library(xts)
+    library(tidyquant)
+    
+    # system2(&quot;cd&quot;, args = &quot;C:/Users/slanad/OneDrive/Dokumenti/R/Stocks&quot;,
+    system2(&quot;cd&quot;, args = PathTo_SeleniumServer,
+            stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+            env = character(), wait = TRUE,
+            minimized = FALSE, invisible = TRUE, timeout = 0)
+    
+    system2(&quot;cmd&quot;, args = c(&quot;/k&quot;, &quot;java&quot;, &quot;-jar&quot;, &quot;selenium-server-standalone-3.9.1.jar -port 4445&quot;),
+            stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+            env = character(), wait = FALSE,
+            minimized = FALSE, invisible = TRUE, timeout = 0)
+    
+    
+    #Odpres oddaljen strežnik
+    remDr &lt;- remoteDriver(
+        remoteServerAddr = &quot;localhost&quot;,
+        port = 4445,
+        browserName = &quot;chrome&quot;
+    )
+    
+    remDr$open()
+    #remDr$getStatus()
+    remDr$navigate(&quot;https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund.html&quot;)
+    #remDr$getCurrentUrl()
+    remDr$getTitle()
+    
+    Sys.sleep(10) #sleep for 10 so everything can load
+    
+    # Tukaj si izvlečeš tabelo. Strukturo strani si je dobro pogledati v browserju (F12)
+    doc &lt;- htmlParse(remDr$getPageSource()[[1]])
+    table_tmp &lt;- readHTMLTable(doc)
+    df = data.frame(table_tmp[[1]])
+    
+    # tega se ne da rešiti. Večina podatkov bo kot str, pa četudi so številke
+    df$Prior.Settle &lt;- as.numeric(as.character(df$Prior.Settle))
+    df$Last &lt;- as.numeric(as.character(df$Last))
+    plyr::revalue(df$Change, c(&quot;UNCH&quot; = &quot;0.00&quot;)) -&gt; df$Change #zamenjaj vrestnosti
+    df$Change &lt;- as.numeric(as.character(df$Change))
+    df$Open &lt;- as.numeric(as.character(df$Open))
+    df$High &lt;- as.numeric(as.character(df$High))
+    df$Low &lt;- as.numeric(as.character(df$Low))
+    df$Volume &lt;- as.numeric(as.character(df$Volume))
+    df$Month = lubridate::parse_date_time(as.character(df$Month), orders = c(&quot;bdy&quot;, &quot;bY&quot;))
+    df$Charts &lt;- NULL
+    
+    #write.table(df, &quot;CME30DFF.csv&quot;, sep=&quot;;&quot;, dec = &quot;,&quot;, row.names=FALSE)
+    
+    
+    # close session
+    remDr$close() 
+    
+    system2(&quot;taskkill&quot;, args = c(&quot;/F /IM&quot;, &quot;chromedriver.exe&quot;),
+            stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+            env = character(), wait = TRUE,
+            minimized = FALSE, invisible = TRUE, timeout = 0)
+    
+    # system2(&quot;taskkill&quot;, args = c(&quot;/F /IM&quot;, &quot;cmd.exe&quot;),
+    #         stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+    #         env = character(), wait = TRUE,
+    #         minimized = FALSE, invisible = FALSE, timeout = 0)
+    
+    # system2(&quot;taskkill&quot;, args = c(&quot;/F /IM&quot;, &quot;chrome.exe&quot;),
+    #         stdout = &quot;&quot;, stderr = &quot;&quot;, stdin = &quot;&quot;, input = NULL,
+    #         env = character(), wait = TRUE,
+    #         minimized = FALSE, invisible = FALSE, timeout = 0)
+    
+    if (toXTS == TRUE) { df &lt;- timetk::tk_xts(df, date_col = &quot;Month&quot;) } #return xts timeserie object
+    
+    return(df)
+
+}
+
+
+df &lt;- getCME30DFF()</code></pre>
+<p><em>“It’s just that easy.”</em></p>
+<p><em>(famous last words that screw up just about anything being referenced)</em></p>
+</div>

@@ -10,6 +10,20 @@
   </url>
   
   <url>
+    <loc>/post/sld-web-scraping-with-r/</loc>
+    <lastmod>2020-04-13T20:26:38+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/post/sld-power-bi-malenkosti/</loc>
+    <lastmod>2020-01-18T10:08:53+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/post/sld-kpi-indicator-design/</loc>
     <lastmod>2019-12-28T20:20:18+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -171,14 +185,14 @@
   
   <url>
     <loc>/tags/etl/</loc>
-    <lastmod>2019-03-24T11:26:14+01:00</lastmod>
+    <lastmod>2020-04-13T20:26:38+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/etl/</loc>
-    <lastmod>2019-03-24T11:26:14+01:00</lastmod>
+    <lastmod>2020-04-13T20:26:38+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -247,6 +261,13 @@
   </url>
   
   <url>
+    <loc>/categories/python/</loc>
+    <lastmod>2020-01-18T10:08:53+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/pandas/</loc>
     <lastmod>2019-05-04T21:48:51+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -255,7 +276,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-12-28T20:20:18+01:00</lastmod>
+    <lastmod>2020-04-13T20:26:38+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -276,7 +297,7 @@
   
   <url>
     <loc>/categories/powerbi/</loc>
-    <lastmod>2019-03-24T11:26:14+01:00</lastmod>
+    <lastmod>2020-01-18T10:08:53+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -290,14 +311,14 @@
   
   <url>
     <loc>/tags/r/</loc>
-    <lastmod>2019-09-14T21:12:03+02:00</lastmod>
+    <lastmod>2020-04-13T20:26:38+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/r/</loc>
-    <lastmod>2019-12-28T20:20:18+01:00</lastmod>
+    <lastmod>2020-04-13T20:26:38+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -436,6 +457,13 @@
   </url>
   
   <url>
+    <loc>/tags/import/</loc>
+    <lastmod>2020-01-18T10:08:53+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/infographics/</loc>
     <lastmod>2019-05-09T21:59:50+02:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -513,6 +541,13 @@
   </url>
   
   <url>
+    <loc>/tags/path/</loc>
+    <lastmod>2020-01-18T10:08:53+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/pdf/</loc>
     <lastmod>2019-10-27T18:35:09+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -556,7 +591,7 @@
   
   <url>
     <loc>/tags/powerbi/</loc>
-    <lastmod>2019-03-24T11:26:14+01:00</lastmod>
+    <lastmod>2020-01-18T10:08:53+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -577,14 +612,14 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2019-12-24T11:00:27+01:00</lastmod>
+    <lastmod>2020-01-18T10:08:53+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/r/</loc>
-    <lastmod>2019-09-14T21:12:03+02:00</lastmod>
+    <lastmod>2020-04-13T20:26:38+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -641,6 +676,13 @@
   <url>
     <loc>/tags/vizualizacija/</loc>
     <lastmod>2019-12-28T20:20:18+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/web-scraping/</loc>
+    <lastmod>2020-04-13T20:26:38+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

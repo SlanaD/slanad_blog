@@ -6,10 +6,36 @@
     <description>Recent content in R on p o p - PRIPOVEDKE O PODATKIH</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>sl-SI</language>
-    <lastBuildDate>Sat, 28 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[SLD] Web scraping dynamical pages with R</title>
+      <link>/post/sld-web-scraping-with-r/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-web-scraping-with-r/</guid>
+      <description>Bilo je i večih problema, pa ih nismo riješili.
+Grunf
+Kako prebrati podatke iz tabele na dinamični straniKo “rvest” ne deluje!Dinamične strani se generirajo šele, ko se naložijo v “browser”, pred tem pa določeni elementi na njih ne obstajajo. Običajno so rezultat jscript funkcije. S takšnih strani običajno ni možno brati tabel s pomočjo Rvest paketa (ali česa podobnega).
+Obvod je s pomočjo paketa RSelenium (Selenium v pythonu).</description>
+    </item>
+    
+    <item>
+      <title>[SLD] Power BI malenkosti</title>
+      <link>/post/sld-power-bi-malenkosti/</link>
+      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sld-power-bi-malenkosti/</guid>
+      <description>Technology is a word that describes something that doesn’t work yet.
+Douglas Adams
+It’s supposed to be automatic, but actually you have to push this button.
+John Brunner
+
+Power BI: Pot do podatkovNeugodno je, ker Power BI ne pozna relativnih poti (npr. ./A/Podatki.xls). Primer: izbereš podatke, ki so v excelovi tabeli v mapi A (C:\A\Podatki.xls) in potem premakneš ali preimenuješ mapo A. S tem avtomatsko izgubiš povezavo s podatki in moraš v naprednem urejevalniku popraviti pot do podatkov.</description>
+    </item>
     
     <item>
       <title>[SLD] KPI indicator Design</title>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[SLD] Power BI malenkosti - p o p - PRIPOVEDKE O PODATKIH</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="SlanaD" /><meta name="description" content="Technology is a word that describes something that doesn’t work yet.
+Douglas Adams
+It’s supposed to be automatic, but actually you have to push this button.
+John Brunner
+
+Power BI: Pot do podatkovNeugodno je, ker Power BI ne pozna relativnih poti (npr. ./A/Podatki.xls). Primer: izbereš podatke, ki so v excelovi tabeli v mapi A (C:\A\Podatki.xls) in potem premakneš ali preimenuješ mapo A. S tem avtomatsko izgubiš povezavo s podatki in moraš v naprednem urejevalniku popraviti pot do podatkov." /><meta name="keywords" content="vizualizacija, podatki, R, Excel, Python, Power BI" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="/post/sld-power-bi-malenkosti/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[SLD] Power BI malenkosti" />
+<meta property="og:description" content="Technology is a word that describes something that doesn’t work yet.
+Douglas Adams
+It’s supposed to be automatic, but actually you have to push this button.
+John Brunner
+
+Power BI: Pot do podatkovNeugodno je, ker Power BI ne pozna relativnih poti (npr. ./A/Podatki.xls). Primer: izbereš podatke, ki so v excelovi tabeli v mapi A (C:\A\Podatki.xls) in potem premakneš ali preimenuješ mapo A. S tem avtomatsko izgubiš povezavo s podatki in moraš v naprednem urejevalniku popraviti pot do podatkov." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/sld-power-bi-malenkosti/" />
+<meta property="article:published_time" content="2020-01-18T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2020-01-18T10:08:53&#43;01:00"/>
+
+<meta itemprop="name" content="[SLD] Power BI malenkosti">
+<meta itemprop="description" content="Technology is a word that describes something that doesn’t work yet.
+Douglas Adams
+It’s supposed to be automatic, but actually you have to push this button.
+John Brunner
+
+Power BI: Pot do podatkovNeugodno je, ker Power BI ne pozna relativnih poti (npr. ./A/Podatki.xls). Primer: izbereš podatke, ki so v excelovi tabeli v mapi A (C:\A\Podatki.xls) in potem premakneš ali preimenuješ mapo A. S tem avtomatsko izgubiš povezavo s podatki in moraš v naprednem urejevalniku popraviti pot do podatkov.">
+
+
+<meta itemprop="datePublished" content="2020-01-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-18T10:08:53&#43;01:00" />
+<meta itemprop="wordCount" content="315">
+
+
+
+<meta itemprop="keywords" content="powerbi,R,python,import,path," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[SLD] Power BI malenkosti"/>
+<meta name="twitter:description" content="Technology is a word that describes something that doesn’t work yet.
+Douglas Adams
+It’s supposed to be automatic, but actually you have to push this button.
+John Brunner
+
+Power BI: Pot do podatkovNeugodno je, ker Power BI ne pozna relativnih poti (npr. ./A/Podatki.xls). Primer: izbereš podatke, ki so v excelovi tabeli v mapi A (C:\A\Podatki.xls) in potem premakneš ali preimenuješ mapo A. S tem avtomatsko izgubiš povezavo s podatki in moraš v naprednem urejevalniku popraviti pot do podatkov."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">p o p</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">p o p</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[SLD] Power BI malenkosti</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-18 </span>
+        <div class="post-category">
+            <a href="/categories/powerbi/"> PowerBI </a>
+            <a href="/categories/python/"> PYthon </a>
+            <a href="/categories/r/"> R </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+
+
+<center>
+<p><em>Technology is a word that describes something that doesn’t work yet.</em></p>
+<p><em><a href="https://en.wikipedia.org/wiki/Douglas_Adams">Douglas Adams</a></em></p>
+<p><em>It’s supposed to be automatic, but actually you have to push this button.</em></p>
+<p><em><a href="https://en.wikipedia.org/wiki/John_Brunner_(novelist)">John Brunner</a></em></p>
+<p><a href="https://media.istockphoto.com/photos/robot-push-the-button-picture-id109164750?k=6&amp;m=109164750&amp;s=612x612&amp;w=0&amp;h=l4oB9Ru3S78my1GFGLGd_s6B6WQqsPAe6lOJa47DB18=" title="refence"><img src="/images/2020-01-18_PushButton.jpg" style="width:50.0%" /></a></p>
+</center>
+<div id="power-bi-pot-do-podatkov" class="section level1">
+<h1>Power BI: Pot do podatkov</h1>
+<p>Neugodno je, ker Power BI ne pozna relativnih poti (npr. <code>./A/Podatki.xls</code>). Primer: izbereš podatke, ki so v excelovi tabeli v mapi A (<code>C:\A\Podatki.xls</code>) in potem premakneš ali preimenuješ mapo A. S tem avtomatsko izgubiš povezavo s podatki in moraš v naprednem urejevalniku popraviti pot do podatkov.</p>
+<p>Neki strici so našli obvod do tega, kje ločeno nastaviš pot do podatkov in potem po preimenovanju ali premikanju samo spremeniš eno vrstico v Power BI.</p>
+<p>Postopek je nekako takole:</p>
+<ol style="list-style-type: decimal">
+<li><p>Ustvariš prazno poizvedbo (Blank Query)</p></li>
+<li><p>V prazno poizvedbo vpišeš pot do svojih podatkov: <code>c:\A\</code> in to poizvedbo preimenuješ v <code>Path</code> (lahko tudi v katero drugo ime spremenljivke)</p></li>
+<li><p>Po običajnem postopku uvoziš podatke iz svoje <code>Podatki.xls</code> iz mape npr. <code>c:\A\Podatki.xls</code></p></li>
+<li><p>Grep v napredni editor in sedaj spremeniš</p>
+<p>iz: <code>Excel.Workbook( File.Content(  "C:\A\Podatki.xls"), null, true)</code><br />
+v: <code>Excel.Workbook( File.Content(  Path &amp; "Podatki.xls"), null, true)</code></p></li>
+<li><p>Sedaj, ko premakneš podatke, spremeniš samo poizvedbo Path.</p></li>
+</ol>
+<p>Ta postopek ime dve prednosti pred spreminjanjem v naprednem urejevalniku in sicer:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Ko imaš več izvorov v istih relativni poti, lahko pot spremeniš samo enkrat in ne pri vsakem izvoru posebaj,</p></li>
+<li><p>Ko imaš uporabnika, ki ga je strah uporabljati napredni urejevalnik, je tako lažje …</p></li>
+</ol>
+</div>
+<div id="power-bi-povezava-z-rds-virom-z-uporabo-r-script" class="section level1">
+<h1>Power BI: Povezava z RDS virom (z uporabo R Script)</h1>
+<p>V RDS so podatki že v obliki DataFrame in jih je potrebno le prebrati s readRDS(). Postopek je:</p>
+<ol style="list-style-type: decimal">
+<li><p>Get Data –&gt; Other –&gt; R Script –&gt; Connect</p></li>
+<li><p>V Script vpišeš : <code>input &lt;- readRDS(file = paste("C:/mapa do podatkov/", "podatki.RDS", sep="") )</code> in potem OK</p></li>
+</ol>
+<p>Sedaj imaš podatke naložene z vsemi stolpci, kot običajno. Ime <em>input</em> je lahko poljubno (npr. <em>df</em>). Tako se potem avtomatsko imenuje tabela s stolpci.</p>
+<p><em>“It’s just that easy.”</em></p>
+<p><em>(famous last words that screw up just about anything being referenced)</em></p>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">SlanaD</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2020-01-18</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/powerbi/">powerbi</a>
+          <a href="/tags/r/">R</a>
+          <a href="/tags/python/">python</a>
+          <a href="/tags/import/">import</a>
+          <a href="/tags/path/">path</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/sld-web-scraping-with-r/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">[SLD] Web scraping dynamical pages with R</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/sld-kpi-indicator-design/">
+            <span class="next-text nav-default">[SLD] KPI indicator Design</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:slana.danilo@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/danilo-slana-820703ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">SlanaD</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-134681704-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
